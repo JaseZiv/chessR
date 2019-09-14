@@ -1,0 +1,23 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1568466792043.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "0",
+    "id" : "188FB42E",
+    "lastKnownWriteTime" : 1568467204,
+    "last_content_update" : 1568467204303,
+    "path" : "~/Desktop/chessR/R/chessR.R",
+    "project_path" : "R/chessR.R",
+    "properties" : {
+        "cursorPosition" : "10,95",
+        "scrollLine" : "0",
+        "tempName" : "Untitled1"
+    },
+    "relative_order" : 4,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}
