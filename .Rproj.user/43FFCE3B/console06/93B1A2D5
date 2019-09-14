@@ -1,0 +1,5 @@
+]0;~/Desktop/chessR[?1034hJasons-MBP:chessR jasonzivkovic$ git remote add origin https://github.com/JaseZiv/chessR.git
+fatal: not a git repository (or any of the parent directories): .git
+]0;~/Desktop/chessRJasons-MBP:chessR jasonzivkovic$ git init
+Initialized empty Git repository in /Users/jasonzivkovic/Desktop/chessR/.git/
+]0;~/Desktop/chessRJasons-MBP:chessR jasonzivkovic$ git add .
