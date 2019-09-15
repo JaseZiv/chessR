@@ -19,5 +19,6 @@ Imports:
     magrittr
 RoxygenNote: 6.1.99.9000
 Suggests: knitr,
-    rmarkdown
+    rmarkdown,
+    ggplot2
 VignetteBuilder: knitr

@@ -28,3 +28,53 @@ To https://github.com/JaseZiv/chessR.git
  * [new branch]      master -> master
 Branch 'master' set up to track remote branch 'master' from 'origin'.
 ]0;~/Desktop/chessRJasons-MBP:chessR jasonzivkovic$ [KJasons-MBP:chessR jasonzivkovic$ git add .
+]0;~/Desktop/chessRJasons-MBP:chessR jasonzivkovic$ git commit -m "added[K[K[K[K[Kincluded the first of the functions"
+[master 28a37d8] included the first of the functions
+ 40 files changed, 1192 insertions(+), 75 deletions(-)
+ create mode 100644 .Rproj.user/43FFCE3B/sources/prop/1209ECDF
+ create mode 100644 .Rproj.user/43FFCE3B/sources/prop/1B225644
+ create mode 100644 .Rproj.user/43FFCE3B/sources/prop/5BFE3D22
+ create mode 100644 .Rproj.user/43FFCE3B/sources/prop/761BB416
+ create mode 100644 .Rproj.user/43FFCE3B/sources/prop/8A5625A3
+ create mode 100644 .Rproj.user/43FFCE3B/sources/prop/9DFBC303
+ create mode 100644 .Rproj.user/43FFCE3B/sources/prop/FD8A89
+ create mode 100644 .Rproj.user/43FFCE3B/sources/prop/INDEX
+ create mode 100644 .Rproj.user/43FFCE3B/sources/s-82A01DC9/185998D0-contents
+ create mode 100644 .Rproj.user/43FFCE3B/sources/s-82A01DC9/188FB42E
+ create mode 100644 .Rproj.user/43FFCE3B/sources/s-82A01DC9/188FB42E-contents
+ create mode 100644 .Rproj.user/43FFCE3B/sources/s-82A01DC9/5E40F115-contents
+ create mode 100644 .Rproj.user/43FFCE3B/sources/s-82A01DC9/73622B97
+ create mode 100644 .Rproj.user/43FFCE3B/sources/s-82A01DC9/73622B97-contents
+ create mode 100644 .Rproj.user/43FFCE3B/sources/s-82A01DC9/7B326181-contents
+ create mode 100644 .Rproj.user/43FFCE3B/sources/s-82A01DC9/9B92DCE5-contents
+ create mode 100644 .Rproj.user/43FFCE3B/sources/s-82A01DC9/9CD743CD-contents
+ create mode 100644 .Rproj.user/43FFCE3B/sources/s-82A01DC9/B356B39B-contents
+ create mode 100644 .Rproj.user/43FFCE3B/sources/s-82A01DC9/BBFBA379
+ create mode 100644 .Rproj.user/43FFCE3B/sources/s-82A01DC9/BBFBA379-contents
+ create mode 100644 .Rproj.user/43FFCE3B/sources/s-82A01DC9/C26EF37F
+ create mode 100644 .Rproj.user/43FFCE3B/sources/s-82A01DC9/C26EF37F-contents
+ create mode 100644 .Rproj.user/43FFCE3B/sources/s-82A01DC9/C8391494-contents
+ create mode 100644 .Rproj.user/43FFCE3B/sources/s-82A01DC9/E73BA90F-contents
+ create mode 100644 .Rproj.user/43FFCE3B/sources/s-82A01DC9/E84377B3
+ create mode 100644 .Rproj.user/43FFCE3B/sources/s-82A01DC9/E84377B3-contents
+ create mode 100644 .Rproj.user/shared/notebooks/paths
+ create mode 100644 R/chessR.R
+ create mode 100644 R/get_raw_game_data.R
+ create mode 100644 R/get_top50_leaderboard.R
+ create mode 100644 man/analyse_multiple_players.Rd
+ create mode 100644 man/analyse_player_games.Rd
+ create mode 100644 man/chessR.Rd
+ create mode 100644 man/get_raw_game_data.Rd
+ create mode 100644 man/get_top50_leaderboard.Rd
+]0;~/Desktop/chessRJasons-MBP:chessR jasonzivkovic$ git push
+Enumerating objects: 54, done.
+Counting objects:   1% (1/54)   Counting objects:   3% (2/54)   Counting objects:   5% (3/54)   Counting objects:   7% (4/54)   Counting objects:   9% (5/54)   Counting objects:  11% (6/54)   Counting objects:  12% (7/54)   Counting objects:  14% (8/54)   Counting objects:  16% (9/54)   Counting objects:  18% (10/54)   Counting objects:  20% (11/54)   Counting objects:  22% (12/54)   Counting objects:  24% (13/54)   Counting objects:  25% (14/54)   Counting objects:  27% (15/54)   Counting objects:  29% (16/54)   Counting objects:  31% (17/54)   Counting objects:  33% (18/54)   Counting objects:  35% (19/54)   Counting objects:  37% (20/54)   Counting objects:  38% (21/54)   Counting objects:  40% (22/54)   Counting objects:  42% (23/54)   Counting objects:  44% (24/54)   Counting objects:  46% (25/54)   Counting objects:  48% (26/54)   Counting objects:  50% (27/54)   Counting objects:  51% (28/54)   Counting objects:  53% (29/54)   Counting objects:  55% (30/54)   Counting objects:  57% (31/54)   Counting objects:  59% (32/54)   Counting objects:  61% (33/54)   Counting objects:  62% (34/54)   Counting objects:  64% (35/54)   Counting objects:  66% (36/54)   Counting objects:  68% (37/54)   Counting objects:  70% (38/54)   Counting objects:  72% (39/54)   Counting objects:  74% (40/54)   Counting objects:  75% (41/54)   Counting objects:  77% (42/54)   Counting objects:  79% (43/54)   Counting objects:  81% (44/54)   Counting objects:  83% (45/54)   Counting objects:  85% (46/54)   Counting objects:  87% (47/54)   Counting objects:  88% (48/54)   Counting objects:  90% (49/54)   Counting objects:  92% (50/54)   Counting objects:  94% (51/54)   Counting objects:  96% (52/54)   Counting objects:  98% (53/54)   Counting objects: 100% (54/54)   Counting objects: 100% (54/54), done.
+Delta compression using up to 8 threads
+Compressing objects:   2% (1/40)   Compressing objects:   5% (2/40)   Compressing objects:   7% (3/40)   Compressing objects:  10% (4/40)   Compressing objects:  12% (5/40)   Compressing objects:  15% (6/40)   Compressing objects:  17% (7/40)   Compressing objects:  20% (8/40)   Compressing objects:  22% (9/40)   Compressing objects:  25% (10/40)   Compressing objects:  27% (11/40)   Compressing objects:  30% (12/40)   Compressing objects:  32% (13/40)   Compressing objects:  35% (14/40)   Compressing objects:  37% (15/40)   Compressing objects:  40% (16/40)   Compressing objects:  42% (17/40)   Compressing objects:  45% (18/40)   Compressing objects:  47% (19/40)   Compressing objects:  50% (20/40)   Compressing objects:  52% (21/40)   Compressing objects:  55% (22/40)   Compressing objects:  57% (23/40)   Compressing objects:  60% (24/40)   Compressing objects:  62% (25/40)   Compressing objects:  65% (26/40)   Compressing objects:  67% (27/40)   Compressing objects:  70% (28/40)   Compressing objects:  72% (29/40)   Compressing objects:  75% (30/40)   Compressing objects:  77% (31/40)   Compressing objects:  80% (32/40)   Compressing objects:  82% (33/40)   Compressing objects:  85% (34/40)   Compressing objects:  87% (35/40)   Compressing objects:  90% (36/40)   Compressing objects:  92% (37/40)   Compressing objects:  95% (38/40)   Compressing objects:  97% (39/40)   Compressing objects: 100% (40/40)   Compressing objects: 100% (40/40), done.
+Writing objects:   2% (1/42)   Writing objects:   4% (2/42)   Writing objects:   7% (3/42)   Writing objects:   9% (4/42)   Writing objects:  11% (5/42)   Writing objects:  14% (6/42)   Writing objects:  16% (7/42)   Writing objects:  19% (8/42)   Writing objects:  21% (9/42)   Writing objects:  23% (10/42)   Writing objects:  26% (11/42)   Writing objects:  28% (12/42)   Writing objects:  30% (13/42)   Writing objects:  33% (14/42)   Writing objects:  35% (15/42)   Writing objects:  38% (16/42)   Writing objects:  40% (17/42)   Writing objects:  45% (19/42)   Writing objects:  50% (21/42)   Writing objects:  52% (22/42)   Writing objects:  54% (23/42)   Writing objects:  57% (24/42)   Writing objects:  59% (25/42)   Writing objects:  61% (26/42)   Writing objects:  64% (27/42)   Writing objects:  66% (28/42)   Writing objects:  69% (29/42)   Writing objects:  71% (30/42)   Writing objects:  73% (31/42)   Writing objects:  76% (32/42)   Writing objects:  78% (33/42)   Writing objects:  80% (34/42)   Writing objects:  83% (35/42)   Writing objects:  85% (36/42)   Writing objects:  88% (37/42)   Writing objects:  90% (38/42)   Writing objects:  92% (39/42)   Writing objects:  95% (40/42)   Writing objects:  97% (41/42)   Writing objects: 100% (42/42)   Writing objects: 100% (42/42), 10.62 KiB | 187.00 KiB/s, done.
+Total 42 (delta 8), reused 0 (delta 0)
+remote: Resolving deltas:   0% (0/8)[Kremote: Resolving deltas:  37% (3/8)[Kremote: Resolving deltas:  75% (6/8)[Kremote: Resolving deltas:  87% (7/8)[Kremote: Resolving deltas: 100% (8/8)[Kremote: Resolving deltas: 100% (8/8), completed with 1 local object.[K
+To https://github.com/JaseZiv/chessR.git
+   637d6ea..28a37d8  master -> master
+]0;~/Desktop/chessR[?1034hJasons-MacBook-Pro:chessR jasonzivkovic$ touch README.md
+]0;~/Desktop/chessRJasons-MacBook-Pro:chessR jasonzivkovic$ git add .
