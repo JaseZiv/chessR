@@ -1,3 +1,4 @@
+/Users/jasonzivkovic/Desktop/chessR/.gitignore="25C3F847"
 /Users/jasonzivkovic/Desktop/chessR/.travis.yml="B0391421"
 /Users/jasonzivkovic/Desktop/chessR/DESCRIPTION="C657CC3E"
 /Users/jasonzivkovic/Desktop/chessR/NAMESPACE="2C6CC1EA"
@@ -8,4 +9,5 @@
 /Users/jasonzivkovic/Desktop/chessR/README.Rmd="A1776690"
 /Users/jasonzivkovic/Desktop/chessR/README.md="24E4FC4"
 /Users/jasonzivkovic/Desktop/chessR/man/analyse_multiple_players.Rd="D9889633"
+/Users/jasonzivkovic/Desktop/chessR/vignettes/.gitignore="9D814597"
 /Users/jasonzivkovic/Desktop/chessR/vignettes/using_chessR_package.Rmd="71D542C9"

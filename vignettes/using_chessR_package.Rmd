@@ -22,7 +22,7 @@ knitr::opts_chunk$set(
 # devtools::install_github("JaseZiv/chessR")
 ```
 
-# Extracting raw chess game data
+## Extracting raw chess game data
 
 ```{r libraries, message=FALSE, warning=FALSE}
 library(chessR)
@@ -30,7 +30,9 @@ library(ggplot2)
 library(dplyr)
 ```
 
+
 To extract raw chess game data in a data frame, use the `get_raw_game_data()` function. This function either accepts one player's username, or a vector of multiple users. 
+
 
 ```{r get_raw_data, message=FALSE, warning=FALSE}
 raw_chess <- get_raw_game_data("JaseZiv")
@@ -40,6 +42,9 @@ raw_chess <- get_raw_game_data("JaseZiv")
 ```{r inspect_raw, message=FALSE, warning=FALSE}
 glimpse(raw_chess)
 ```
+
+
+## Extracting data for analysis
 
 
 

@@ -1,3 +1,4 @@
+~%2FDesktop%2FchessR%2F.gitignore="E5F4C3E5"
 ~%2FDesktop%2FchessR%2F.travis.yml="BAA11311"
 ~%2FDesktop%2FchessR%2FDESCRIPTION="9DFBC303"
 ~%2FDesktop%2FchessR%2FNAMESPACE="761BB416"
@@ -8,4 +9,5 @@
 ~%2FDesktop%2FchessR%2FREADME.Rmd="DBBEC037"
 ~%2FDesktop%2FchessR%2FREADME.md="205DE6BC"
 ~%2FDesktop%2FchessR%2Fman%2Fanalyse_multiple_players.Rd="8A5625A3"
+~%2FDesktop%2FchessR%2Fvignettes%2F.gitignore="D1098214"
 ~%2FDesktop%2FchessR%2Fvignettes%2Fusing_chessR_package.Rmd="A14BC2FF"

@@ -180,3 +180,51 @@ remote: Resolving deltas:   0% (0/6)[Kremote: Resolving deltas:  16% (1/6)[K
 To https://github.com/JaseZiv/chessR.git
    b2144de..2370482  master -> master
 ]0;~/Desktop/chessRJasons-MacBook-Pro:chessR jasonzivkovic$ git add .
+]0;~/Desktop/chessRJasons-MacBook-Pro:chessR jasonzivkovic$ git commit -m "updated readme"
+[master c7cf6ee] updated readme
+ 5 files changed, 124 insertions(+), 3 deletions(-)
+]0;~/Desktop/chessRJasons-MacBook-Pro:chessR jasonzivkovic$ git push
+Enumerating objects: 23, done.
+Counting objects:   4% (1/23)   Counting objects:   8% (2/23)   Counting objects:  13% (3/23)   Counting objects:  17% (4/23)   Counting objects:  21% (5/23)   Counting objects:  26% (6/23)   Counting objects:  30% (7/23)   Counting objects:  34% (8/23)   Counting objects:  39% (9/23)   Counting objects:  43% (10/23)   Counting objects:  47% (11/23)   Counting objects:  52% (12/23)   Counting objects:  56% (13/23)   Counting objects:  60% (14/23)   Counting objects:  65% (15/23)   Counting objects:  69% (16/23)   Counting objects:  73% (17/23)   Counting objects:  78% (18/23)   Counting objects:  82% (19/23)   Counting objects:  86% (20/23)   Counting objects:  91% (21/23)   Counting objects:  95% (22/23)   Counting objects: 100% (23/23)   Counting objects: 100% (23/23), done.
+Delta compression using up to 8 threads
+Compressing objects:   9% (1/11)   Compressing objects:  18% (2/11)   Compressing objects:  27% (3/11)   Compressing objects:  36% (4/11)   Compressing objects:  45% (5/11)   Compressing objects:  54% (6/11)   Compressing objects:  63% (7/11)   Compressing objects:  72% (8/11)   Compressing objects:  81% (9/11)   Compressing objects:  90% (10/11)   Compressing objects: 100% (11/11)   Compressing objects: 100% (11/11), done.
+Writing objects:   8% (1/12)   Writing objects:  16% (2/12)   Writing objects:  25% (3/12)   Writing objects:  33% (4/12)   Writing objects:  41% (5/12)   Writing objects:  50% (6/12)   Writing objects:  58% (7/12)   Writing objects:  66% (8/12)   Writing objects:  75% (9/12)   Writing objects:  83% (10/12)   Writing objects:  91% (11/12)   Writing objects: 100% (12/12)   Writing objects: 100% (12/12), 2.59 KiB | 2.59 MiB/s, done.
+Total 12 (delta 4), reused 0 (delta 0)
+remote: Resolving deltas:   0% (0/4)[Kremote: Resolving deltas:  25% (1/4)[Kremote: Resolving deltas:  50% (2/4)[Kremote: Resolving deltas:  75% (3/4)[Kremote: Resolving deltas: 100% (4/4)[Kremote: Resolving deltas: 100% (4/4), completed with 3 local objects.[K
+To https://github.com/JaseZiv/chessR.git
+   2370482..c7cf6ee  master -> master
+]0;~/Desktop/chessRJasons-MacBook-Pro:chessR jasonzivkovic$ git status
+On branch master
+Your branch is up to date with 'origin/master'.
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git checkout -- <file>..." to discard changes in working directory)
+
+	[31mmodified:   .Rproj.user/43FFCE3B/console06/93B1A2D5[m
+	[31mmodified:   .Rproj.user/43FFCE3B/sources/prop/INDEX[m
+	[31mmodified:   .Rproj.user/shared/notebooks/paths[m
+	[31mmodified:   vignettes/using_chessR_package.Rmd[m
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+
+	[31m.DS_Store[m
+
+no changes added to commit (use "git add" and/or "git commit -a")
+]0;~/Desktop/chessRJasons-MacBook-Pro:chessR jasonzivkovic$ git status
+On branch master
+Your branch is up to date with 'origin/master'.
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git checkout -- <file>..." to discard changes in working directory)
+
+	[31mmodified:   .Rproj.user/43FFCE3B/console06/93B1A2D5[m
+	[31mmodified:   .Rproj.user/43FFCE3B/sources/prop/INDEX[m
+	[31mmodified:   .Rproj.user/shared/notebooks/paths[m
+	[31mmodified:   .gitignore[m
+	[31mmodified:   vignettes/using_chessR_package.Rmd[m
+
+no changes added to commit (use "git add" and/or "git commit -a")
+]0;~/Desktop/chessRJasons-MacBook-Pro:chessR jasonzivkovic$ git add .
