@@ -104,7 +104,8 @@ analyse_player_games <- function(username) {
                     UserResult = ifelse(UserColour == UserResult, "Win", ifelse(UserResult == "Draw", "Draw", "Loss"))) %>%
       dplyr::mutate(DaysTaken = EndDate - Date) %>%
       dplyr::mutate(GameEnding = mapply(ending, Username, Termination, UserOpponent)) %>%
-      dplyr::mutate(Openings = gsub(".*?/", "", ECOUrl))
+      dplyr::mutate(Openings = gsub(".*?/", "", ECOUrl),
+                    Openings = sub("^.*?-", "", Openings))
 
   }
 
