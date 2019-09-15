@@ -131,3 +131,37 @@ remote: Resolving deltas:   0% (0/4)[Kremote: Resolving deltas:  25% (1/4)[K
 To https://github.com/JaseZiv/chessR.git
    fb9c0ea..7e2f0bd  master -> master
 ]0;~/Desktop/chessRJasons-MacBook-Pro:chessR jasonzivkovic$ git add .
+]0;~/Desktop/chessRJasons-MacBook-Pro:chessR jasonzivkovic$ git commit -m "updated travise[K.yml[C[C travis.ymlw travis.ymla travis.ymlr travis.ymln travis.ymli travis.ymln travis.ymlg travis.ymls travis.yml[C travis.ymla travis.ymls travis.yml[C travis.ymle travis.ymlr travis.ymlr travis.ymlo travis.ymlr travis.ymls travis.yml[C travis.ymla travis.ymls travis.yml[C travis.ymlf travis.ymla travis.ymll travis.ymle travis.ymls travis.yml[C travis.ymli travis.ymln travis.yml[C[C[C[C[C[C[C[C[C[C[C"
+[master b2144de] updated warnings as errors as fales in travis.yml
+ 2 files changed, 17 insertions(+), 1 deletion(-)
+]0;~/Desktop/chessRJasons-MacBook-Pro:chessR jasonzivkovic$ git push
+Enumerating objects: 13, done.
+Counting objects:   7% (1/13)   Counting objects:  15% (2/13)   Counting objects:  23% (3/13)   Counting objects:  30% (4/13)   Counting objects:  38% (5/13)   Counting objects:  46% (6/13)   Counting objects:  53% (7/13)   Counting objects:  61% (8/13)   Counting objects:  69% (9/13)   Counting objects:  76% (10/13)   Counting objects:  84% (11/13)   Counting objects:  92% (12/13)   Counting objects: 100% (13/13)   Counting objects: 100% (13/13), done.
+Delta compression using up to 8 threads
+Compressing objects:  14% (1/7)   Compressing objects:  28% (2/7)   Compressing objects:  42% (3/7)   Compressing objects:  57% (4/7)   Compressing objects:  71% (5/7)   Compressing objects:  85% (6/7)   Compressing objects: 100% (7/7)   Compressing objects: 100% (7/7), done.
+Writing objects:  14% (1/7)   Writing objects:  28% (2/7)   Writing objects:  42% (3/7)   Writing objects:  57% (4/7)   Writing objects:  71% (5/7)   Writing objects:  85% (6/7)   Writing objects: 100% (7/7)   Writing objects: 100% (7/7), 1.13 KiB | 36.00 KiB/s, done.
+Total 7 (delta 2), reused 0 (delta 0)
+remote: Resolving deltas:   0% (0/2)[Kremote: Resolving deltas:  50% (1/2)[Kremote: Resolving deltas: 100% (2/2)[Kremote: Resolving deltas: 100% (2/2), completed with 2 local objects.[K
+To https://github.com/JaseZiv/chessR.git
+   7e2f0bd..b2144de  master -> master
+]0;~/Desktop/chessRJasons-MacBook-Pro:chessR jasonzivkovic$ touch README.rmd[K[K[KRmd
+]0;~/Desktop/chessRJasons-MacBook-Pro:chessR jasonzivkovic$ git status
+On branch master
+Your branch is up to date with 'origin/master'.
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git checkout -- <file>..." to discard changes in working directory)
+
+	[31mmodified:   .Rproj.user/43FFCE3B/console06/93B1A2D5[m
+	[31mmodified:   .Rproj.user/43FFCE3B/sources/prop/INDEX[m
+	[31mmodified:   .Rproj.user/shared/notebooks/paths[m
+	[31mmodified:   README.md[m
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+
+	[31mREADME.Rmd[m
+
+no changes added to commit (use "git add" and/or "git commit -a")
+]0;~/Desktop/chessRJasons-MacBook-Pro:chessR jasonzivkovic$ git add .
