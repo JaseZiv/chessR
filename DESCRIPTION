@@ -20,5 +20,6 @@ Imports:
 RoxygenNote: 6.1.99.9000
 Suggests: knitr,
     rmarkdown,
-    ggplot2
+    ggplot2,
+    curl
 VignetteBuilder: knitr
