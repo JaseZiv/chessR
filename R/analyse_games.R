@@ -94,16 +94,16 @@ analyse_player_games <- function(username) {
       dplyr::mutate(Date = lubridate::ymd(Date),
                     EndDate = lubridate::ymd(EndDate)) %>%
       # feature engineering of some new features for analysis
-      dplyr::mutate(n_moves = mapply(get_num_moves, Moves),
+      dplyr::mutate(n_Moves = mapply(get_num_moves, Moves),
                     UserOpponent = ifelse(White == Username, Black, White),
                     UserColour = ifelse(Username == White, "White", "Black"),
-                    UserELO = ifelse(Username == White, WhiteElo, BlackElo),
-                    OpponentELO = ifelse(Username != White, WhiteElo, BlackElo)) %>%
+                    UserELO = as.numeric(ifelse(Username == White, WhiteElo, BlackElo)),
+                    OpponentELO = as.numeric(ifelse(Username != White, WhiteElo, BlackElo))) %>%
       dplyr::mutate(UserResult = ifelse(Result == "0-1", "Black", ifelse(Result == "1-0", "White", "Draw")),
                     UserResult = ifelse(UserColour == UserResult, "Win", ifelse(UserResult == "Draw", "Draw", "Loss"))) %>%
       dplyr::mutate(DaysTaken = EndDate - Date) %>%
-      dplyr::mutate(how_end = mapply(ending, Username, Termination, UserOpponent)) %>%
-      dplyr::mutate(openings = gsub(".*?/", "", ECOUrl))
+      dplyr::mutate(GameEnding = mapply(ending, Username, Termination, UserOpponent)) %>%
+      dplyr::mutate(Openings = gsub(".*?/", "", ECOUrl))
 
   }
 
