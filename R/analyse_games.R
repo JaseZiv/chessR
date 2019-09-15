@@ -83,6 +83,7 @@ analyse_player_games <- function(username) {
       }
       x <- gsub("won ", "", x)
       x <- gsub(" \\- ", "", x)
+      x <- stringr::str_squish(x)
 
       return(x)
     }
