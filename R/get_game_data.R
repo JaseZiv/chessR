@@ -15,8 +15,8 @@
 #' @import lubridate
 #' @import purrr
 #'
-#' @export
-analyse_player_games <- function(username) {
+
+get_each_player <- function(username) {
 
   cat("Extracting ", username, " Data, please wait\n")
 
@@ -126,7 +126,7 @@ analyse_player_games <- function(username) {
 
 
 
-#' Extract Multiple Player's Game Data
+#' Extract Chess Game Data
 #'
 #' \code{analyse_multiple_players} returns a dataframe of game data for a list of usernames
 #'
@@ -138,8 +138,8 @@ analyse_player_games <- function(username) {
 #' @import purrr
 #'
 #' @export
-analyse_multiple_players <- function(usernames) {
-  df <- purrr::map_df(usernames, analyse_player_games)
+get_chess_data <- function(usernames) {
+  df <- purrr::map_df(usernames, get_each_player)
 
   return(df)
 }
