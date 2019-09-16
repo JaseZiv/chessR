@@ -8,4 +8,4 @@
 
 utils::globalVariables("clean_pgn")
 utils::globalVariables(c("each_game", "Moves", "Event", "Date", "EndDate", "White", "Username", "Black", "WhiteElo", "BlackElo", "Result",
-                         "UserColour", "UserResult", "Termination", "UserOpponent", "ECOUrl", "n_Moves", "GameEnding", "Openings"))
+                         "UserColour", "UserResult", "Termination", "UserOpponent", "ECOUrl", "n_Moves", "GameEnding", "Opening"))

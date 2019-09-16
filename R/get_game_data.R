@@ -1,6 +1,6 @@
 #' Extract Single Player's Game Data
 #'
-#' \code{analyse_player_games} returns a dataframe of all of the games played by one player
+#' \code{get_each_player} returns a dataframe of all of the games played by one player
 #'
 #'  This function will take in a single player's username and return the
 #'  data on all the games they have played on chess.com
@@ -104,8 +104,8 @@ get_each_player <- function(username) {
                     UserResult = ifelse(UserColour == UserResult, "Win", ifelse(UserResult == "Draw", "Draw", "Loss"))) %>%
       dplyr::mutate(DaysTaken = EndDate - Date) %>%
       dplyr::mutate(GameEnding = mapply(ending, Username, Termination, UserOpponent)) %>%
-      dplyr::mutate(Openings = gsub(".*?/", "", ECOUrl),
-                    Openings = sub("^.*?-", "", Openings))
+      dplyr::mutate(Opening = gsub(".*?/", "", ECOUrl),
+                    Opening = sub("^.*?-", "", Opening))
 
   }
 
@@ -128,17 +128,18 @@ get_each_player <- function(username) {
 
 #' Extract Chess Game Data
 #'
-#' \code{analyse_multiple_players} returns a dataframe of game data for a list of usernames
+#' \code{get_chess_data} returns a dataframe of game data for either a sinlge user
+#' or a list of usernames
 #'
 #' This function will take in a list of player usernames and return
 #' a dataframe of game metadata
 #'
-#' @param usernames A list of player usernames from chess.com
+#' @param usernames A character vector of player usernames from chess.com
 #'
 #' @import purrr
 #'
 #' @export
-get_chess_data <- function(usernames) {
+get_game_data <- function(usernames) {
   df <- purrr::map_df(usernames, get_each_player)
 
   return(df)

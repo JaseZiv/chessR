@@ -40,12 +40,14 @@ raw_chess <- get_raw_game_data("JaseZiv")
 
 #### Analysis Data
 
-The following two functions will extract the same data that the `get_raw_game_data()` function will, however these functions will also include additional columns to make analysing data easier.
+The following function will extract the same data that the `get_raw_game_data()` function will, however this functions will also include additional columns to make analysing data easier.
+
+The function can be used either on a single player, or a character vector of multiple players.
 
 ``` r
-chess_analysis_single <- analyse_player_games("JaseZiv")
+chess_analysis_single <- get_game_data("JaseZiv")
 
-chess_analysis_multiple <- analyse_multiple_players(c("JaseZiv", "elroch"))
+chess_analysis_multiple <- get_game_data(c("JaseZiv", "elroch"))
 ```
 
 #### Get Top Players' usernames
