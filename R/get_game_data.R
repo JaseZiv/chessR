@@ -71,10 +71,13 @@ get_each_player <- function(username) {
 
     cleaned_df <- df[grep("\\{", df$pgn),]
 
-    cleaned_df <- cleaned_df %>% dplyr::filter(!stringr::str_detect(rules, "chess960"))
+    cleaned_df <- cleaned_df %>% dplyr::filter(.data$rules == "chess")
+    cleaned_df <- cleaned_df %>% dplyr::filter(.data$time_class %in% c("blitz", "bullet",  "daily",  "rapid"))
+    cleaned_df <- cleaned_df %>% dplyr::filter(!stringr::str_detect(.data$pgn, "Tournament"))
+    cleaned_df <- cleaned_df %>% dplyr::filter(!stringr::str_detect(.data$pgn, "club/matches"))
 
     cleaned_df <- cleaned_df %>%
-      tidyr::separate(pgn, into = c("Event", "Site", "Date", "Round", "White", "Black", "Result", "ECO", "ECOUrl", "CurrentPosition", "Timezone",
+      tidyr::separate(.data$pgn, into = c("Event", "Site", "Date", "Round", "White", "Black", "Result", "ECO", "ECOUrl", "CurrentPosition", "Timezone",
                                     "UTCDate", "UTCTime", "WhiteElo", "BlackElo", "TimeControl", "Termination", "StartTime", "EndDate", "EndTime",
                                     "Link", "Moves"), sep = "]\n")
 
