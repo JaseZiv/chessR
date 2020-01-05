@@ -14,7 +14,6 @@
 #' @import stringr
 #' @import lubridate
 #' @import purrr
-#'
 
 get_each_player <- function(username) {
 
@@ -33,20 +32,52 @@ get_each_player <- function(username) {
   }
 
 
-  # function to extract the game and moves data required for analysis
-  extract_pgn <- function(x){
-    tryCatch( {x <- x$games$pgn}, error = function(x) {x <- NA}) %>% as.character() %>% data.frame() %>% dplyr::mutate_if(is.factor, as.character)
+  convert_to_df <- function(games_list) {
+
+    # function to extract the game and moves data required for analysis
+    extract_pgn <- function(x){
+      tryCatch( {x <- x$games$pgn}, error = function(x) {x <- NA}) %>% as.character() %>% data.frame() %>% dplyr::mutate_if(is.factor, as.character)
+    }
+    pgn <- games_list %>%
+      purrr::map_df(extract_pgn)
+
+    # function to extract the rules of each game
+    extract_rules <- function(x){
+      tryCatch( {x <- x$games$rules}, error = function(x) {x <- NA}) %>% as.character() %>% data.frame() %>% dplyr::mutate_if(is.factor, as.character)
+    }
+
+    # function to extract the time class of each game (ie blitz, bullet, daily, etc)
+    extract_time_class <- function(x){
+      tryCatch( {x <- x$games$time_class}, error = function(x) {x <- NA}) %>% as.character() %>% data.frame() %>% dplyr::mutate_if(is.factor, as.character)
+    }
+
+    rules <- games_list %>%
+      purrr::map_df(extract_rules)
+
+    time_class <- games_list %>%
+      purrr::map_df(extract_time_class)
+
+    df <- cbind(rules, time_class, pgn) %>% data.frame()
+    colnames(df) <- c("rules", "time_class", "pgn")
+    return(df)
 
   }
 
   # clean each game string, separate columns and convert to df
   clean_pgn <- function(df) {
+    # notes:
+    # this function will excluded "abandoned" games that didn't have a move recorded.
+    # if it was abandoned and an opening was created, then it will be included in the results
 
-    colnames(df) <- "each_game"
-    # split column into the columns contained in the data
-    cleaned_df <- suppressWarnings(tidyr::separate(df, each_game, into = c("Event", "Site", "Date", "Round", "White", "Black", "Result", "ECO", "ECOUrl", "CurrentPosition", "Timezone",
-                                                                           "UTCDate", "UTCTime", "WhiteElo", "BlackElo", "TimeControl", "Termination", "StartTime", "EndDate", "EndTime",
-                                                                           "Link", "Moves"), sep = "]\n"))
+    cleaned_df <- df[grep("\\{", df$pgn),]
+
+    cleaned_df <- cleaned_df %>% dplyr::filter(!stringr::str_detect(rules, "chess960"))
+
+    cleaned_df <- cleaned_df %>%
+      tidyr::separate(pgn, into = c("Event", "Site", "Date", "Round", "White", "Black", "Result", "ECO", "ECOUrl", "CurrentPosition", "Timezone",
+                                    "UTCDate", "UTCTime", "WhiteElo", "BlackElo", "TimeControl", "Termination", "StartTime", "EndDate", "EndTime",
+                                    "Link", "Moves"), sep = "]\n")
+
 
     # create a vector of the variables that contains the data we need withing double quotes
     vars_to_extract <- c("Event", "Site", "Date", "Round", "White", "Black", "Result", "ECO", "ECOUrl", "CurrentPosition", "Timezone",
@@ -58,12 +89,12 @@ get_each_player <- function(username) {
     cleaned_df <- cleaned_df %>%
       dplyr::mutate_at(vars_to_extract, extract_data) %>% dplyr::mutate_if(is.factor, as.character)
 
-    # print a message to indicate how many observations there are without analysis data
-    print(paste0("There were ", sum(is.na(cleaned_df$Moves), na.rm = T) + sum(cleaned_df$Event == "Live Chess - Chess960", na.rm = T), " records removed due to there being no analysis data"))
-
-    # filter the records that don't have analysis data for
-    cleaned_df <- cleaned_df %>% dplyr::filter(!is.na(Moves))
-    cleaned_df <- cleaned_df %>% dplyr::filter(Event != "Live Chess - Chess960")
+    # # print a message to indicate how many observations there are without analysis data
+    # print(paste0("There were ", sum(is.na(cleaned_df$Moves), na.rm = T) + sum(cleaned_df$Event == "Live Chess - Chess960", na.rm = T), " records removed due to there being no analysis data"))
+    #
+    # # filter the records that don't have analysis data for
+    # cleaned_df <- cleaned_df %>% dplyr::filter(!is.na(Moves))
+    # cleaned_df <- cleaned_df %>% dplyr::filter(Event != "Live Chess - Chess960")
 
     # create a username variable for analysis purposes
     cleaned_df$Username <- username
@@ -111,8 +142,8 @@ get_each_player <- function(username) {
 
   output <- get_game_urls() %>%
     purrr::map(get_games) %>%
-    purrr::map_df(extract_pgn) %>%
-    clean_pgn() %>% distinct(.keep_all = TRUE)
+    convert_to_df() %>%
+    clean_pgn() %>% dplyr::distinct(.keep_all = TRUE)
 
   cat("Data extracted\n")
 
