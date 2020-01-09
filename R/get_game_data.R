@@ -92,12 +92,9 @@ get_each_player <- function(username) {
     cleaned_df <- cleaned_df %>%
       dplyr::mutate_at(vars_to_extract, extract_data) %>% dplyr::mutate_if(is.factor, as.character)
 
-    # # print a message to indicate how many observations there are without analysis data
-    # print(paste0("There were ", sum(is.na(cleaned_df$Moves), na.rm = T) + sum(cleaned_df$Event == "Live Chess - Chess960", na.rm = T), " records removed due to there being no analysis data"))
-    #
-    # # filter the records that don't have analysis data for
-    # cleaned_df <- cleaned_df %>% dplyr::filter(!is.na(Moves))
-    # cleaned_df <- cleaned_df %>% dplyr::filter(Event != "Live Chess - Chess960")
+    # create a variable to indicate which colour won the game
+    cleaned_df <- cleaned_df %>%
+      dplyr::mutate(winner = ifelse(Result == "0-1", "Black", ifelse(Result == "1-0", "White", "Draw")))
 
     # create a username variable for analysis purposes
     cleaned_df$Username <- username
