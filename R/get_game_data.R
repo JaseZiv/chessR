@@ -132,6 +132,7 @@ get_each_player <- function(username) {
       dplyr::mutate(n_Moves = mapply(get_num_moves, Moves),
                     UserOpponent = ifelse(White == Username, Black, White),
                     UserColour = ifelse(Username == White, "White", "Black"),
+                    OpponentColour = ifelse(UserOpponent == White, "White", "Black"),
                     UserELO = as.numeric(ifelse(Username == White, WhiteElo, BlackElo)),
                     OpponentELO = as.numeric(ifelse(Username != White, WhiteElo, BlackElo))) %>%
       dplyr::mutate(UserResult = ifelse(Result == "0-1", "Black", ifelse(Result == "1-0", "White", "Draw")),
