@@ -16,7 +16,7 @@
 #' @import jsonlite
 #'
 #' @export
-get_top50_leaderboard <- function(game_type) {
+get_top50_leaderboard <- function(game_type = "daily") {
   df <- fromJSON("https://api.chess.com/pub/leaderboards")[game_type] %>% unname() %>% data.frame()
   return(df)
 }

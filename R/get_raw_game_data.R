@@ -11,7 +11,6 @@
 #' @import dplyr
 #' @import tidyr
 #'
-#' @export
 get_raw_game_data <- function(usernames) {
 
   cat("Extracting Data, please wait\n")
