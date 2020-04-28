@@ -11,5 +11,5 @@ get_raw_game_data(usernames)
 }
 \description{
 This function returns the raw json data for a player's or list of players'
-chess.com data as a date frame
+chess.com data as a data frame
 }
