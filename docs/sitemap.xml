@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://jaseziv.github.io/chessR//index.html</loc>
+  </url>
+  <url>
+    <loc>https://jaseziv.github.io/chessR//reference/chessR.html</loc>
+  </url>
+  <url>
+    <loc>https://jaseziv.github.io/chessR//reference/get_each_player.html</loc>
+  </url>
+  <url>
+    <loc>https://jaseziv.github.io/chessR//reference/get_each_raw.html</loc>
+  </url>
+  <url>
+    <loc>https://jaseziv.github.io/chessR//reference/get_game_data.html</loc>
+  </url>
+  <url>
+    <loc>https://jaseziv.github.io/chessR//reference/get_raw_game_data.html</loc>
+  </url>
+  <url>
+    <loc>https://jaseziv.github.io/chessR//reference/get_top50_leaderboard.html</loc>
+  </url>
+  <url>
+    <loc>https://jaseziv.github.io/chessR//articles/using_chessR_package.html</loc>
+  </url>
+</urlset>
