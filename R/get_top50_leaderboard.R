@@ -17,6 +17,7 @@
 #'
 #' @export
 get_top50_leaderboard <- function(game_type = "daily") {
-  df <- fromJSON("https://api.chess.com/pub/leaderboards")[game_type] %>% unname() %>% data.frame()
+  df <- jsonlite::fromJSON("https://api.chess.com/pub/leaderboards")[game_type] %>% unname() %>% data.frame()
+  df$X.id <- NULL
   return(df)
 }
