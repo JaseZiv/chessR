@@ -31,9 +31,16 @@ There are a number of functions available in this package, both for extracting d
 
 ### Extraction
 
-The following extraction functions will get json formatted game data and clean and convert it to a data frame.
+The following extraction functions will get json formatted game data and clean and convert it to a data frame. The games that will be returned are from the following time classes on chess.com:
+
+* "blitz";
+* "bullet";
+* "daily"; and
+* "rapid"
 
 #### Raw Data
+
+The `get_raw_game_data()` function can take either a single, or multiple usernames. It will output a data frame with all the games played by that user.
 
 ```{r get_raw, eval = FALSE}
 # install.packages("devtools")
@@ -43,7 +50,7 @@ raw_chess <- get_raw_game_data("JaseZiv")
 
 #### Analysis Data
 
-The following function will extract the same data that the `get_raw_game_data()` function will, however this functions will also include additional columns to make analysing data easier.
+The following function will extract the same data that the `get_raw_game_data()` function will, however this function will also include additional columns to make analysing data easier.
 
 The function can be used either on a single player, or a character vector of multiple players.
 
@@ -75,10 +82,11 @@ The game types include:
 * "lessons"
 * "tactics"
 
-The usernames that are contained in the results can then be passes to the chess game data extraction function outlined above.
+The usernames that are contained in the results can then be passed to `get_game_data` outlined above.
 
 ```{r get_leaders, eval=FALSE}
-daily_leaders <- get_top50_leaderboard("daily")
-
+daily_leaders <- get_top50_leaderboard(game_type = "daily")
 ```
+
+For a more thorough explanation of the package and some ideas for analysis, see this post:
 
