@@ -4,8 +4,7 @@ Title: A Package To Extract and Analyse chess.com Data
 Version: 0.1.0
 Authors@R: person("Jason Zivkovic", email = "jase.ziv83@gmail.com",
                   role = c("aut", "cre"))
-Description: More about what it does (maybe more than one line)
-    Use four spaces when indenting paragraphs within the Description.
+Description: This package will enable users to extract chess game data from the popular chess site chess.com and then perform analysis on that game data.
 License: GPL-3
 Encoding: UTF-8
 LazyData: true
@@ -17,7 +16,7 @@ Imports:
     stringr,
     lubridate,
     magrittr
-RoxygenNote: 6.1.99.9000
+RoxygenNote: 7.0.0
 Suggests: knitr,
     rmarkdown,
     ggplot2,
