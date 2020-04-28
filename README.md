@@ -40,7 +40,7 @@ raw_chess <- get_raw_game_data("JaseZiv")
 
 #### Analysis Data
 
-The following function will extract the same data that the `get_raw_game_data()` function will, however this functions will also include additional columns to make analysing data easier.
+The following function will extract the same data that the `get_raw_game_data()` function will, however this function will also include additional columns to make analysing data easier.
 
 The function can be used either on a single player, or a character vector of multiple players.
 
@@ -69,8 +69,10 @@ The game types include:
 -   "lessons"
 -   "tactics"
 
-The usernames that are contained in the results can then be passes to the chess game data extraction function outlined above.
+The usernames that are contained in the results can then be passed to the chess game data extraction function outlined above.
 
 ``` r
-daily_leaders <- get_top50_leaderboard("daily")
+daily_leaders <- get_top50_leaderboard(game_type = "daily")
 ```
+
+For a detailed guide to using the package, see the package [vignette](https://jaseziv.github.io/chessR/articles/using_chessR_package.html)

@@ -87,6 +87,3 @@ The usernames that are contained in the results can then be passed to `get_game_
 ```{r get_leaders, eval=FALSE}
 daily_leaders <- get_top50_leaderboard(game_type = "daily")
 ```
-
-For a more thorough explanation of the package and some ideas for analysis, see this post:
-
