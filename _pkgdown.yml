@@ -1,1 +1,6 @@
 destination: docs
+title: chessR
+url: https://jaseziv.github.io/chessR/
+template:
+  params:
+    ganalytics: UA-145056765-1
