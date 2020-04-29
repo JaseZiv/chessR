@@ -3,7 +3,7 @@
 #' This function returns the raw json data for a player's
 #' chess.com data as a data frame
 #'
-#' @param usernames A valid unsername from chess.com
+#' @param username A valid unsername from chess.com
 #'
 #' @import magrittr
 #' @import purrr

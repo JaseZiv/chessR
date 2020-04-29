@@ -10,7 +10,7 @@ get_game_data(usernames)
 \item{usernames}{A character vector of player usernames from chess.com}
 }
 \description{
-\code{get_chess_data} returns a dataframe of game data for either a single user
+\code{get_game_data} returns a dataframe of game data for either a single user
 or a list of usernames
 }
 \details{

@@ -160,7 +160,7 @@ get_each_player <- function(username) {
 
 #' Extract Chess Game Data
 #'
-#' \code{get_chess_data} returns a dataframe of game data for either a single user
+#' \code{get_game_data} returns a dataframe of game data for either a single user
 #' or a list of usernames
 #'
 #' This function will take in a list of player usernames and return

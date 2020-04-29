@@ -7,7 +7,7 @@
 get_each_raw(username)
 }
 \arguments{
-\item{usernames}{A valid unsername from chess.com}
+\item{username}{A valid unsername from chess.com}
 }
 \description{
 This function returns the raw json data for a player's
