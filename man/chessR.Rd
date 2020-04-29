@@ -8,6 +8,15 @@
 \description{
 This package is designed to aid in the extraction and analysis of game data from the popular chess.com
 }
+\seealso{
+Useful links:
+\itemize{
+  \item \url{https://jaseziv.github.io/chessR/}
+  \item \url{https://github.com/JaseZiv/chessR}
+  \item Report bugs at \url{https://github.com/JaseZiv/chessR/issues}
+}
+
+}
 \author{
 \strong{Maintainer}: Jason Zivkovic \email{jase.ziv83@gmail.com}
 

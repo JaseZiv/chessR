@@ -4,6 +4,8 @@ Title: A Package To Extract and Analyse chess.com Data
 Version: 1.0.0
 Authors@R: person("Jason Zivkovic", email = "jase.ziv83@gmail.com",
                   role = c("aut", "cre"))
+URL: https://jaseziv.github.io/chessR/, https://github.com/JaseZiv/chessR
+BugReports: https://github.com/JaseZiv/chessR/issues
 Description: This package will enable users to extract chess game data from the popular chess site chess.com and then perform analysis on that game data.
 License: GPL-3
 Encoding: UTF-8
