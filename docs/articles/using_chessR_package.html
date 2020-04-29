@@ -37,7 +37,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">chessR</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.0.0</span>
       </span>
     </div>
 
@@ -90,19 +90,36 @@
 
     
     
-<div class="sourceCode" id="cb1"><html><body><pre class="r"># install.packages("devtools")
-# devtools::install_github("JaseZiv/chessR")</pre></body></html></div>
-<div id="extracting-raw-chess-game-data" class="section level2">
+<div id="installation" class="section level2">
 <h2 class="hasAnchor">
-<a href="#extracting-raw-chess-game-data" class="anchor"></a>Extracting raw chess game data</h2>
-<div class="sourceCode" id="cb2"><html><body><pre class="r"><span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">chessR</span>)
-<span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">ggplot2</span>)
-<span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">dplyr</span>)</pre></body></html></div>
-<p>To extract raw chess game data in a data frame, use the <code><a href="../reference/get_raw_game_data.html">get_raw_game_data()</a></code> function. This function either accepts one player’s username, or a vector of multiple users.</p>
-<div class="sourceCode" id="cb3"><html><body><pre class="r"><span class="no">raw_chess</span> <span class="kw">&lt;-</span> <span class="fu"><a href="../reference/get_raw_game_data.html">get_raw_game_data</a></span>(<span class="st">"JaseZiv"</span>)
+<a href="#installation" class="anchor"></a>Installation</h2>
+<p>You can install the chessR package from github with:</p>
+<div class="sourceCode" id="cb1"><html><body><pre class="r"><span class="co"># devtools::install_github("JaseZiv/chessR")</span>
+<span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">chessR</span>)</pre></body></html></div>
+</div>
+<div id="functions" class="section level2">
+<h2 class="hasAnchor">
+<a href="#functions" class="anchor"></a>Functions</h2>
+<p>There are a number of functions available in this package, both for extracting data and also for analysing and visualising data.</p>
+<div id="extraction" class="section level3">
+<h3 class="hasAnchor">
+<a href="#extraction" class="anchor"></a>Extraction</h3>
+<p>The following extraction functions will get json formatted game data and clean and convert it to a data frame. The games that will be returned are from the following time classes on chess.com:</p>
+<ul>
+<li>“blitz”;</li>
+<li>“bullet”;</li>
+<li>“daily”; and</li>
+<li>“rapid”</li>
+</ul>
+<div id="raw-data" class="section level4">
+<h4 class="hasAnchor">
+<a href="#raw-data" class="anchor"></a>Raw Data</h4>
+<p>The <code><a href="../reference/get_raw_game_data.html">get_raw_game_data()</a></code> function can take either a single, or multiple usernames. It will output a data frame with all the games played by that user.</p>
+<div class="sourceCode" id="cb2"><html><body><pre class="r"><span class="co"># install.packages("devtools")</span>
+<span class="no">raw_chess</span> <span class="kw">&lt;-</span> <span class="fu"><a href="../reference/get_raw_game_data.html">get_raw_game_data</a></span>(<span class="st">"JaseZiv"</span>)
 <span class="co">#&gt; Extracting  JaseZiv  Data, please wait</span>
 <span class="co">#&gt; Data extracted</span></pre></body></html></div>
-<div class="sourceCode" id="cb4"><html><body><pre class="r"><span class="fu"><a href="https://dplyr.tidyverse.org/reference/reexports.html">glimpse</a></span>(<span class="no">raw_chess</span>)
+<div class="sourceCode" id="cb3"><html><body><pre class="r"><span class="fu">glimpse</span>(<span class="no">raw_chess</span>)
 <span class="co">#&gt; Observations: 176</span>
 <span class="co">#&gt; Variables: 25</span>
 <span class="co">#&gt; $ rules           &lt;chr&gt; "chess", "chess", "chess", "chess", "chess", "chess",…</span>
@@ -131,9 +148,142 @@
 <span class="co">#&gt; $ Moves           &lt;chr&gt; "\n1. e4 {[%clk 0:02:52.8]} 1... e6 {[%clk 0:02:59.8]…</span>
 <span class="co">#&gt; $ Username        &lt;chr&gt; "JaseZiv", "JaseZiv", "JaseZiv", "JaseZiv", "JaseZiv"…</span></pre></body></html></div>
 </div>
-<div id="extracting-data-for-analysis" class="section level2">
+<div id="analysis-data" class="section level4">
+<h4 class="hasAnchor">
+<a href="#analysis-data" class="anchor"></a>Analysis Data</h4>
+<p>The following function will extract the same data that the <code><a href="../reference/get_raw_game_data.html">get_raw_game_data()</a></code> function will, however this function will also include additional columns to make analysing data easier.</p>
+<p>The function can be used either on a single player, or a character vector of multiple players.</p>
+<div class="sourceCode" id="cb4"><html><body><pre class="r"><span class="no">chess_analysis_single</span> <span class="kw">&lt;-</span> <span class="fu"><a href="../reference/get_game_data.html">get_game_data</a></span>(<span class="st">"JaseZiv"</span>)
+<span class="co">#&gt; Extracting  JaseZiv  Data, please wait</span>
+<span class="co">#&gt; Data extracted</span></pre></body></html></div>
+<div class="sourceCode" id="cb5"><html><body><pre class="r"><span class="fu">glimpse</span>(<span class="no">chess_analysis_single</span>)
+<span class="co">#&gt; Observations: 176</span>
+<span class="co">#&gt; Variables: 36</span>
+<span class="co">#&gt; $ rules           &lt;chr&gt; "chess", "chess", "chess", "chess", "chess", "chess",…</span>
+<span class="co">#&gt; $ time_class      &lt;chr&gt; "blitz", "blitz", "blitz", "blitz", "blitz", "blitz",…</span>
+<span class="co">#&gt; $ Event           &lt;chr&gt; "Live Chess", "Live Chess", "Live Chess", "Live Chess…</span>
+<span class="co">#&gt; $ Site            &lt;chr&gt; "Chess.com", "Chess.com", "Chess.com", "Chess.com", "…</span>
+<span class="co">#&gt; $ Date            &lt;date&gt; 2019-02-12, 2019-02-12, 2019-02-12, 2019-02-12, 2019…</span>
+<span class="co">#&gt; $ Round           &lt;chr&gt; "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-"…</span>
+<span class="co">#&gt; $ White           &lt;chr&gt; "JaseZiv", "Commander0101", "JaseZiv", "oscarbazan", …</span>
+<span class="co">#&gt; $ Black           &lt;chr&gt; "hKotla", "JaseZiv", "oscarbazan", "JaseZiv", "oscarb…</span>
+<span class="co">#&gt; $ Result          &lt;chr&gt; "0-1", "1-0", "1-0", "1-0", "1-0", "0-1", "0-1", "0-1…</span>
+<span class="co">#&gt; $ ECO             &lt;chr&gt; "C00", "A40", "B00", "D02", "B00", "B40", "B00", "A00…</span>
+<span class="co">#&gt; $ ECOUrl          &lt;chr&gt; "https://www.chess.com/openings/French-Defense-Reti-S…</span>
+<span class="co">#&gt; $ CurrentPosition &lt;chr&gt; "rn4nr/pbB1kppp/4pq2/2pp2N1/4P2K/6P1/7P/5B1R w - -", …</span>
+<span class="co">#&gt; $ Timezone        &lt;chr&gt; "UTC", "UTC", "UTC", "UTC", "UTC", "UTC", "UTC", "UTC…</span>
+<span class="co">#&gt; $ UTCDate         &lt;chr&gt; "2019.02.12", "2019.02.12", "2019.02.12", "2019.02.12…</span>
+<span class="co">#&gt; $ UTCTime         &lt;chr&gt; "05:44:13", "07:45:57", "07:54:52", "07:55:50", "08:0…</span>
+<span class="co">#&gt; $ WhiteElo        &lt;chr&gt; "867", "757", "819", "792", "808", "797", "821", "773…</span>
+<span class="co">#&gt; $ BlackElo        &lt;chr&gt; "1102", "702", "783", "738", "783", "859", "922", "77…</span>
+<span class="co">#&gt; $ TimeControl     &lt;chr&gt; "180", "180", "180", "180", "180", "180", "180", "180…</span>
+<span class="co">#&gt; $ Termination     &lt;chr&gt; "hKotla won on time", "Commander0101 won on time", "J…</span>
+<span class="co">#&gt; $ StartTime       &lt;chr&gt; "05:44:13", "07:45:57", "07:54:52", "07:55:50", "08:0…</span>
+<span class="co">#&gt; $ EndDate         &lt;date&gt; 2019-02-12, 2019-02-12, 2019-02-12, 2019-02-12, 2019…</span>
+<span class="co">#&gt; $ EndTime         &lt;chr&gt; "05:48:35", "07:51:41", "07:55:21", "08:01:40", "08:0…</span>
+<span class="co">#&gt; $ Link            &lt;chr&gt; "https://www.chess.com/live/game/3452526692", "https:…</span>
+<span class="co">#&gt; $ Moves           &lt;chr&gt; "\n1. e4 {[%clk 0:02:52.8]} 1... e6 {[%clk 0:02:59.8]…</span>
+<span class="co">#&gt; $ winner          &lt;chr&gt; "Black", "White", "White", "White", "White", "Black",…</span>
+<span class="co">#&gt; $ Username        &lt;chr&gt; "JaseZiv", "JaseZiv", "JaseZiv", "JaseZiv", "JaseZiv"…</span>
+<span class="co">#&gt; $ n_Moves         &lt;dbl&gt; 21, 28, 5, 29, 25, 10, 26, 31, 35, 41, 29, 7, 35, 33,…</span>
+<span class="co">#&gt; $ UserOpponent    &lt;chr&gt; "hKotla", "Commander0101", "oscarbazan", "oscarbazan"…</span>
+<span class="co">#&gt; $ UserColour      &lt;chr&gt; "White", "Black", "White", "Black", "White", "Black",…</span>
+<span class="co">#&gt; $ OpponentColour  &lt;chr&gt; "Black", "White", "Black", "White", "Black", "White",…</span>
+<span class="co">#&gt; $ UserELO         &lt;dbl&gt; 867, 702, 819, 738, 808, 859, 821, 773, 744, 722, 680…</span>
+<span class="co">#&gt; $ OpponentELO     &lt;dbl&gt; 1102, 757, 783, 792, 783, 797, 922, 771, 850, 875, 60…</span>
+<span class="co">#&gt; $ UserResult      &lt;chr&gt; "Loss", "Loss", "Win", "Loss", "Win", "Win", "Loss", …</span>
+<span class="co">#&gt; $ DaysTaken       &lt;drtn&gt; 0 days, 0 days, 0 days, 0 days, 0 days, 0 days, 0 da…</span>
+<span class="co">#&gt; $ GameEnding      &lt;chr&gt; "on time", "on time", "by checkmate", "on time", "on …</span>
+<span class="co">#&gt; $ Opening         &lt;chr&gt; "Defense-Reti-Spielmann-Attack", "Pawn-Opening-Polish…</span></pre></body></html></div>
+</div>
+<div id="get-top-players-usernames" class="section level4">
+<h4 class="hasAnchor">
+<a href="#get-top-players-usernames" class="anchor"></a>Get Top Players’ usernames</h4>
+<p>The below function allows the user to extract the top 50 leaders on the leaderboards for a number of different game types.</p>
+<p>The game types include:</p>
+<ul>
+<li>“daily”</li>
+<li>“daily960”"</li>
+<li>“live_rapid”</li>
+<li>“live_blitz”</li>
+<li>“live_bullet”</li>
+<li>“live_bughouse”</li>
+<li>“live_blitz960”</li>
+<li>“live_threecheck”</li>
+<li>“live_crazyhouse”</li>
+<li>“live_kingofthehill”</li>
+<li>“lessons”</li>
+<li>“tactics”</li>
+</ul>
+<p>The usernames that are contained in the results can then be passed to <code>get_game_data</code> outlined above.</p>
+<div class="sourceCode" id="cb6"><html><body><pre class="r"><span class="no">daily_leaders</span> <span class="kw">&lt;-</span> <span class="fu"><a href="../reference/get_top50_leaderboard.html">get_top50_leaderboard</a></span>(<span class="kw">game_type</span> <span class="kw">=</span> <span class="st">"daily"</span>)</pre></body></html></div>
+<div class="sourceCode" id="cb7"><html><body><pre class="r"><span class="fu">glimpse</span>(<span class="no">daily_leaders</span>)
+<span class="co">#&gt; Observations: 50</span>
+<span class="co">#&gt; Variables: 13</span>
+<span class="co">#&gt; $ player_id   &lt;int&gt; 7848044, 4147249, 1629533, 10506874, 4767295, 2810922, 21…</span>
+<span class="co">#&gt; $ url         &lt;chr&gt; "https://www.chess.com/member/francisbegbie", "https://ww…</span>
+<span class="co">#&gt; $ username    &lt;chr&gt; "francisbegbie", "mizant", "mackus", "olomi007", "xquse",…</span>
+<span class="co">#&gt; $ score       &lt;int&gt; 2578, 2556, 2535, 2521, 2515, 2503, 2485, 2483, 2482, 248…</span>
+<span class="co">#&gt; $ rank        &lt;int&gt; 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17…</span>
+<span class="co">#&gt; $ country     &lt;chr&gt; "https://api.chess.com/pub/country/XE", "https://api.ches…</span>
+<span class="co">#&gt; $ title       &lt;chr&gt; "FM", "FM", "NM", "GM", NA, "NM", NA, "FM", NA, "NM", "FM…</span>
+<span class="co">#&gt; $ name        &lt;chr&gt; "Andy Mack", "Aleksandar Randjelovic", "Mark Bohannon", "…</span>
+<span class="co">#&gt; $ status      &lt;chr&gt; "premium", "premium", "premium", "premium", "premium", "p…</span>
+<span class="co">#&gt; $ avatar      &lt;chr&gt; "https://images.chesscomfiles.com/uploads/v1/user/7848044…</span>
+<span class="co">#&gt; $ trend_score &lt;df[,2]&gt; &lt;data.frame[26 x 2]&gt;</span>
+<span class="co">#&gt; $ trend_rank  &lt;df[,2]&gt; &lt;data.frame[26 x 2]&gt;</span>
+<span class="co">#&gt; $ flair_code  &lt;chr&gt; "diamond_traditional", "diamond_traditional", "diamond_tr…</span></pre></body></html></div>
+</div>
+</div>
+</div>
+<div id="analysing-games" class="section level2">
 <h2 class="hasAnchor">
-<a href="#extracting-data-for-analysis" class="anchor"></a>Extracting data for analysis</h2>
+<a href="#analysing-games" class="anchor"></a>Analysing Games</h2>
+<p>This section will perform some exploratory data analysis on the analysis data set provided by <code><a href="../reference/get_game_data.html">get_game_data()</a></code>. It is by no means an exhaustive list of topics to analyse, rather, it is designed to give the user a few ideas of what can be done with the analysis data provided.</p>
+<div class="sourceCode" id="cb8"><html><body><pre class="r"><span class="no">chess_analysis_single</span> <span class="kw">%&gt;%</span>
+  <span class="fu">count</span>(<span class="no">time_class</span>) <span class="kw">%&gt;%</span>
+  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="kw">x</span><span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/reorder.factor.html">reorder</a></span>(<span class="no">time_class</span>,<span class="no">n</span>), <span class="kw">y</span><span class="kw">=</span> <span class="no">n</span>)) +
+  <span class="fu">geom_col</span>(<span class="kw">fill</span> <span class="kw">=</span> <span class="st">"steelblue"</span>, <span class="kw">colour</span> <span class="kw">=</span> <span class="st">"grey40"</span>, <span class="kw">alpha</span> <span class="kw">=</span> <span class="fl">0.7</span>) +
+  <span class="fu">labs</span>(<span class="kw">x</span><span class="kw">=</span> <span class="st">"Game Style"</span>, <span class="kw">y</span><span class="kw">=</span> <span class="st">"Number of Games"</span>) +
+  <span class="fu">ggtitle</span>(<span class="st">"WHICH TIME CLASSES ARE PLAYED MOST"</span>) +
+  <span class="fu">coord_flip</span>() +
+  <span class="fu">theme_minimal</span>() +
+  <span class="fu">theme</span>(<span class="kw">panel.grid.major.y</span> <span class="kw">=</span> <span class="fu">element_blank</span>())</pre></body></html></div>
+<p><img src="using_chessR_package_files/figure-html/popular_times-1.png" width="700"></p>
+<div class="sourceCode" id="cb9"><html><body><pre class="r"><span class="no">chess_analysis_single</span> <span class="kw">%&gt;%</span>
+  <span class="fu">mutate</span>(<span class="kw">MonthEnd</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste</a></span>(<span class="fu">year</span>(<span class="no">EndDate</span>), <span class="fu">str_pad</span>(<span class="kw pkg">lubridate</span><span class="kw ns">::</span><span class="fu"><a href="http://lubridate.tidyverse.org/reference/month.html">month</a></span>(<span class="fu">ymd</span>(<span class="no">EndDate</span>)), <span class="fl">2</span>, <span class="kw">side</span> <span class="kw">=</span> <span class="st">"left"</span>, <span class="kw">pad</span> <span class="kw">=</span> <span class="st">"0"</span>), <span class="kw">sep</span> <span class="kw">=</span> <span class="st">"-"</span>)) <span class="kw">%&gt;%</span>
+  <span class="fu">group_by</span>(<span class="no">MonthEnd</span>, <span class="no">UserResult</span>) <span class="kw">%&gt;%</span>
+  <span class="fu">summarise</span>(<span class="kw">n</span> <span class="kw">=</span> <span class="fu">n</span>()) <span class="kw">%&gt;%</span>
+  <span class="fu">mutate</span>(<span class="kw">WinPercentage</span> <span class="kw">=</span> <span class="no">n</span> / <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span>(<span class="no">n</span>)) <span class="kw">%&gt;%</span>
+  <span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span>(<span class="no">UserResult</span> <span class="kw">==</span> <span class="st">"Win"</span>) <span class="kw">%&gt;%</span>
+  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="kw">x</span><span class="kw">=</span> <span class="no">MonthEnd</span>, <span class="kw">y</span><span class="kw">=</span> <span class="no">WinPercentage</span>, <span class="kw">group</span><span class="kw">=</span><span class="fl">1</span>)) +
+  <span class="fu">geom_line</span>(<span class="kw">colour</span><span class="kw">=</span> <span class="st">"steelblue"</span>, <span class="kw">size</span><span class="kw">=</span><span class="fl">1</span>) +
+  <span class="fu">geom_hline</span>(<span class="kw">yintercept</span> <span class="kw">=</span> <span class="fl">0.5</span>, <span class="kw">linetype</span> <span class="kw">=</span> <span class="fl">2</span>, <span class="kw">colour</span> <span class="kw">=</span> <span class="st">"grey40"</span>) +
+  <span class="fu">scale_y_continuous</span>(<span class="kw">labels</span> <span class="kw">=</span> <span class="no">percent</span>, <span class="kw">limits</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="fl">0</span>,<span class="fl">1</span>)) +
+  <span class="fu">labs</span>(<span class="kw">x</span><span class="kw">=</span> <span class="st">"Month Game Ended"</span>, <span class="kw">y</span><span class="kw">=</span> <span class="st">"Win %"</span>) +
+  <span class="fu">ggtitle</span>(<span class="st">"MONTHLY WINNING %"</span>) +
+  <span class="fu">theme_minimal</span>()</pre></body></html></div>
+<p><img src="using_chessR_package_files/figure-html/user_result-1.png" width="700"></p>
+<div class="sourceCode" id="cb10"><html><body><pre class="r"><span class="no">chess_analysis_single</span> <span class="kw">%&gt;%</span>
+  <span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span>(<span class="no">time_class</span> <span class="kw">%in%</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"blitz"</span>, <span class="st">"daily"</span>)) <span class="kw">%&gt;%</span>
+  <span class="fu">mutate</span>(<span class="kw">MonthEnd</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste</a></span>(<span class="fu">year</span>(<span class="no">EndDate</span>), <span class="fu">str_pad</span>(<span class="kw pkg">lubridate</span><span class="kw ns">::</span><span class="fu"><a href="http://lubridate.tidyverse.org/reference/month.html">month</a></span>(<span class="fu">ymd</span>(<span class="no">EndDate</span>)), <span class="fl">2</span>, <span class="kw">side</span> <span class="kw">=</span> <span class="st">"left"</span>, <span class="kw">pad</span> <span class="kw">=</span> <span class="st">"0"</span>), <span class="kw">sep</span> <span class="kw">=</span> <span class="st">"-"</span>)) <span class="kw">%&gt;%</span>
+  <span class="fu">group_by</span>(<span class="no">MonthEnd</span>, <span class="no">time_class</span>) <span class="kw">%&gt;%</span>
+  <span class="fu">summarise</span>(<span class="kw">AverageELO</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span>(<span class="no">UserELO</span>, <span class="kw">na.rm</span> <span class="kw">=</span> <span class="no">T</span>)) <span class="kw">%&gt;%</span>
+  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="kw">x</span><span class="kw">=</span> <span class="no">MonthEnd</span>, <span class="kw">y</span><span class="kw">=</span> <span class="no">AverageELO</span>, <span class="kw">group</span><span class="kw">=</span><span class="fl">1</span>)) +
+  <span class="fu">geom_line</span>(<span class="kw">colour</span><span class="kw">=</span> <span class="st">"steelblue"</span>, <span class="kw">size</span><span class="kw">=</span><span class="fl">1</span>) +
+  <span class="fu">labs</span>(<span class="kw">x</span><span class="kw">=</span> <span class="st">"Month Game Ended"</span>, <span class="kw">y</span><span class="kw">=</span> <span class="st">"Average ELO"</span>) +
+  <span class="fu">ggtitle</span>(<span class="st">"MONTHLY AVERAGE ELO RATING"</span>) +
+  <span class="fu">facet_wrap</span>(~ <span class="no">time_class</span>, <span class="kw">scales</span> <span class="kw">=</span> <span class="st">"free_y"</span>, <span class="kw">ncol</span> <span class="kw">=</span> <span class="fl">1</span>) +
+  <span class="fu">theme_minimal</span>()</pre></body></html></div>
+<p><img src="using_chessR_package_files/figure-html/monthly_elo-1.png" width="864"></p>
+<div class="sourceCode" id="cb11"><html><body><pre class="r"><span class="no">chess_analysis_single</span> <span class="kw">%&gt;%</span>
+  <span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span>(<span class="no">time_class</span> <span class="kw">%in%</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"blitz"</span>, <span class="st">"daily"</span>)) <span class="kw">%&gt;%</span>
+  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="kw">x</span><span class="kw">=</span> <span class="no">OpponentELO</span>, <span class="kw">fill</span> <span class="kw">=</span> <span class="no">UserResult</span>)) +
+  <span class="fu">geom_density</span>(<span class="kw">alpha</span> <span class="kw">=</span> <span class="fl">0.3</span>) +
+  <span class="fu">ggtitle</span>(<span class="st">"HOW DO WE FARE AGAINST DIFFERENT ELOs?"</span>) +
+  <span class="fu">facet_wrap</span>(~ <span class="no">time_class</span>, <span class="kw">scales</span> <span class="kw">=</span> <span class="st">"free"</span>, <span class="kw">ncol</span> <span class="kw">=</span> <span class="fl">1</span>) +
+  <span class="fu">theme_minimal</span>()</pre></body></html></div>
+<p><img src="using_chessR_package_files/figure-html/opponet_elo_results-1.png" width="700"></p>
 </div>
   </div>
 

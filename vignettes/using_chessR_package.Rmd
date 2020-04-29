@@ -12,39 +12,162 @@ vignette: >
 ```{r, include = FALSE}
 knitr::opts_chunk$set(
   collapse = TRUE,
-  comment = "#>"
+  comment = "#>",
+  message=FALSE,
+  warning=FALSE
 )
 ```
 
 
-```{r gh-installation, eval = FALSE, echo = TRUE}
-# install.packages("devtools")
+## Installation
+
+You can install the chessR package from github with:
+
+```{r gh-installation}
 # devtools::install_github("JaseZiv/chessR")
+library(chessR)
 ```
 
-## Extracting raw chess game data
-
-```{r libraries, message=FALSE, warning=FALSE}
-library(chessR)
+```{r packages_for_eda, include=FALSE}
 library(ggplot2)
 library(dplyr)
+library(stringr)
+library(lubridate)
+library(scales)
 ```
 
 
-To extract raw chess game data in a data frame, use the `get_raw_game_data()` function. This function either accepts one player's username, or a vector of multiple users. 
+## Functions
 
+There are a number of functions available in this package, both for extracting data and also for analysing and visualising data.
 
-```{r get_raw_data, message=FALSE, warning=FALSE}
+### Extraction
+
+The following extraction functions will get json formatted game data and clean and convert it to a data frame. The games that will be returned are from the following time classes on chess.com:
+
+* "blitz";
+* "bullet";
+* "daily"; and
+* "rapid"
+
+#### Raw Data
+
+The `get_raw_game_data()` function can take either a single, or multiple usernames. It will output a data frame with all the games played by that user.
+
+```{r get_raw}
+# install.packages("devtools")
 raw_chess <- get_raw_game_data("JaseZiv")
 ```
 
-
-```{r inspect_raw, message=FALSE, warning=FALSE}
+```{r inspect_raw}
 glimpse(raw_chess)
 ```
 
+#### Analysis Data
 
-## Extracting data for analysis
+The following function will extract the same data that the `get_raw_game_data()` function will, however this function will also include additional columns to make analysing data easier.
+
+The function can be used either on a single player, or a character vector of multiple players.
+
+
+```{r get_analysis}
+chess_analysis_single <- get_game_data("JaseZiv")
+```
+
+```{r inspect_analysis}
+glimpse(chess_analysis_single)
+```
+
+#### Get Top Players' usernames
+
+The below function allows the user to extract the top 50 leaders on the leaderboards for a number of different game types.
+
+The game types include:
+
+* "daily"
+* "daily960""
+* "live_rapid"
+* "live_blitz"
+* "live_bullet"
+* "live_bughouse"
+* "live_blitz960"
+* "live_threecheck"
+* "live_crazyhouse"
+* "live_kingofthehill"
+* "lessons"
+* "tactics"
+
+The usernames that are contained in the results can then be passed to `get_game_data` outlined above.
+
+```{r get_leaders}
+daily_leaders <- get_top50_leaderboard(game_type = "daily")
+```
+
+```{r inspect_leaders}
+glimpse(daily_leaders)
+```
+
+
+## Analysing Games
+
+This section will perform some exploratory data analysis on the analysis data set provided by `get_game_data()`. It is by no means an exhaustive list of topics to analyse, rather, it is designed to give the user a few ideas of what can be done with the analysis data provided.
+
+```{r popular_times}
+chess_analysis_single %>% 
+  count(time_class) %>% 
+  ggplot(aes(x= reorder(time_class,n), y= n)) +
+  geom_col(fill = "steelblue", colour = "grey40", alpha = 0.7) +
+  labs(x= "Game Style", y= "Number of Games") +
+  ggtitle("WHICH TIME CLASSES ARE PLAYED MOST") +
+  coord_flip() +
+  theme_minimal() +
+  theme(panel.grid.major.y = element_blank())
+```
+
+
+```{r user_result}
+chess_analysis_single %>%
+  mutate(MonthEnd = paste(year(EndDate), str_pad(lubridate::month(ymd(EndDate)), 2, side = "left", pad = "0"), sep = "-")) %>% 
+  group_by(MonthEnd, UserResult) %>% 
+  summarise(n = n()) %>% 
+  mutate(WinPercentage = n / sum(n)) %>% 
+  filter(UserResult == "Win") %>% 
+  ggplot(aes(x= MonthEnd, y= WinPercentage, group=1)) +
+  geom_line(colour= "steelblue", size=1) +
+  geom_hline(yintercept = 0.5, linetype = 2, colour = "grey40") +
+  scale_y_continuous(labels = percent, limits = c(0,1)) +
+  labs(x= "Month Game Ended", y= "Win %") +
+  ggtitle("MONTHLY WINNING %") +
+  theme_minimal()
+```
+
+
+
+```{r monthly_elo, fig.width=9}
+chess_analysis_single %>%
+  filter(time_class %in% c("blitz", "daily")) %>% 
+  mutate(MonthEnd = paste(year(EndDate), str_pad(lubridate::month(ymd(EndDate)), 2, side = "left", pad = "0"), sep = "-")) %>% 
+  group_by(MonthEnd, time_class) %>% 
+  summarise(AverageELO = mean(UserELO, na.rm = T)) %>% 
+  ggplot(aes(x= MonthEnd, y= AverageELO, group=1)) +
+  geom_line(colour= "steelblue", size=1) +
+  labs(x= "Month Game Ended", y= "Average ELO") +
+  ggtitle("MONTHLY AVERAGE ELO RATING") +
+  facet_wrap(~ time_class, scales = "free_y", ncol = 1) +
+  theme_minimal()
+```
+
+
+```{r opponet_elo_results}
+chess_analysis_single %>% 
+  filter(time_class %in% c("blitz", "daily")) %>% 
+  ggplot(aes(x= OpponentELO, fill = UserResult)) +
+  geom_density(alpha = 0.3) +
+  ggtitle("HOW DO WE FARE AGAINST DIFFERENT ELOs?") +
+  facet_wrap(~ time_class, scales = "free", ncol = 1) +
+  theme_minimal()
+
+```
 
 
 
