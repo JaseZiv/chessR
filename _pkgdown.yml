@@ -4,3 +4,7 @@ url: https://jaseziv.github.io/chessR/
 template:
   params:
     ganalytics: UA-145056765-2
+components:
+  twitter:
+    icon: "fab fa-twitter fa-lg"
+    href: https://twitter.com/jaseziv
