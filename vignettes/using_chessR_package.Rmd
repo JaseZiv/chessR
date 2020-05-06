@@ -75,7 +75,7 @@ glimpse(chess_analysis_single)
 
 ### Extract Leaderboards
 
-The below function allows the user to extract the top 50 leaders on the leaderboards for a number of different game types.
+The below function allows the user to extract the top 50 leaders on the chess.com leaderboards for a number of different game types.
 
 The game types include:
 
@@ -84,7 +84,7 @@ The game types include:
 The usernames that are contained in the results can then be passed to `get_raw_chessdotcom()` outlined above.
 
 ```{r get_leaders}
-daily_leaders <- get_top50_leaderboard(game_type = "daily")
+daily_leaders <- chessdotcom_leaderboard(game_type = "daily")
 ```
 
 ```{r inspect_leaders}

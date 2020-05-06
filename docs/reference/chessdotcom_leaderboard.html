@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Function reference • chessR</title>
+<title>Get Top 50 on chess.com Leaderboards — chessdotcom_leaderboard • chessR</title>
 
 
 <!-- jquery -->
@@ -39,7 +39,9 @@
 
 
 
-<meta property="og:title" content="Function reference" />
+<meta property="og:title" content="Get Top 50 on chess.com Leaderboards — chessdotcom_leaderboard" />
+<meta property="og:description" content="This function takes in one parameter, the game_type, and returns a
+data frame of the top 50 players on chess.com." />
 
 
 
@@ -68,7 +70,7 @@
   </head>
 
   <body data-spy="scroll" data-target="#toc">
-    <div class="container template-reference-index">
+    <div class="container template-reference-topic">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -130,108 +132,38 @@
       </header>
 
 <div class="row">
-  <div class="contents col-md-9">
+  <div class="col-md-9 contents">
     <div class="page-header">
-      <h1>Reference</h1>
+    <h1>Get Top 50 on chess.com Leaderboards</h1>
+    <small class="dont-index">Source: <a href='https://github.com/JaseZiv/chessR/blob/master/R/leaderboards.R'><code>R/leaderboards.R</code></a></small>
+    <div class="hidden name"><code>chessdotcom_leaderboard.Rd</code></div>
     </div>
 
-    <table class="ref-index">
+    <div class="ref-description">
+    <p>This function takes in one parameter, the game_type, and returns a
+data frame of the top 50 players on chess.com.</p>
+    </div>
 
-    <colgroup>
-      
-      <col class="alias" />
-      <col class="title" />
-    </colgroup>
+    <pre class="usage"><span class='fu'>chessdotcom_leaderboard</span>(<span class='kw'>game_type</span> <span class='kw'>=</span> <span class='st'>"daily"</span>)</pre>
 
-    <tbody>
-      <tr>
-        <th colspan="2">
-          <h2 id="section-all-functions" class="hasAnchor"><a href="#section-all-functions" class="anchor"></a>All functions</h2>
-          <p class="section-desc"></p>
-        </th>
-      </tr>
-      
-      
-    </tbody><tbody>
-      
-      
-      <tr>
-        
-        <td>
-          <p><code><a href="chessR.html">chessR</a></code> </p>
-        </td>
-        <td><p>chessR: A package for extracting and analysing chess game data</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="chessdotcom_leaderboard.html">chessdotcom_leaderboard()</a></code> </p>
-        </td>
-        <td><p>Get Top 50 on chess.com Leaderboards</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="get_each_player.html">get_each_player()</a></code> </p>
-        </td>
-        <td><p>Extract Single Player's Game Data</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="get_each_player_chessdotcom.html">get_each_player_chessdotcom()</a></code> </p>
-        </td>
-        <td><p>Get Single Player Raw chess.com Game Data</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="get_each_raw.html">get_each_raw()</a></code> </p>
-        </td>
-        <td><p>Get Single Player Raw chess.com Game Data</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="get_game_data.html">get_game_data()</a></code> </p>
-        </td>
-        <td><p>Extract Chess Game Data</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="get_game_ending.html">get_game_ending()</a></code> </p>
-        </td>
-        <td><p>Return the game ending</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="get_raw_chessdotcom.html">get_raw_chessdotcom()</a></code> </p>
-        </td>
-        <td><p>Get Raw chess.com Game Data</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="get_raw_game_data.html">get_raw_game_data()</a></code> </p>
-        </td>
-        <td><p>Get Raw chess.com Game Data</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="get_top50_leaderboard.html">get_top50_leaderboard()</a></code> </p>
-        </td>
-        <td><p>Get Top 50 on Leaderboards</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="get_winner.html">get_winner()</a></code> </p>
-        </td>
-        <td><p>Return the game winner</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="return_num_moves.html">return_num_moves()</a></code> </p>
-        </td>
-        <td><p>Return the number of moves in a game</p></td>
-      </tr>
-    </tbody>
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
+    <table class="ref-arguments">
+    <colgroup><col class="name" /><col class="desc" /></colgroup>
+    <tr>
+      <th>game_type</th>
+      <td><p>A valid chess.com game type to return the leaderboard for</p></td>
+    </tr>
     </table>
-  </div>
 
+    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
+
+    <p>The leaderboard options (games) include:</p>
+<p><em>"daily"</em>, <em>"daily960</em>", <em>"live_rapid"</em>,
+<em>"live_blitz"</em>, <em>"live_bullet"</em>, <em>"live_bughouse"</em>,
+<em>"live_blitz960"</em>, <em>"live_threecheck" </em>, <em>"live_crazyhouse"</em>,
+<em>"live_kingofthehill"</em>, <em>"lessons"</em>, <em>"tactics"</em></p>
+
+  </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
       <h2 data-toc-skip>Contents</h2>

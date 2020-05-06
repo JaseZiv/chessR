@@ -63,7 +63,7 @@ chess_analysis_multiple <- get_game_data(c("JaseZiv", "elroch"))
 **Get Top Players’ usernames**
 
 The below function allows the user to extract the top 50 leaders on the
-leaderboards for a number of different game types.
+chess.com leaderboards for a number of different game types.
 
 The game types include:
 
@@ -75,7 +75,7 @@ The usernames that are contained in the results can then be passed to
 `get_raw_chessdotcom()` outlined above.
 
 ``` r
-daily_leaders <- get_top50_leaderboard(game_type = "daily")
+daily_leaders <- chessdotcom_leaderboard(game_type = "daily")
 ```
 
 For a detailed guide to using the package and the functions for

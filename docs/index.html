@@ -124,13 +124,13 @@
 
 <span class="no">chess_analysis_multiple</span> <span class="kw">&lt;-</span> <span class="fu"><a href="reference/get_game_data.html">get_game_data</a></span>(<span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"JaseZiv"</span>, <span class="st">"elroch"</span>))</pre></div>
 <p><strong>Get Top Players’ usernames</strong></p>
-<p>The below function allows the user to extract the top 50 leaders on the leaderboards for a number of different game types.</p>
+<p>The below function allows the user to extract the top 50 leaders on the chess.com leaderboards for a number of different game types.</p>
 <p>The game types include:</p>
 <blockquote>
 <p><em>“daily”, “daily960”, “live_rapid”, “live_blitz”, “live_bullet”, “live_bughouse”, “live_blitz960”, “live_threecheck”, “live_crazyhouse”, “live_kingofthehill”, “lessons” and “tactics”</em>.</p>
 </blockquote>
 <p>The usernames that are contained in the results can then be passed to <code><a href="reference/get_raw_chessdotcom.html">get_raw_chessdotcom()</a></code> outlined above.</p>
-<div class="sourceCode" id="cb4"><pre class="r"><span class="no">daily_leaders</span> <span class="kw">&lt;-</span> <span class="fu"><a href="reference/get_top50_leaderboard.html">get_top50_leaderboard</a></span>(<span class="kw">game_type</span> <span class="kw">=</span> <span class="st">"daily"</span>)</pre></div>
+<div class="sourceCode" id="cb4"><pre class="r"><span class="no">daily_leaders</span> <span class="kw">&lt;-</span> <span class="fu">chessdotcom_leaderboard</span>(<span class="kw">game_type</span> <span class="kw">=</span> <span class="st">"daily"</span>)</pre></div>
 <p>For a detailed guide to using the package and the functions for analysis, see the package <a href="https://jaseziv.github.io/chessR/articles/using_chessR_package.html">vignette</a></p>
 </div>
 </div>

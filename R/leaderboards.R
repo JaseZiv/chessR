@@ -1,7 +1,7 @@
-#' Get Top 50 on Leaderboards
+#' Get Top 50 on chess.com Leaderboards
 #'
 #' This function takes in one parameter, the game_type, and returns a
-#' data frame of the top 50 players.
+#' data frame of the top 50 players on chess.com.
 #'
 #' The leaderboard options (games) include:
 #'
@@ -16,8 +16,7 @@
 #' @import jsonlite
 #'
 #' @export
-get_top50_leaderboard <- function(game_type = "daily") {
-  .Deprecated("chessdotcom_leaderboard")
+chessdotcom_leaderboard <- function(game_type = "daily") {
   df <- jsonlite::fromJSON("https://api.chess.com/pub/leaderboards")[game_type] %>% unname() %>% data.frame()
   df$X.id <- NULL
   return(df)
