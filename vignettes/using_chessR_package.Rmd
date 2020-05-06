@@ -41,9 +41,11 @@ library(scales)
 
 The functions available in this package are designed to enable the extraction of chess game data.
 
-## Extract Game Data
+### Data Extraction
 
-**Raw Game Data**
+The functions detailed below relate to extracting data from chess.com
+
+#### Raw Game Data
 
 The `get_raw_chessdotcom` function can take either a single, or multiple usernames. It will output a data frame with all the games played by that user. The function replaces `get_raw_game_data` from version 1.1.0
 
@@ -56,7 +58,7 @@ raw_chessdotcom <- get_raw_chessdotcom("JaseZiv")
 glimpse(raw_chessdotcom)
 ```
 
-**Analysis Data**
+#### Analysis Data
 
 The following function will extract the same data that the `get_raw_chessdotcom()` function will, however this function will also include additional columns to make analysing data easier.
 
@@ -89,8 +91,55 @@ daily_leaders <- get_top50_leaderboard(game_type = "daily")
 glimpse(daily_leaders)
 ```
 
+### Analysis Functions
 
-## Analysing Games
+This section will detail some of the function to use for analysis and extracting information from the raw games data extracts.
+
+#### Number of moves in the game
+
+To be able to see how many moves a game lasted, the `return_num_moves` function can be used.
+
+It will parse through the *Moves* column in the extracted data frame and return a vector of moves, each one being for each game.
+
+```{r num_moves}
+# function to extract the number of moves in each game
+raw_chessdotcom$nMoves <- return_num_moves(moves_string = raw_chessdotcom$Moves)
+
+# inspect output
+head(raw_chessdotcom[, c("Moves", "nMoves")])
+```
+
+#### How the game ended
+
+The chess.com data extract doesn't have how the game ended on its own. To get the game ending on its own, the `get_game_ending` function can be used.
+
+```{r game_ending}
+# function to extract the ending of chess.com data
+raw_chessdotcom$Ending <- get_game_ending(termination_string = raw_chessdotcom$Termination, 
+                                          white = raw_chessdotcom$White, 
+                                          black = raw_chessdotcom$Black)
+
+# inspect output
+head(raw_chessdotcom[, c("Termination", "White", "Black", "Ending")])
+```
+
+
+#### Game Winner
+
+Given two players, one playing on white and the other on black, we want to be able to know the username of the winner. To get this information, use the `get_winner` function.
+
+```{r get_winner}
+# function to extract the winner of each game
+raw_chessdotcom$Winner <- get_winner(result_column = raw_chessdotcom$Result, 
+                                     white = raw_chessdotcom$White, 
+                                     black = raw_chessdotcom$Black)
+
+# inspect output
+head(raw_chessdotcom[, c("White", "Black", "Result", "Winner")])
+```
+
+
+## Bonus: Basic EDA Analysing Games
 
 This section will perform some exploratory data analysis on the analysis data set provided by `get_game_data()`. It is by no means an exhaustive list of topics to analyse, rather, it is designed to give the user a few ideas of what can be done with the analysis data provided.
 

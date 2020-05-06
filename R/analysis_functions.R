@@ -52,7 +52,7 @@ return_num_moves <- function(moves_string) {
 #'
 #' @export
 get_game_ending <- function(termination_string, white, black) {
-  string <- string
+  string <- termination_string
   usernames <- c(white, black)
   usernames <- paste0("\\b(", paste(usernames, collapse="|"), ")\\b")
 

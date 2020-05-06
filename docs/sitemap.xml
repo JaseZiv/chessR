@@ -19,6 +19,9 @@
     <loc>https://jaseziv.github.io/chessR//reference/get_game_data.html</loc>
   </url>
   <url>
+    <loc>https://jaseziv.github.io/chessR//reference/get_game_ending.html</loc>
+  </url>
+  <url>
     <loc>https://jaseziv.github.io/chessR//reference/get_raw_chessdotcom.html</loc>
   </url>
   <url>
@@ -26,6 +29,12 @@
   </url>
   <url>
     <loc>https://jaseziv.github.io/chessR//reference/get_top50_leaderboard.html</loc>
+  </url>
+  <url>
+    <loc>https://jaseziv.github.io/chessR//reference/get_winner.html</loc>
+  </url>
+  <url>
+    <loc>https://jaseziv.github.io/chessR//reference/return_num_moves.html</loc>
   </url>
   <url>
     <loc>https://jaseziv.github.io/chessR//articles/using_chessR_package.html</loc>

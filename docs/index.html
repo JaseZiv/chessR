@@ -109,6 +109,10 @@
 <h2 class="hasAnchor">
 <a href="#usage" class="anchor"></a>Usage</h2>
 <p>The functions available in this package are designed to enable the extraction of chess game data.</p>
+<div id="data-extraction" class="section level3">
+<h3 class="hasAnchor">
+<a href="#data-extraction" class="anchor"></a>Data Extraction</h3>
+<p>The functions detailed below relate to extracting data from chess.com</p>
 <p><strong>Raw Game Data</strong></p>
 <p>The <code><a href="reference/get_raw_game_data.html">get_raw_game_data()</a></code> function can take either a single, or multiple usernames. It will output a data frame with all the games played by that user.</p>
 <div class="sourceCode" id="cb2"><pre class="r"><span class="co"># install.packages("devtools")</span>
@@ -127,7 +131,8 @@
 </blockquote>
 <p>The usernames that are contained in the results can then be passed to <code><a href="reference/get_raw_chessdotcom.html">get_raw_chessdotcom()</a></code> outlined above.</p>
 <div class="sourceCode" id="cb4"><pre class="r"><span class="no">daily_leaders</span> <span class="kw">&lt;-</span> <span class="fu"><a href="reference/get_top50_leaderboard.html">get_top50_leaderboard</a></span>(<span class="kw">game_type</span> <span class="kw">=</span> <span class="st">"daily"</span>)</pre></div>
-<p>For a detailed guide to using the package, see the package <a href="https://jaseziv.github.io/chessR/articles/using_chessR_package.html">vignette</a></p>
+<p>For a detailed guide to using the package and the functions for analysis, see the package <a href="https://jaseziv.github.io/chessR/articles/using_chessR_package.html">vignette</a></p>
+</div>
 </div>
 </div>
   </div>

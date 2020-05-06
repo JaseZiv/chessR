@@ -111,11 +111,13 @@
 <h2 class="hasAnchor">
 <a href="#usage" class="anchor"></a>Usage</h2>
 <p>The functions available in this package are designed to enable the extraction of chess game data.</p>
-</div>
-<div id="extract-game-data" class="section level2">
-<h2 class="hasAnchor">
-<a href="#extract-game-data" class="anchor"></a>Extract Game Data</h2>
-<p><strong>Raw Game Data</strong></p>
+<div id="data-extraction" class="section level3">
+<h3 class="hasAnchor">
+<a href="#data-extraction" class="anchor"></a>Data Extraction</h3>
+<p>The functions detailed below relate to extracting data from chess.com</p>
+<div id="raw-game-data" class="section level4">
+<h4 class="hasAnchor">
+<a href="#raw-game-data" class="anchor"></a>Raw Game Data</h4>
 <p>The <code>get_raw_chessdotcom</code> function can take either a single, or multiple usernames. It will output a data frame with all the games played by that user. The function replaces <code>get_raw_game_data</code> from version 1.1.0</p>
 <div class="sourceCode" id="cb2"><html><body><pre class="r"><span class="no">raw_chessdotcom</span> <span class="kw">&lt;-</span> <span class="fu"><a href="../reference/get_raw_chessdotcom.html">get_raw_chessdotcom</a></span>(<span class="st">"JaseZiv"</span>)
 <span class="co">#&gt; Extracting  JaseZiv  Data, please wait</span></pre></body></html></div>
@@ -147,7 +149,10 @@
 <span class="co">#&gt; $ Link            &lt;chr&gt; "https://www.chess.com/live/game/3452526692", "https:…</span>
 <span class="co">#&gt; $ Moves           &lt;chr&gt; "1. e4 {[%clk 0:02:52.8]} 1... e6 {[%clk 0:02:59.8]} …</span>
 <span class="co">#&gt; $ Username        &lt;chr&gt; "JaseZiv", "JaseZiv", "JaseZiv", "JaseZiv", "JaseZiv"…</span></pre></body></html></div>
-<p><strong>Analysis Data</strong></p>
+</div>
+<div id="analysis-data" class="section level4">
+<h4 class="hasAnchor">
+<a href="#analysis-data" class="anchor"></a>Analysis Data</h4>
 <p>The following function will extract the same data that the <code><a href="../reference/get_raw_chessdotcom.html">get_raw_chessdotcom()</a></code> function will, however this function will also include additional columns to make analysing data easier.</p>
 <p>The function can be used either on a single player, or a character vector of multiple players.</p>
 <div class="sourceCode" id="cb4"><html><body><pre class="r"><span class="no">chess_analysis_single</span> <span class="kw">&lt;-</span> <span class="fu"><a href="../reference/get_game_data.html">get_game_data</a></span>(<span class="st">"JaseZiv"</span>)
@@ -192,6 +197,8 @@
 <span class="co">#&gt; $ DaysTaken       &lt;drtn&gt; 0 days, 0 days, 0 days, 0 days, 0 days, 0 days, 0 da…</span>
 <span class="co">#&gt; $ GameEnding      &lt;chr&gt; "on time", "on time", "by checkmate", "on time", "on …</span>
 <span class="co">#&gt; $ Opening         &lt;chr&gt; "Defense-Reti-Spielmann-Attack", "Pawn-Opening-Polish…</span></pre></body></html></div>
+</div>
+</div>
 <div id="extract-leaderboards" class="section level3">
 <h3 class="hasAnchor">
 <a href="#extract-leaderboards" class="anchor"></a>Extract Leaderboards</h3>
@@ -219,12 +226,80 @@
 <span class="co">#&gt; $ trend_rank  &lt;df[,2]&gt; &lt;data.frame[26 x 2]&gt;</span>
 <span class="co">#&gt; $ flair_code  &lt;chr&gt; "diamond_traditional", "diamond_traditional", "diamond_tr…</span></pre></body></html></div>
 </div>
+<div id="analysis-functions" class="section level3">
+<h3 class="hasAnchor">
+<a href="#analysis-functions" class="anchor"></a>Analysis Functions</h3>
+<p>This section will detail some of the function to use for analysis and extracting information from the raw games data extracts.</p>
+<div id="number-of-moves-in-the-game" class="section level4">
+<h4 class="hasAnchor">
+<a href="#number-of-moves-in-the-game" class="anchor"></a>Number of moves in the game</h4>
+<p>To be able to see how many moves a game lasted, the <code>return_num_moves</code> function can be used.</p>
+<p>It will parse through the <em>Moves</em> column in the extracted data frame and return a vector of moves, each one being for each game.</p>
+<div class="sourceCode" id="cb8"><html><body><pre class="r"><span class="co"># function to extract the number of moves in each game</span>
+<span class="no">raw_chessdotcom</span>$<span class="no">nMoves</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://jaseziv.github.io/chessR//reference/return_num_moves.html">return_num_moves</a></span>(<span class="kw">moves_string</span> <span class="kw">=</span> <span class="no">raw_chessdotcom</span>$<span class="no">Moves</span>)
+
+<span class="co"># inspect output</span>
+<span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span>(<span class="no">raw_chessdotcom</span>[, <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"Moves"</span>, <span class="st">"nMoves"</span>)])
+<span class="co">#&gt;                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   Moves</span>
+<span class="co">#&gt; 1                                                                                                                                                                                                                                                                                                                                                                                                                            1. e4 {[%clk 0:02:52.8]} 1... e6 {[%clk 0:02:59.8]} 2. g3 {[%clk 0:02:49.2]} 2... b6 {[%clk 0:02:58.3]} 3. Nf3 {[%clk 0:02:47.5]} 3... Bb7 {[%clk 0:02:57.2]} 4. d3 {[%clk 0:02:42.3]} 4... Qf6 {[%clk 0:02:54.3]} 5. Na3 {[%clk 0:02:34.8]} 5... d5 {[%clk 0:02:52.4]} 6. Bg5 {[%clk 0:02:21.4]} 6... Qxb2 {[%clk 0:02:49.7]} 7. Rb1 {[%clk 0:02:18.7]} 7... Qxa3 {[%clk 0:02:48.2]} 8. Qc1 {[%clk 0:02:02.5]} 8... Qc3+ {[%clk 0:02:45.8]} 9. Qd2 {[%clk 0:01:46.2]} 9... Qa3 {[%clk 0:02:42.5]} 10. Bf4 {[%clk 0:01:39.9]} 10... Kd7 {[%clk 0:02:38.6]} 11. Qb4 {[%clk 0:01:27.2]} 11... Bxb4+ {[%clk 0:02:36.1]} 12. Ke2 {[%clk 0:01:14.6]} 12... Bc5 {[%clk 0:02:29]} 13. Ng5 {[%clk 0:01:08.9]} 13... Ke7 {[%clk 0:02:21.9]} 14. Bh3 {[%clk 0:01:00]} 14... Qxa2 {[%clk 0:02:19.3]} 15. Rb5 {[%clk 0:00:50.1]} 15... Qxc2+ {[%clk 0:02:16.1]} 16. Kf3 {[%clk 0:00:43.7]} 16... Qxf2+ {[%clk 0:02:13.7]} 17. Kg4 {[%clk 0:00:31]} 17... Qe2+ {[%clk 0:02:11.4]} 18. Kh4 {[%clk 0:00:27.3]} 18... Qxd3 {[%clk 0:02:07.9]} 19. Bf1 {[%clk 0:00:20]} 19... Qd4 {[%clk 0:01:55.1]} 20. Bxc7 {[%clk 0:00:13.2]} 20... Qf6 {[%clk 0:01:51.6]} 21. Rxc5 {[%clk 0:00:03.4]} 21... bxc5 {[%clk 0:01:49.3]} 0-1</span>
+<span class="co">#&gt; 2                                                              1. d4 {[%clk 0:02:59.9]} 1... b5 {[%clk 0:02:58.2]} 2. e3 {[%clk 0:02:58.5]} 2... e6 {[%clk 0:02:57]} 3. Nf3 {[%clk 0:02:57.5]} 3... Bb7 {[%clk 0:02:55.4]} 4. Be2 {[%clk 0:02:52.9]} 4... Nc6 {[%clk 0:02:54.7]} 5. c3 {[%clk 0:02:51.4]} 5... Bd6 {[%clk 0:02:50.2]} 6. b4 {[%clk 0:02:49.6]} 6... a5 {[%clk 0:02:46.2]} 7. a3 {[%clk 0:02:46]} 7... axb4 {[%clk 0:02:39.7]} 8. a4 {[%clk 0:02:43]} 8... bxa4 {[%clk 0:02:37.2]} 9. cxb4 {[%clk 0:02:40.3]} 9... Nxb4 {[%clk 0:02:32.9]} 10. Na3 {[%clk 0:02:30.6]} 10... Qf6 {[%clk 0:02:25.8]} 11. Rb1 {[%clk 0:02:21.1]} 11... Qf5 {[%clk 0:02:21.8]} 12. Rb2 {[%clk 0:02:05.4]} 12... Qb1 {[%clk 0:02:21.3]} 13. Nb5 {[%clk 0:01:55.6]} 13... Qe4 {[%clk 0:02:11.7]} 14. Nxc7+ {[%clk 0:01:52]} 14... Kd8 {[%clk 0:02:07]} 15. Nxa8 {[%clk 0:01:49.6]} 15... Bxa8 {[%clk 0:02:05.8]} 16. O-O {[%clk 0:01:47.2]} 16... Qg4 {[%clk 0:01:59.6]} 17. Re1 {[%clk 0:01:32.4]} 17... Nf6 {[%clk 0:01:53.6]} 18. Kf1 {[%clk 0:01:29.1]} 18... Nbd5 {[%clk 0:01:32]} 19. h3 {[%clk 0:01:14.1]} 19... Nc3 {[%clk 0:01:30.1]} 20. Qc2 {[%clk 0:01:04.6]} 20... Qe4 {[%clk 0:01:23.2]} 21. Qxc3 {[%clk 0:01:00]} 21... Nh5 {[%clk 0:01:12.8]} 22. Bd3 {[%clk 0:00:56.6]} 22... Qd5 {[%clk 0:00:55.7]} 23. Rb5 {[%clk 0:00:47.2]} 23... Qxb5 {[%clk 0:00:38.2]} 24. Bxb5 {[%clk 0:00:45]} 24... Nf6 {[%clk 0:00:28.7]} 25. Qa5+ {[%clk 0:00:42.6]} 25... Kc8 {[%clk 0:00:24.6]} 26. Qxa8+ {[%clk 0:00:39.4]} 26... Kc7 {[%clk 0:00:22.6]} 27. Qxh8 {[%clk 0:00:34.5]} 27... Bb4 {[%clk 0:00:00.2]} 28. Rd1 {[%clk 0:00:30]} 1-0</span>
+<span class="co">#&gt; 3                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        1. e4 {[%clk 0:02:59.8]} 1... a6 {[%clk 0:02:58.5]} 2. c3 {[%clk 0:02:58.7]} 2... f6 {[%clk 0:02:55.7]} 3. Na3 {[%clk 0:02:57.5]} 3... h6 {[%clk 0:02:52.2]} 4. Qh5+ {[%clk 0:02:52]} 4... g6 {[%clk 0:02:43]} 5. Qxg6# {[%clk 0:02:50.4]} 1-0</span>
+<span class="co">#&gt; 4 1. Nf3 {[%clk 0:02:59.9]} 1... d5 {[%clk 0:02:59.3]} 2. d4 {[%clk 0:02:58.7]} 2... f6 {[%clk 0:02:57.2]} 3. g4 {[%clk 0:02:55.3]} 3... Bxg4 {[%clk 0:02:53.4]} 4. Nh4 {[%clk 0:02:49]} 4... Nc6 {[%clk 0:02:51.2]} 5. f3 {[%clk 0:02:47.7]} 5... Be6 {[%clk 0:02:45.5]} 6. b3 {[%clk 0:02:41.1]} 6... Nh6 {[%clk 0:02:42.3]} 7. Rg1 {[%clk 0:02:36]} 7... b5 {[%clk 0:02:38.6]} 8. Nd2 {[%clk 0:02:33.3]} 8... Nxd4 {[%clk 0:02:35.9]} 9. c3 {[%clk 0:02:30.7]} 9... Ndf5 {[%clk 0:02:25.2]} 10. e4 {[%clk 0:02:29.3]} 10... Nxh4 {[%clk 0:02:23.1]} 11. exd5 {[%clk 0:02:27.4]} 11... Bxd5 {[%clk 0:02:20.7]} 12. f4 {[%clk 0:02:23.2]} 12... Bf3 {[%clk 0:02:15.9]} 13. Bxb5+ {[%clk 0:02:19.9]} 13... Kf7 {[%clk 0:02:05.1]} 14. Nxf3 {[%clk 0:02:18.3]} 14... Nxf3+ {[%clk 0:02:03]} 15. Qxf3 {[%clk 0:02:16.2]} 15... e6 {[%clk 0:01:54.8]} 16. h4 {[%clk 0:02:01.4]} 16... Qd5 {[%clk 0:01:49.1]} 17. c4 {[%clk 0:01:50.3]} 17... Qd8 {[%clk 0:01:25.6]} 18. f5 {[%clk 0:01:41.9]} 18... Nxf5 {[%clk 0:01:19.3]} 19. h5 {[%clk 0:01:33.8]} 19... h6 {[%clk 0:01:10.1]} 20. Qg2 {[%clk 0:01:18.6]} 20... Rc8 {[%clk 0:01:04.4]} 21. Qg6+ {[%clk 0:01:16.5]} 21... Ke7 {[%clk 0:00:54.1]} 22. Ba3+ {[%clk 0:01:15.2]} 22... Nd6 {[%clk 0:00:39.8]} 23. Kf2 {[%clk 0:00:58.5]} 23... c6 {[%clk 0:00:38.3]} 24. Rae1 {[%clk 0:00:56.9]} 24... Qb6+ {[%clk 0:00:36]} 25. Kg2 {[%clk 0:00:54.3]} 25... Kd8 {[%clk 0:00:20.7]} 26. Rxe6 {[%clk 0:00:43.4]} 26... Kd7 {[%clk 0:00:08.5]} 27. Rge1 {[%clk 0:00:37.5]} 27... Nxb5 {[%clk 0:00:03]} 28. Rd1+ {[%clk 0:00:32.3]} 28... Kc7 {[%clk 0:00:00.4]} 29. Qg3+ {[%clk 0:00:25]} 1-0</span>
+<span class="co">#&gt; 5                                                                                                                                                                                                                                     1. e4 {[%clk 0:02:59.2]} 1... Nc6 {[%clk 0:02:59.1]} 2. g3 {[%clk 0:02:57.5]} 2... e6 {[%clk 0:02:54.1]} 3. b3 {[%clk 0:02:47.5]} 3... d6 {[%clk 0:02:53.1]} 4. Nc3 {[%clk 0:02:44.9]} 4... e5 {[%clk 0:02:52]} 5. Nf3 {[%clk 0:02:35.7]} 5... g6 {[%clk 0:02:46.9]} 6. Ba3 {[%clk 0:02:30.8]} 6... Bg4 {[%clk 0:02:42.2]} 7. Be2 {[%clk 0:02:25.6]} 7... h5 {[%clk 0:02:40.3]} 8. Ng5 {[%clk 0:02:20.7]} 8... Qxg5 {[%clk 0:02:33.9]} 9. h3 {[%clk 0:02:18.2]} 9... Be6 {[%clk 0:02:25.6]} 10. h4 {[%clk 0:02:15]} 10... Qf6 {[%clk 0:02:20.4]} 11. Bc4 {[%clk 0:02:00.7]} 11... g5 {[%clk 0:02:13.3]} 12. O-O {[%clk 0:01:58.1]} 12... gxh4 {[%clk 0:02:11.3]} 13. gxh4 {[%clk 0:01:55.4]} 13... Nge7 {[%clk 0:02:01.3]} 14. f4 {[%clk 0:01:38.9]} 14... Rg8+ {[%clk 0:01:59.4]} 15. Kf2 {[%clk 0:01:32.4]} 15... Bg4 {[%clk 0:01:49.6]} 16. Qe1 {[%clk 0:01:25.2]} 16... Qxf4+ {[%clk 0:01:45.8]} 17. Kg1 {[%clk 0:01:22.8]} 17... Bh3+ {[%clk 0:01:38]} 18. Kh1 {[%clk 0:01:07.3]} 18... Qg4 {[%clk 0:01:17.8]} 19. Rg1 {[%clk 0:01:02]} 19... Qf3+ {[%clk 0:01:14.2]} 20. Kh2 {[%clk 0:00:56.9]} 20... Qf4+ {[%clk 0:00:59]} 21. Kh1 {[%clk 0:00:51.9]} 21... Nd4 {[%clk 0:00:49.2]} 22. Rxg8 {[%clk 0:00:49.6]} 22... Nf3 {[%clk 0:00:44.6]} 23. Qf2 {[%clk 0:00:40.6]} 23... Nh2 {[%clk 0:00:08.5]} 24. Qxh2 {[%clk 0:00:34]} 24... Qf3+ {[%clk 0:00:04.7]} 25. Kg1 {[%clk 0:00:22.3]} 1-0</span>
+<span class="co">#&gt; 6                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          1. e4 {[%clk 0:02:59.9]} 1... c5 {[%clk 0:02:57.8]} 2. Nf3 {[%clk 0:02:58.9]} 2... e6 {[%clk 0:02:56]} 3. g3 {[%clk 0:02:57.5]} 3... Qa5 {[%clk 0:02:50.9]} 4. Nc3 {[%clk 0:02:55.9]} 4... Bd6 {[%clk 0:02:38.1]} 5. d3 {[%clk 0:02:41.9]} 5... Nf6 {[%clk 0:02:33.9]} 6. Bd2 {[%clk 0:02:37.8]} 6... e5 {[%clk 0:02:27.5]} 7. Bg2 {[%clk 0:02:35.5]} 7... Qb6 {[%clk 0:02:15.8]} 8. O-O {[%clk 0:02:23.9]} 8... Ng4 {[%clk 0:02:10.8]} 9. Ng5 {[%clk 0:02:19.2]} 9... Qxb2 {[%clk 0:01:52.8]} 10. Qxg4 {[%clk 0:02:13.5]} 10... Qxc2 {[%clk 0:01:42.1]} 0-1</span>
+<span class="co">#&gt;   nMoves</span>
+<span class="co">#&gt; 1     21</span>
+<span class="co">#&gt; 2     28</span>
+<span class="co">#&gt; 3      5</span>
+<span class="co">#&gt; 4     29</span>
+<span class="co">#&gt; 5     25</span>
+<span class="co">#&gt; 6     10</span></pre></body></html></div>
 </div>
-<div id="analysing-games" class="section level2">
+<div id="how-the-game-ended" class="section level4">
+<h4 class="hasAnchor">
+<a href="#how-the-game-ended" class="anchor"></a>How the game ended</h4>
+<p>The chess.com data extract doesn’t have how the game ended on its own. To get the game ending on its own, the <code>get_game_ending</code> function can be used.</p>
+<div class="sourceCode" id="cb9"><html><body><pre class="r"><span class="co"># function to extract the ending of chess.com data</span>
+<span class="no">raw_chessdotcom</span>$<span class="no">Ending</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://jaseziv.github.io/chessR//reference/get_game_ending.html">get_game_ending</a></span>(<span class="kw">termination_string</span> <span class="kw">=</span> <span class="no">raw_chessdotcom</span>$<span class="no">Termination</span>,
+                                          <span class="kw">white</span> <span class="kw">=</span> <span class="no">raw_chessdotcom</span>$<span class="no">White</span>,
+                                          <span class="kw">black</span> <span class="kw">=</span> <span class="no">raw_chessdotcom</span>$<span class="no">Black</span>)
+
+<span class="co"># inspect output</span>
+<span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span>(<span class="no">raw_chessdotcom</span>[, <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"Termination"</span>, <span class="st">"White"</span>, <span class="st">"Black"</span>, <span class="st">"Ending"</span>)])
+<span class="co">#&gt;                 Termination         White      Black       Ending</span>
+<span class="co">#&gt; 1        hKotla won on time       JaseZiv     hKotla      on time</span>
+<span class="co">#&gt; 2 Commander0101 won on time Commander0101    JaseZiv      on time</span>
+<span class="co">#&gt; 3  JaseZiv won by checkmate       JaseZiv oscarbazan by checkmate</span>
+<span class="co">#&gt; 4    oscarbazan won on time    oscarbazan    JaseZiv      on time</span>
+<span class="co">#&gt; 5       JaseZiv won on time       JaseZiv oscarbazan      on time</span>
+<span class="co">#&gt; 6       JaseZiv won on time      rojarosy    JaseZiv      on time</span></pre></body></html></div>
+</div>
+<div id="game-winner" class="section level4">
+<h4 class="hasAnchor">
+<a href="#game-winner" class="anchor"></a>Game Winner</h4>
+<p>Given two players, one playing on white and the other on black, we want to be able to know the username of the winner. To get this information, use the <code>get_winner</code> function.</p>
+<div class="sourceCode" id="cb10"><html><body><pre class="r"><span class="co"># function to extract the winner of each game</span>
+<span class="no">raw_chessdotcom</span>$<span class="no">Winner</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://jaseziv.github.io/chessR//reference/get_winner.html">get_winner</a></span>(<span class="kw">result_column</span> <span class="kw">=</span> <span class="no">raw_chessdotcom</span>$<span class="no">Result</span>,
+                                     <span class="kw">white</span> <span class="kw">=</span> <span class="no">raw_chessdotcom</span>$<span class="no">White</span>,
+                                     <span class="kw">black</span> <span class="kw">=</span> <span class="no">raw_chessdotcom</span>$<span class="no">Black</span>)
+
+<span class="co"># inspect output</span>
+<span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span>(<span class="no">raw_chessdotcom</span>[, <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"White"</span>, <span class="st">"Black"</span>, <span class="st">"Result"</span>, <span class="st">"Winner"</span>)])
+<span class="co">#&gt;           White      Black Result        Winner</span>
+<span class="co">#&gt; 1       JaseZiv     hKotla    0-1        hKotla</span>
+<span class="co">#&gt; 2 Commander0101    JaseZiv    1-0 Commander0101</span>
+<span class="co">#&gt; 3       JaseZiv oscarbazan    1-0       JaseZiv</span>
+<span class="co">#&gt; 4    oscarbazan    JaseZiv    1-0    oscarbazan</span>
+<span class="co">#&gt; 5       JaseZiv oscarbazan    1-0       JaseZiv</span>
+<span class="co">#&gt; 6      rojarosy    JaseZiv    0-1       JaseZiv</span></pre></body></html></div>
+</div>
+</div>
+</div>
+<div id="bonus-basic-eda-analysing-games" class="section level2">
 <h2 class="hasAnchor">
-<a href="#analysing-games" class="anchor"></a>Analysing Games</h2>
+<a href="#bonus-basic-eda-analysing-games" class="anchor"></a>Bonus: Basic EDA Analysing Games</h2>
 <p>This section will perform some exploratory data analysis on the analysis data set provided by <code><a href="../reference/get_game_data.html">get_game_data()</a></code>. It is by no means an exhaustive list of topics to analyse, rather, it is designed to give the user a few ideas of what can be done with the analysis data provided.</p>
-<div class="sourceCode" id="cb8"><html><body><pre class="r"><span class="no">chess_analysis_single</span> <span class="kw">%&gt;%</span>
+<div class="sourceCode" id="cb11"><html><body><pre class="r"><span class="no">chess_analysis_single</span> <span class="kw">%&gt;%</span>
   <span class="fu">count</span>(<span class="no">time_class</span>) <span class="kw">%&gt;%</span>
   <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="kw">x</span><span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/reorder.factor.html">reorder</a></span>(<span class="no">time_class</span>,<span class="no">n</span>), <span class="kw">y</span><span class="kw">=</span> <span class="no">n</span>)) +
   <span class="fu">geom_col</span>(<span class="kw">fill</span> <span class="kw">=</span> <span class="st">"steelblue"</span>, <span class="kw">colour</span> <span class="kw">=</span> <span class="st">"grey40"</span>, <span class="kw">alpha</span> <span class="kw">=</span> <span class="fl">0.7</span>) +
@@ -234,7 +309,7 @@
   <span class="fu">theme_minimal</span>() +
   <span class="fu">theme</span>(<span class="kw">panel.grid.major.y</span> <span class="kw">=</span> <span class="fu">element_blank</span>())</pre></body></html></div>
 <p><img src="using_chessR_package_files/figure-html/popular_times-1.png" width="700"></p>
-<div class="sourceCode" id="cb9"><html><body><pre class="r"><span class="no">chess_analysis_single</span> <span class="kw">%&gt;%</span>
+<div class="sourceCode" id="cb12"><html><body><pre class="r"><span class="no">chess_analysis_single</span> <span class="kw">%&gt;%</span>
   <span class="fu">mutate</span>(<span class="kw">MonthEnd</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste</a></span>(<span class="fu">year</span>(<span class="no">EndDate</span>), <span class="fu">str_pad</span>(<span class="kw pkg">lubridate</span><span class="kw ns">::</span><span class="fu"><a href="http://lubridate.tidyverse.org/reference/month.html">month</a></span>(<span class="fu">ymd</span>(<span class="no">EndDate</span>)), <span class="fl">2</span>, <span class="kw">side</span> <span class="kw">=</span> <span class="st">"left"</span>, <span class="kw">pad</span> <span class="kw">=</span> <span class="st">"0"</span>), <span class="kw">sep</span> <span class="kw">=</span> <span class="st">"-"</span>)) <span class="kw">%&gt;%</span>
   <span class="fu">group_by</span>(<span class="no">MonthEnd</span>, <span class="no">UserResult</span>) <span class="kw">%&gt;%</span>
   <span class="fu">summarise</span>(<span class="kw">n</span> <span class="kw">=</span> <span class="fu">n</span>()) <span class="kw">%&gt;%</span>
@@ -248,7 +323,7 @@
   <span class="fu">ggtitle</span>(<span class="st">"MONTHLY WINNING %"</span>) +
   <span class="fu">theme_minimal</span>()</pre></body></html></div>
 <p><img src="using_chessR_package_files/figure-html/user_result-1.png" width="700"></p>
-<div class="sourceCode" id="cb10"><html><body><pre class="r"><span class="no">chess_analysis_single</span> <span class="kw">%&gt;%</span>
+<div class="sourceCode" id="cb13"><html><body><pre class="r"><span class="no">chess_analysis_single</span> <span class="kw">%&gt;%</span>
   <span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span>(<span class="no">time_class</span> <span class="kw">%in%</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"blitz"</span>, <span class="st">"daily"</span>)) <span class="kw">%&gt;%</span>
   <span class="fu">mutate</span>(<span class="kw">MonthEnd</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste</a></span>(<span class="fu">year</span>(<span class="no">EndDate</span>), <span class="fu">str_pad</span>(<span class="kw pkg">lubridate</span><span class="kw ns">::</span><span class="fu"><a href="http://lubridate.tidyverse.org/reference/month.html">month</a></span>(<span class="fu">ymd</span>(<span class="no">EndDate</span>)), <span class="fl">2</span>, <span class="kw">side</span> <span class="kw">=</span> <span class="st">"left"</span>, <span class="kw">pad</span> <span class="kw">=</span> <span class="st">"0"</span>), <span class="kw">sep</span> <span class="kw">=</span> <span class="st">"-"</span>)) <span class="kw">%&gt;%</span>
   <span class="fu">group_by</span>(<span class="no">MonthEnd</span>, <span class="no">time_class</span>) <span class="kw">%&gt;%</span>
@@ -260,7 +335,7 @@
   <span class="fu">facet_wrap</span>(~ <span class="no">time_class</span>, <span class="kw">scales</span> <span class="kw">=</span> <span class="st">"free_y"</span>, <span class="kw">ncol</span> <span class="kw">=</span> <span class="fl">1</span>) +
   <span class="fu">theme_minimal</span>()</pre></body></html></div>
 <p><img src="using_chessR_package_files/figure-html/monthly_elo-1.png" width="864"></p>
-<div class="sourceCode" id="cb11"><html><body><pre class="r"><span class="no">chess_analysis_single</span> <span class="kw">%&gt;%</span>
+<div class="sourceCode" id="cb14"><html><body><pre class="r"><span class="no">chess_analysis_single</span> <span class="kw">%&gt;%</span>
   <span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span>(<span class="no">time_class</span> <span class="kw">%in%</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"blitz"</span>, <span class="st">"daily"</span>)) <span class="kw">%&gt;%</span>
   <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="kw">x</span><span class="kw">=</span> <span class="no">OpponentELO</span>, <span class="kw">fill</span> <span class="kw">=</span> <span class="no">UserResult</span>)) +
   <span class="fu">geom_density</span>(<span class="kw">alpha</span> <span class="kw">=</span> <span class="fl">0.3</span>) +

@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Function reference • chessR</title>
+<title>Return the game ending — get_game_ending • chessR</title>
 
 
 <!-- jquery -->
@@ -39,7 +39,8 @@
 
 
 
-<meta property="og:title" content="Function reference" />
+<meta property="og:title" content="Return the game ending — get_game_ending" />
+<meta property="og:description" content="This function returns a character vector of how the game ended from chess.dom." />
 
 
 
@@ -68,7 +69,7 @@
   </head>
 
   <body data-spy="scroll" data-target="#toc">
-    <div class="container template-reference-index">
+    <div class="container template-reference-topic">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -130,102 +131,45 @@
       </header>
 
 <div class="row">
-  <div class="contents col-md-9">
+  <div class="col-md-9 contents">
     <div class="page-header">
-      <h1>Reference</h1>
+    <h1>Return the game ending</h1>
+    <small class="dont-index">Source: <a href='https://github.com/JaseZiv/chessR/blob/master/R/analysis_functions.R'><code>R/analysis_functions.R</code></a></small>
+    <div class="hidden name"><code>get_game_ending.Rd</code></div>
     </div>
 
-    <table class="ref-index">
+    <div class="ref-description">
+    <p>This function returns a character vector of how the game ended from chess.dom.</p>
+    </div>
 
-    <colgroup>
-      
-      <col class="alias" />
-      <col class="title" />
-    </colgroup>
+    <pre class="usage"><span class='fu'>get_game_ending</span>(<span class='no'>termination_string</span>, <span class='no'>white</span>, <span class='no'>black</span>)</pre>
 
-    <tbody>
-      <tr>
-        <th colspan="2">
-          <h2 id="section-all-functions" class="hasAnchor"><a href="#section-all-functions" class="anchor"></a>All functions</h2>
-          <p class="section-desc"></p>
-        </th>
-      </tr>
-      
-      
-    </tbody><tbody>
-      
-      
-      <tr>
-        
-        <td>
-          <p><code><a href="chessR.html">chessR</a></code> </p>
-        </td>
-        <td><p>chessR: A package for extracting and analysing chess game data</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="get_each_player.html">get_each_player()</a></code> </p>
-        </td>
-        <td><p>Extract Single Player's Game Data</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="get_each_player_chessdotcom.html">get_each_player_chessdotcom()</a></code> </p>
-        </td>
-        <td><p>Get Single Player Raw chess.com Game Data</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="get_each_raw.html">get_each_raw()</a></code> </p>
-        </td>
-        <td><p>Get Single Player Raw chess.com Game Data</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="get_game_data.html">get_game_data()</a></code> </p>
-        </td>
-        <td><p>Extract Chess Game Data</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="get_game_ending.html">get_game_ending()</a></code> </p>
-        </td>
-        <td><p>Return the game ending</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="get_raw_chessdotcom.html">get_raw_chessdotcom()</a></code> </p>
-        </td>
-        <td><p>Get Raw chess.com Game Data</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="get_raw_game_data.html">get_raw_game_data()</a></code> </p>
-        </td>
-        <td><p>Get Raw chess.com Game Data</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="get_top50_leaderboard.html">get_top50_leaderboard()</a></code> </p>
-        </td>
-        <td><p>Get Top 50 on Leaderboards</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="get_winner.html">get_winner()</a></code> </p>
-        </td>
-        <td><p>Return the game winner</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="return_num_moves.html">return_num_moves()</a></code> </p>
-        </td>
-        <td><p>Return the number of moves in a game</p></td>
-      </tr>
-    </tbody>
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
+    <table class="ref-arguments">
+    <colgroup><col class="name" /><col class="desc" /></colgroup>
+    <tr>
+      <th>termination_string</th>
+      <td><p>A character vector in the chess.com extracted data frame called 'Termination'</p></td>
+    </tr>
+    <tr>
+      <th>white</th>
+      <td><p>A character vector in the chess.com extracted data frame called 'White' for the player on white</p></td>
+    </tr>
+    <tr>
+      <th>black</th>
+      <td><p>A character vector in the chess.com extracted data frame called 'Black' for the player on black</p></td>
+    </tr>
     </table>
-  </div>
 
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
+
+    <p>A character vector of the game ending for each game</p>
+
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><div class='input'><span class='kw'>if</span> (<span class='fl'>FALSE</span>) {
+<span class='fu'>get_game_ending</span>(<span class='kw'>termination_string</span> <span class='kw'>=</span> <span class='no'>df</span>$<span class='no'>Termination</span>, <span class='no'>df</span>$<span class='no'>White</span>, <span class='no'>df</span>$<span class='no'>Black</span>)
+}</div></pre>
+  </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
       <h2 data-toc-skip>Contents</h2>

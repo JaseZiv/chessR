@@ -30,6 +30,10 @@ devtools::install_github("JaseZiv/chessR")
 The functions available in this package are designed to enable the
 extraction of chess game data.
 
+### Data Extraction
+
+The functions detailed below relate to extracting data from chess.com
+
 **Raw Game Data**
 
 The `get_raw_game_data()` function can take either a single, or multiple
@@ -74,5 +78,6 @@ The usernames that are contained in the results can then be passed to
 daily_leaders <- get_top50_leaderboard(game_type = "daily")
 ```
 
-For a detailed guide to using the package, see the package
+For a detailed guide to using the package and the functions for
+analysis, see the package
 [vignette](https://jaseziv.github.io/chessR/articles/using_chessR_package.html)
