@@ -1,7 +1,7 @@
 Package: chessR
 Type: Package
 Title: A Package To Extract and Analyse chess.com Data
-Version: 1.0.0
+Version: 1.1.0
 Authors@R: person("Jason Zivkovic", email = "jase.ziv83@gmail.com",
                   role = c("aut", "cre"))
 URL: https://jaseziv.github.io/chessR/, https://github.com/JaseZiv/chessR
