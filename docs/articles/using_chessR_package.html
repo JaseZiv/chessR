@@ -91,7 +91,7 @@
       <h1 data-toc-skip>Using the chessR Package</h1>
                         <h4 class="author">Jason Zivkovic</h4>
             
-            <h4 class="date">2020-05-03</h4>
+            <h4 class="date">2020-05-06</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/JaseZiv/chessR/blob/master/vignettes/using_chessR_package.Rmd"><code>vignettes/using_chessR_package.Rmd</code></a></small>
       <div class="hidden name"><code>using_chessR_package.Rmd</code></div>
@@ -107,33 +107,23 @@
 <div class="sourceCode" id="cb1"><html><body><pre class="r"><span class="co"># devtools::install_github("JaseZiv/chessR")</span>
 <span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">chessR</span>)</pre></body></html></div>
 </div>
-<div id="functions" class="section level2">
+<div id="usage" class="section level2">
 <h2 class="hasAnchor">
-<a href="#functions" class="anchor"></a>Functions</h2>
-<p>There are a number of functions available in this package, both for extracting data and also for analysing and visualising data.</p>
-<div id="extraction" class="section level3">
-<h3 class="hasAnchor">
-<a href="#extraction" class="anchor"></a>Extraction</h3>
-<p>The following extraction functions will get json formatted game data and clean and convert it to a data frame. The games that will be returned are from the following time classes on chess.com:</p>
-<ul>
-<li>“blitz”;</li>
-<li>“bullet”;</li>
-<li>“daily”; and</li>
-<li>“rapid”</li>
-</ul>
-<div id="raw-data" class="section level4">
-<h4 class="hasAnchor">
-<a href="#raw-data" class="anchor"></a>Raw Data</h4>
-<p>The <code><a href="../reference/get_raw_game_data.html">get_raw_game_data()</a></code> function can take either a single, or multiple usernames. It will output a data frame with all the games played by that user.</p>
-<div class="sourceCode" id="cb2"><html><body><pre class="r"><span class="co"># install.packages("devtools")</span>
-<span class="no">raw_chess</span> <span class="kw">&lt;-</span> <span class="fu"><a href="../reference/get_raw_game_data.html">get_raw_game_data</a></span>(<span class="st">"JaseZiv"</span>)
-<span class="co">#&gt; Extracting  JaseZiv  Data, please wait</span>
-<span class="co">#&gt; Data extracted</span></pre></body></html></div>
-<div class="sourceCode" id="cb3"><html><body><pre class="r"><span class="fu">glimpse</span>(<span class="no">raw_chess</span>)
-<span class="co">#&gt; Observations: 177</span>
+<a href="#usage" class="anchor"></a>Usage</h2>
+<p>The functions available in this package are designed to enable the extraction of chess game data.</p>
+</div>
+<div id="extract-game-data" class="section level2">
+<h2 class="hasAnchor">
+<a href="#extract-game-data" class="anchor"></a>Extract Game Data</h2>
+<p><strong>Raw Game Data</strong></p>
+<p>The <code>get_raw_chessdotcom</code> function can take either a single, or multiple usernames. It will output a data frame with all the games played by that user. The function replaces <code>get_raw_game_data</code> from version 1.1.0</p>
+<div class="sourceCode" id="cb2"><html><body><pre class="r"><span class="no">raw_chessdotcom</span> <span class="kw">&lt;-</span> <span class="fu"><a href="../reference/get_raw_chessdotcom.html">get_raw_chessdotcom</a></span>(<span class="st">"JaseZiv"</span>)
+<span class="co">#&gt; Extracting  JaseZiv  Data, please wait</span></pre></body></html></div>
+<div class="sourceCode" id="cb3"><html><body><pre class="r"><span class="fu">glimpse</span>(<span class="no">raw_chessdotcom</span>)
+<span class="co">#&gt; Observations: 178</span>
 <span class="co">#&gt; Variables: 25</span>
-<span class="co">#&gt; $ rules           &lt;chr&gt; "chess", "chess", "chess", "chess", "chess", "chess",…</span>
-<span class="co">#&gt; $ time_class      &lt;chr&gt; "blitz", "blitz", "blitz", "blitz", "blitz", "blitz",…</span>
+<span class="co">#&gt; $ GameRules       &lt;chr&gt; "chess", "chess", "chess", "chess", "chess", "chess",…</span>
+<span class="co">#&gt; $ TimeClass       &lt;chr&gt; "blitz", "blitz", "blitz", "blitz", "blitz", "blitz",…</span>
 <span class="co">#&gt; $ Event           &lt;chr&gt; "Live Chess", "Live Chess", "Live Chess", "Live Chess…</span>
 <span class="co">#&gt; $ Site            &lt;chr&gt; "Chess.com", "Chess.com", "Chess.com", "Chess.com", "…</span>
 <span class="co">#&gt; $ Date            &lt;chr&gt; "2019.02.12", "2019.02.12", "2019.02.12", "2019.02.12…</span>
@@ -155,13 +145,10 @@
 <span class="co">#&gt; $ EndDate         &lt;chr&gt; "2019.02.12", "2019.02.12", "2019.02.12", "2019.02.12…</span>
 <span class="co">#&gt; $ EndTime         &lt;chr&gt; "05:48:35", "07:51:41", "07:55:21", "08:01:40", "08:0…</span>
 <span class="co">#&gt; $ Link            &lt;chr&gt; "https://www.chess.com/live/game/3452526692", "https:…</span>
-<span class="co">#&gt; $ Moves           &lt;chr&gt; "\n1. e4 {[%clk 0:02:52.8]} 1... e6 {[%clk 0:02:59.8]…</span>
+<span class="co">#&gt; $ Moves           &lt;chr&gt; "1. e4 {[%clk 0:02:52.8]} 1... e6 {[%clk 0:02:59.8]} …</span>
 <span class="co">#&gt; $ Username        &lt;chr&gt; "JaseZiv", "JaseZiv", "JaseZiv", "JaseZiv", "JaseZiv"…</span></pre></body></html></div>
-</div>
-<div id="analysis-data" class="section level4">
-<h4 class="hasAnchor">
-<a href="#analysis-data" class="anchor"></a>Analysis Data</h4>
-<p>The following function will extract the same data that the <code><a href="../reference/get_raw_game_data.html">get_raw_game_data()</a></code> function will, however this function will also include additional columns to make analysing data easier.</p>
+<p><strong>Analysis Data</strong></p>
+<p>The following function will extract the same data that the <code><a href="../reference/get_raw_chessdotcom.html">get_raw_chessdotcom()</a></code> function will, however this function will also include additional columns to make analysing data easier.</p>
 <p>The function can be used either on a single player, or a character vector of multiple players.</p>
 <div class="sourceCode" id="cb4"><html><body><pre class="r"><span class="no">chess_analysis_single</span> <span class="kw">&lt;-</span> <span class="fu"><a href="../reference/get_game_data.html">get_game_data</a></span>(<span class="st">"JaseZiv"</span>)
 <span class="co">#&gt; Extracting  JaseZiv  Data, please wait</span>
@@ -205,27 +192,15 @@
 <span class="co">#&gt; $ DaysTaken       &lt;drtn&gt; 0 days, 0 days, 0 days, 0 days, 0 days, 0 days, 0 da…</span>
 <span class="co">#&gt; $ GameEnding      &lt;chr&gt; "on time", "on time", "by checkmate", "on time", "on …</span>
 <span class="co">#&gt; $ Opening         &lt;chr&gt; "Defense-Reti-Spielmann-Attack", "Pawn-Opening-Polish…</span></pre></body></html></div>
-</div>
-<div id="get-top-players-usernames" class="section level4">
-<h4 class="hasAnchor">
-<a href="#get-top-players-usernames" class="anchor"></a>Get Top Players’ usernames</h4>
+<div id="extract-leaderboards" class="section level3">
+<h3 class="hasAnchor">
+<a href="#extract-leaderboards" class="anchor"></a>Extract Leaderboards</h3>
 <p>The below function allows the user to extract the top 50 leaders on the leaderboards for a number of different game types.</p>
 <p>The game types include:</p>
-<ul>
-<li>“daily”</li>
-<li>“daily960”"</li>
-<li>“live_rapid”</li>
-<li>“live_blitz”</li>
-<li>“live_bullet”</li>
-<li>“live_bughouse”</li>
-<li>“live_blitz960”</li>
-<li>“live_threecheck”</li>
-<li>“live_crazyhouse”</li>
-<li>“live_kingofthehill”</li>
-<li>“lessons”</li>
-<li>“tactics”</li>
-</ul>
-<p>The usernames that are contained in the results can then be passed to <code>get_game_data</code> outlined above.</p>
+<blockquote>
+<p><em>“daily”, “daily960”, “live_rapid”, “live_blitz”, “live_bullet”, “live_bughouse”, “live_blitz960”, “live_threecheck”, “live_crazyhouse”, “live_kingofthehill”, “lessons” and “tactics”</em>.</p>
+</blockquote>
+<p>The usernames that are contained in the results can then be passed to <code><a href="../reference/get_raw_chessdotcom.html">get_raw_chessdotcom()</a></code> outlined above.</p>
 <div class="sourceCode" id="cb6"><html><body><pre class="r"><span class="no">daily_leaders</span> <span class="kw">&lt;-</span> <span class="fu"><a href="../reference/get_top50_leaderboard.html">get_top50_leaderboard</a></span>(<span class="kw">game_type</span> <span class="kw">=</span> <span class="st">"daily"</span>)</pre></body></html></div>
 <div class="sourceCode" id="cb7"><html><body><pre class="r"><span class="fu">glimpse</span>(<span class="no">daily_leaders</span>)
 <span class="co">#&gt; Observations: 50</span>
@@ -233,7 +208,7 @@
 <span class="co">#&gt; $ player_id   &lt;int&gt; 7848044, 4147249, 1629533, 10506874, 4767295, 2810922, 21…</span>
 <span class="co">#&gt; $ url         &lt;chr&gt; "https://www.chess.com/member/francisbegbie", "https://ww…</span>
 <span class="co">#&gt; $ username    &lt;chr&gt; "francisbegbie", "mizant", "mackus", "olomi007", "xquse",…</span>
-<span class="co">#&gt; $ score       &lt;int&gt; 2578, 2556, 2535, 2521, 2515, 2503, 2486, 2483, 2482, 248…</span>
+<span class="co">#&gt; $ score       &lt;int&gt; 2578, 2556, 2535, 2521, 2516, 2503, 2486, 2483, 2482, 248…</span>
 <span class="co">#&gt; $ rank        &lt;int&gt; 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17…</span>
 <span class="co">#&gt; $ country     &lt;chr&gt; "https://api.chess.com/pub/country/XE", "https://api.ches…</span>
 <span class="co">#&gt; $ title       &lt;chr&gt; "FM", "FM", "NM", "GM", NA, "NM", NA, "FM", NA, "NM", "FM…</span>
@@ -243,7 +218,6 @@
 <span class="co">#&gt; $ trend_score &lt;df[,2]&gt; &lt;data.frame[26 x 2]&gt;</span>
 <span class="co">#&gt; $ trend_rank  &lt;df[,2]&gt; &lt;data.frame[26 x 2]&gt;</span>
 <span class="co">#&gt; $ flair_code  &lt;chr&gt; "diamond_traditional", "diamond_traditional", "diamond_tr…</span></pre></body></html></div>
-</div>
 </div>
 </div>
 <div id="analysing-games" class="section level2">

@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Changelog • chessR</title>
+<title>Get Single Player Raw chess.com Game Data — get_each_player_chessdotcom • chessR</title>
 
 
 <!-- jquery -->
@@ -39,7 +39,9 @@
 
 
 
-<meta property="og:title" content="Changelog" />
+<meta property="og:title" content="Get Single Player Raw chess.com Game Data — get_each_player_chessdotcom" />
+<meta property="og:description" content="This function returns the raw json data for a player's
+chess.com data as a data frame" />
 
 
 
@@ -68,7 +70,7 @@
   </head>
 
   <body data-spy="scroll" data-target="#toc">
-    <div class="container template-news">
+    <div class="container template-reference-topic">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -132,38 +134,34 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-      <h1 data-toc-skip>Changelog <small></small></h1>
-      <small>Source: <a href='https://github.com/JaseZiv/chessR/blob/master/NEWS.md'><code>NEWS.md</code></a></small>
+    <h1>Get Single Player Raw chess.com Game Data</h1>
+    <small class="dont-index">Source: <a href='https://github.com/JaseZiv/chessR/blob/master/R/get_raw_chessdotcom.R'><code>R/get_raw_chessdotcom.R</code></a></small>
+    <div class="hidden name"><code>get_each_player_chessdotcom.Rd</code></div>
     </div>
 
-    <div id="chessr-100" class="section level1">
-<h1 class="page-header" data-toc-text="1.0.0">
-<a href="#chessr-100" class="anchor"></a>chessR 1.0.0</h1>
-<p>Intial release of the <code>chessR</code> package</p>
-<ul>
-<li>Added function for extracting raw chess.com data in a data frame</li>
-<li>Added a function that in addition to extracting the raw data, also included additional features</li>
-<li>Added a function to extract the top 50 leaderboard depending on the game type selected</li>
-</ul>
-</div>
-    <div id="chessr-110" class="section level1">
-<h1 class="page-header" data-toc-text="1.1.0">
-<a href="#chessr-110" class="anchor"></a>chessR 1.1.0</h1>
-<ul>
-<li>New function created (<code>get_raw_chessdotcom</code>) to replace <code>get_raw_game_data</code>
-</li>
-<li>
-<code>get_raw_game_data</code> deprecated, to be retired in the next major version</li>
-</ul>
-</div>
-  </div>
+    <div class="ref-description">
+    <p>This function returns the raw json data for a player's
+chess.com data as a data frame</p>
+    </div>
 
+    <pre class="usage"><span class='fu'>get_each_player_chessdotcom</span>(<span class='no'>username</span>)</pre>
+
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
+    <table class="ref-arguments">
+    <colgroup><col class="name" /><col class="desc" /></colgroup>
+    <tr>
+      <th>username</th>
+      <td><p>A valid unsername from chess.com</p></td>
+    </tr>
+    </table>
+
+
+  </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
       <h2 data-toc-skip>Contents</h2>
     </nav>
   </div>
-
 </div>
 
 

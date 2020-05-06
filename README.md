@@ -1,19 +1,22 @@
 
-chessR
-======
+# chessR
 
 <!-- badges: start -->
-[![Travis build status](https://travis-ci.org/JaseZiv/chessR.svg?branch=master)](https://travis-ci.org/JaseZiv/chessR) <!-- badges: end -->
 
-Overview
---------
+[![Travis build
+status](https://travis-ci.org/JaseZiv/chessR.svg?branch=master)](https://travis-ci.org/JaseZiv/chessR)
+<!-- badges: end -->
 
-This package is designed to allow users to extract their game data from the popular online chess platform [chess.com](https://www.chess.com/).
+## Overview
 
-The website offers a very convenient set of APIs to be able to access and documentation to these can be found [here](https://www.chess.com/news/view/published-data-api).
+This package is designed to allow users to extract their game data from
+the popular online chess platform [chess.com](https://www.chess.com/).
 
-Installation
-------------
+The website offers a very convenient set of APIs to be able to access
+and documentation to these can be found
+[here](https://www.chess.com/news/view/published-data-api).
+
+## Installation
 
 You can install the chessR package from github with:
 
@@ -22,27 +25,30 @@ You can install the chessR package from github with:
 devtools::install_github("JaseZiv/chessR")
 ```
 
-Functions
----------
+## Usage
 
-There are a number of functions available in this package, both for extracting data and also for analysing and visualising data.
+The functions available in this package are designed to enable the
+extraction of chess game data.
 
-### Extraction
+**Raw Game Data**
 
-The following extraction functions will get json formatted game data and clean and convert it to a data frame.
-
-#### Raw Data
+The `get_raw_game_data()` function can take either a single, or multiple
+usernames. It will output a data frame with all the games played by that
+user.
 
 ``` r
 # install.packages("devtools")
-raw_chess <- get_raw_game_data("JaseZiv")
+raw_chess <- get_raw_chessdotcom("JaseZiv")
 ```
 
-#### Analysis Data
+**Analysis Data**
 
-The following function will extract the same data that the `get_raw_game_data()` function will, however this function will also include additional columns to make analysing data easier.
+The following function will extract the same data that the
+`get_raw_chessdotcom()` function will, however this function will also
+include additional columns to make analysing data easier.
 
-The function can be used either on a single player, or a character vector of multiple players.
+The function can be used either on a single player, or a character
+vector of multiple players.
 
 ``` r
 chess_analysis_single <- get_game_data("JaseZiv")
@@ -50,29 +56,23 @@ chess_analysis_single <- get_game_data("JaseZiv")
 chess_analysis_multiple <- get_game_data(c("JaseZiv", "elroch"))
 ```
 
-#### Get Top Players' usernames
+**Get Top Players’ usernames**
 
-The below function allows the user to extract the top 50 leaders on the leaderboards for a number of different game types.
+The below function allows the user to extract the top 50 leaders on the
+leaderboards for a number of different game types.
 
 The game types include:
 
--   "daily"
--   "daily960""
--   "live\_rapid"
--   "live\_blitz"
--   "live\_bullet"
--   "live\_bughouse"
--   "live\_blitz960"
--   "live\_threecheck"
--   "live\_crazyhouse"
--   "live\_kingofthehill"
--   "lessons"
--   "tactics"
+> *“daily”, “daily960”, “live\_rapid”, “live\_blitz”, “live\_bullet”,
+> “live\_bughouse”, “live\_blitz960”, “live\_threecheck”,
+> “live\_crazyhouse”, “live\_kingofthehill”, “lessons” and “tactics”*.
 
-The usernames that are contained in the results can then be passed to the chess game data extraction function outlined above.
+The usernames that are contained in the results can then be passed to
+`get_raw_chessdotcom()` outlined above.
 
 ``` r
 daily_leaders <- get_top50_leaderboard(game_type = "daily")
 ```
 
-For a detailed guide to using the package, see the package [vignette](https://jaseziv.github.io/chessR/articles/using_chessR_package.html)
+For a detailed guide to using the package, see the package
+[vignette](https://jaseziv.github.io/chessR/articles/using_chessR_package.html)

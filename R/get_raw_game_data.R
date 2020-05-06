@@ -12,6 +12,7 @@
 #' @import tidyr
 #'
 get_each_raw <- function(username) {
+  .Deprecated("get_raw_chessdotcom")
   cat("Extracting ", username, " Data, please wait\n")
 
 
@@ -109,6 +110,7 @@ get_each_raw <- function(username) {
 #'
 #' @export
 get_raw_game_data <- function(usernames) {
+  .Deprecated("get_raw_chessdotcom")
   df <- purrr::map_df(usernames, get_each_raw)
 
   return(df)

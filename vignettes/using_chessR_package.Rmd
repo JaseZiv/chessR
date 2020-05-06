@@ -37,38 +37,30 @@ library(scales)
 ```
 
 
-## Functions
+## Usage
 
-There are a number of functions available in this package, both for extracting data and also for analysing and visualising data.
+The functions available in this package are designed to enable the extraction of chess game data.
 
-### Extraction
+## Extract Game Data
 
-The following extraction functions will get json formatted game data and clean and convert it to a data frame. The games that will be returned are from the following time classes on chess.com:
+**Raw Game Data**
 
-* "blitz";
-* "bullet";
-* "daily"; and
-* "rapid"
+The `get_raw_chessdotcom` function can take either a single, or multiple usernames. It will output a data frame with all the games played by that user. The function replaces `get_raw_game_data` from version 1.1.0
 
-#### Raw Data
-
-The `get_raw_game_data()` function can take either a single, or multiple usernames. It will output a data frame with all the games played by that user.
 
 ```{r get_raw}
-# install.packages("devtools")
-raw_chess <- get_raw_game_data("JaseZiv")
+raw_chessdotcom <- get_raw_chessdotcom("JaseZiv")
 ```
 
 ```{r inspect_raw}
-glimpse(raw_chess)
+glimpse(raw_chessdotcom)
 ```
 
-#### Analysis Data
+**Analysis Data**
 
-The following function will extract the same data that the `get_raw_game_data()` function will, however this function will also include additional columns to make analysing data easier.
+The following function will extract the same data that the `get_raw_chessdotcom()` function will, however this function will also include additional columns to make analysing data easier.
 
 The function can be used either on a single player, or a character vector of multiple players.
-
 
 ```{r get_analysis}
 chess_analysis_single <- get_game_data("JaseZiv")
@@ -78,26 +70,16 @@ chess_analysis_single <- get_game_data("JaseZiv")
 glimpse(chess_analysis_single)
 ```
 
-#### Get Top Players' usernames
+
+### Extract Leaderboards
 
 The below function allows the user to extract the top 50 leaders on the leaderboards for a number of different game types.
 
 The game types include:
 
-* "daily"
-* "daily960""
-* "live_rapid"
-* "live_blitz"
-* "live_bullet"
-* "live_bughouse"
-* "live_blitz960"
-* "live_threecheck"
-* "live_crazyhouse"
-* "live_kingofthehill"
-* "lessons"
-* "tactics"
+> *"daily", "daily960", "live_rapid", "live_blitz", "live_bullet", "live_bughouse", "live_blitz960", "live_threecheck", "live_crazyhouse", "live_kingofthehill", "lessons" and "tactics"*.
 
-The usernames that are contained in the results can then be passed to `get_game_data` outlined above.
+The usernames that are contained in the results can then be passed to `get_raw_chessdotcom()` outlined above.
 
 ```{r get_leaders}
 daily_leaders <- get_top50_leaderboard(game_type = "daily")
