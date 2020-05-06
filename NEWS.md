@@ -11,3 +11,5 @@ Intial release of the `chessR` package
 
 * New function created (`get_raw_chessdotcom`) to replace `get_raw_game_data`
 * `get_raw_game_data` deprecated, to be retired in the next major version
+* Various analysis functions created
+* `get_top50_leaderboard` deprecated, replaced with `chessdotcom_leaderboard()`
