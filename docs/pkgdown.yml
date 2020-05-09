@@ -3,7 +3,7 @@ pkgdown: 1.5.1
 pkgdown_sha: ~
 articles:
   using_chessR_package: using_chessR_package.html
-last_built: 2020-05-06T21:02Z
+last_built: 2020-05-09T11:00Z
 urls:
   reference: https://jaseziv.github.io/chessR//reference
   article: https://jaseziv.github.io/chessR//articles

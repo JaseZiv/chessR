@@ -12,7 +12,6 @@
 #' @import tidyr
 #'
 get_each_raw <- function(username) {
-  .Deprecated("get_raw_chessdotcom")
   cat("Extracting ", username, " Data, please wait\n")
 
 

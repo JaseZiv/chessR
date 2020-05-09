@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Return the game winner — get_winner • chessR</title>
+<title>Get Raw Lichess Game Data — get_raw_lichess • chessR</title>
 
 
 <!-- jquery -->
@@ -39,8 +39,9 @@
 
 
 
-<meta property="og:title" content="Return the game winner — get_winner" />
-<meta property="og:description" content="This function returns a character vector of the usernames of the game winners" />
+<meta property="og:title" content="Get Raw Lichess Game Data — get_raw_lichess" />
+<meta property="og:description" content="This function returns the raw json data for a player's or list of players'
+chess.com data as a data frame" />
 
 
 
@@ -133,41 +134,31 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Return the game winner</h1>
-    <small class="dont-index">Source: <a href='https://github.com/JaseZiv/chessR/blob/master/R/analysis_functions.R'><code>R/analysis_functions.R</code></a></small>
-    <div class="hidden name"><code>get_winner.Rd</code></div>
+    <h1>Get Raw Lichess Game Data</h1>
+    <small class="dont-index">Source: <a href='https://github.com/JaseZiv/chessR/blob/master/R/get_raw_lichess.R'><code>R/get_raw_lichess.R</code></a></small>
+    <div class="hidden name"><code>get_raw_lichess.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>This function returns a character vector of the usernames of the game winners</p>
+    <p>This function returns the raw json data for a player's or list of players'
+chess.com data as a data frame</p>
     </div>
 
-    <pre class="usage"><span class='fu'>get_winner</span>(<span class='no'>result_column</span>, <span class='no'>white</span>, <span class='no'>black</span>)</pre>
+    <pre class="usage"><span class='fu'>get_raw_lichess</span>(<span class='no'>player_names</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>result_column</th>
-      <td><p>A character vector in the extracted data frame called 'Result'</p></td>
-    </tr>
-    <tr>
-      <th>white</th>
-      <td><p>A character vector in the extracted data frame called 'White' for the player on white</p></td>
-    </tr>
-    <tr>
-      <th>black</th>
-      <td><p>A character vector in the extracted data frame called 'Black' for the player on black</p></td>
+      <th>player_names</th>
+      <td><p>A vector of a valid unsername or usernames from chess.com</p></td>
     </tr>
     </table>
 
-    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
-
-    <p>A character vector of the game ending for each game</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='kw'>if</span> (<span class='fl'>FALSE</span>) {
-<span class='fu'>get_winner</span>(<span class='no'>df</span>$<span class='no'>Result</span>, <span class='no'>df</span>$<span class='no'>White</span>, <span class='no'>df</span>$<span class='no'>Black</span>)
+<span class='no'>georges_data</span> <span class='kw'>&lt;-</span> <span class='fu'>get_games_lichess</span>(<span class='kw'>player_names</span> <span class='kw'>=</span> <span class='st'>"Georges"</span>)
 }</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

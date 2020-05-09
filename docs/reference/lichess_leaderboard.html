@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Return the game winner — get_winner • chessR</title>
+<title>Get top players on Lichess leaderboards — lichess_leaderboard • chessR</title>
 
 
 <!-- jquery -->
@@ -39,8 +39,10 @@
 
 
 
-<meta property="og:title" content="Return the game winner — get_winner" />
-<meta property="og:description" content="This function returns a character vector of the usernames of the game winners" />
+<meta property="og:title" content="Get top players on Lichess leaderboards — lichess_leaderboard" />
+<meta property="og:description" content="This function takes in two parameters; how many players you want
+returned (max 200) and the speed variant. The result is a data
+frame for each game type" />
 
 
 
@@ -133,41 +135,45 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Return the game winner</h1>
-    <small class="dont-index">Source: <a href='https://github.com/JaseZiv/chessR/blob/master/R/analysis_functions.R'><code>R/analysis_functions.R</code></a></small>
-    <div class="hidden name"><code>get_winner.Rd</code></div>
+    <h1>Get top players on Lichess leaderboards</h1>
+    <small class="dont-index">Source: <a href='https://github.com/JaseZiv/chessR/blob/master/R/leaderboards.R'><code>R/leaderboards.R</code></a></small>
+    <div class="hidden name"><code>lichess_leaderboard.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>This function returns a character vector of the usernames of the game winners</p>
+    <p>This function takes in two parameters; how many players you want
+returned (max 200) and the speed variant. The result is a data
+frame for each game type</p>
     </div>
 
-    <pre class="usage"><span class='fu'>get_winner</span>(<span class='no'>result_column</span>, <span class='no'>white</span>, <span class='no'>black</span>)</pre>
+    <pre class="usage"><span class='fu'>lichess_leaderboard</span>(<span class='no'>top_n_players</span>, <span class='no'>speed_variant</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>result_column</th>
-      <td><p>A character vector in the extracted data frame called 'Result'</p></td>
+      <th>top_n_players</th>
+      <td><p>The number of players (up to 200) you want returned</p></td>
     </tr>
     <tr>
-      <th>white</th>
-      <td><p>A character vector in the extracted data frame called 'White' for the player on white</p></td>
-    </tr>
-    <tr>
-      <th>black</th>
-      <td><p>A character vector in the extracted data frame called 'Black' for the player on black</p></td>
+      <th>speed_variant</th>
+      <td><p>A valid lichess speed variant to return the leaderboard for</p></td>
     </tr>
     </table>
 
-    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
+    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
-    <p>A character vector of the game ending for each game</p>
+    <p>The leaderboard speed variant options include:</p>
+<p><em>"ultraBullet"</em>, <em>"bullet</em>", <em>"blitz"</em>,
+<em>"rapid"</em>, <em>"classical"</em>, <em>"chess960"</em>,
+<em>"crazyhouse"</em>, <em>"antichess" </em>, <em>"atomic"</em>,
+<em>"horde"</em>, <em>"kingOfTheHill"</em>, <em>"racingKings"</em>,
+<em>"threeCheck"</em></p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='kw'>if</span> (<span class='fl'>FALSE</span>) {
-<span class='fu'>get_winner</span>(<span class='no'>df</span>$<span class='no'>Result</span>, <span class='no'>df</span>$<span class='no'>White</span>, <span class='no'>df</span>$<span class='no'>Black</span>)
+<span class='no'>top10_blitz</span> <span class='kw'>&lt;-</span> <span class='fu'>lichess_leaderboard</span>(<span class='kw'>top_n_players</span> <span class='kw'>=</span> <span class='fl'>10</span>, <span class='kw'>speed_variant</span> <span class='kw'>=</span> <span class='st'>"blitz"</span>)
+<span class='no'>leaderboards</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>purrr</span><span class='kw ns'>::</span><span class='fu'><a href='https://purrr.tidyverse.org/reference/map2.html'>map2_df</a></span>(<span class='kw'>top_n_players</span> <span class='kw'>=</span> <span class='fl'>10</span>, <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"ultraBullet"</span>, <span class='st'>"bullet"</span>), <span class='no'>lichess_leaderboard</span>)
 }</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

@@ -1,7 +1,7 @@
 Package: chessR
 Type: Package
 Title: A Package To Extract and Analyse chess.com Data
-Version: 1.1.0
+Version: 1.2.0
 Authors@R: person("Jason Zivkovic", email = "jase.ziv83@gmail.com",
                   role = c("aut", "cre"))
 URL: https://jaseziv.github.io/chessR/, https://github.com/JaseZiv/chessR
@@ -18,10 +18,12 @@ Imports:
     stringr,
     lubridate,
     magrittr,
-    scales
+    scales,
+    xml2,
+    rvest,
+    curl
 RoxygenNote: 7.0.0
 Suggests: knitr,
     rmarkdown,
-    ggplot2,
-    curl
+    ggplot2
 VignetteBuilder: knitr

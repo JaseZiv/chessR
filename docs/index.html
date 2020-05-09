@@ -37,7 +37,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="index.html">chessR</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.1.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.2.0</span>
       </span>
     </div>
 
@@ -95,13 +95,17 @@
 <div id="overview" class="section level2">
 <h2 class="hasAnchor">
 <a href="#overview" class="anchor"></a>Overview</h2>
-<p>This package is designed to allow users to extract their game data from the popular online chess platform <a href="https://www.chess.com/">chess.com</a>.</p>
-<p>The website offers a very convenient set of APIs to be able to access and documentation to these can be found <a href="https://www.chess.com/news/view/published-data-api">here</a>.</p>
+<p>This package is designed to allow users to extract game data from popular online chess platforms. The platforms currently supported in this package include:</p>
+<ul>
+<li><a href="https://www.chess.com/">chess.com</a></li>
+<li><a href="https://lichess.org/">Lichess</a></li>
+</ul>
+<p>These websites offer a very convenient set of APIs to be able to access data and documentation to these can be found <a href="https://www.chess.com/news/view/published-data-api">here for chess.com</a> and <a href="https://lichess.org/api">here for Lichess</a>.</p>
 </div>
 <div id="installation" class="section level2">
 <h2 class="hasAnchor">
 <a href="#installation" class="anchor"></a>Installation</h2>
-<p>You can install the chessR package from github with:</p>
+<p>You can install the <code>chessR</code> package from github with:</p>
 <div class="sourceCode" id="cb1"><pre class="r"><span class="co"># install.packages("devtools")</span>
 <span class="kw pkg">devtools</span><span class="kw ns">::</span><span class="fu"><a href="https://rdrr.io/pkg/devtools/man/remote-reexports.html">install_github</a></span>(<span class="st">"JaseZiv/chessR"</span>)</pre></div>
 </div>
@@ -112,26 +116,54 @@
 <div id="data-extraction" class="section level3">
 <h3 class="hasAnchor">
 <a href="#data-extraction" class="anchor"></a>Data Extraction</h3>
-<p>The functions detailed below relate to extracting data from chess.com</p>
-<p><strong>Raw Game Data</strong></p>
-<p>The <code><a href="reference/get_raw_game_data.html">get_raw_game_data()</a></code> function can take either a single, or multiple usernames. It will output a data frame with all the games played by that user.</p>
-<div class="sourceCode" id="cb2"><pre class="r"><span class="co"># install.packages("devtools")</span>
-<span class="no">raw_chess</span> <span class="kw">&lt;-</span> <span class="fu"><a href="reference/get_raw_chessdotcom.html">get_raw_chessdotcom</a></span>(<span class="st">"JaseZiv"</span>)</pre></div>
-<p><strong>Analysis Data</strong></p>
+<p>The functions detailed below relate to extracting data from the chess gaming sites currently supported in this package.</p>
+<div id="raw-game-data" class="section level4">
+<h4 class="hasAnchor">
+<a href="#raw-game-data" class="anchor"></a>Raw Game Data</h4>
+<p>The game extraction functions can take a vector of either single or multiple usernames. It will output a data frame with all the games played by that user.</p>
+<p>The functions are below.</p>
+<p><strong>Note:</strong> These functions query an API, which is rate limited. The limiting rates for chess.com are unknown. For Lichess, the limit is throttled to 15 games per second. Queries could therefore take a few minutes if you’re querying a lot of games.</p>
+<div class="sourceCode" id="cb2"><pre class="r"><span class="co"># function to extract chess.com game data</span>
+<span class="no">chessdotcom_game_data</span> <span class="kw">&lt;-</span> <span class="fu"><a href="reference/get_raw_chessdotcom.html">get_raw_chessdotcom</a></span>(<span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"JaseZiv"</span>, <span class="st">"Smudgy1"</span>))
+
+<span class="co"># function to extract lichess game data</span>
+<span class="no">lichess_game_data</span> <span class="kw">&lt;-</span> <span class="fu"><a href="reference/get_raw_lichess.html">get_raw_lichess</a></span>(<span class="st">"Georges"</span>)</pre></div>
+</div>
+<div id="analysis-data" class="section level4">
+<h4 class="hasAnchor">
+<a href="#analysis-data" class="anchor"></a>Analysis Data</h4>
 <p>The following function will extract the same data that the <code><a href="reference/get_raw_chessdotcom.html">get_raw_chessdotcom()</a></code> function will, however this function will also include additional columns to make analysing data easier.</p>
 <p>The function can be used either on a single player, or a character vector of multiple players.</p>
+<p><strong>Note:</strong> This is only available for chess.com extracts</p>
 <div class="sourceCode" id="cb3"><pre class="r"><span class="no">chess_analysis_single</span> <span class="kw">&lt;-</span> <span class="fu"><a href="reference/get_game_data.html">get_game_data</a></span>(<span class="st">"JaseZiv"</span>)
 
 <span class="no">chess_analysis_multiple</span> <span class="kw">&lt;-</span> <span class="fu"><a href="reference/get_game_data.html">get_game_data</a></span>(<span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"JaseZiv"</span>, <span class="st">"elroch"</span>))</pre></div>
-<p><strong>Get Top Players’ usernames</strong></p>
-<p>The below function allows the user to extract the top 50 leaders on the chess.com leaderboards for a number of different game types.</p>
-<p>The game types include:</p>
+</div>
+</div>
+<div id="leaderboards" class="section level3">
+<h3 class="hasAnchor">
+<a href="#leaderboards" class="anchor"></a>Leaderboards</h3>
+<p>The leaderboards of each game platform can be extracted for a number of different games available on each platform. Each are discussed below:</p>
+<div id="chesscom" class="section level4">
+<h4 class="hasAnchor">
+<a href="#chesscom" class="anchor"></a>Chess.com</h4>
+<p>The below function allows the user to extract the top 50 players of each game type specified. Game types available include:</p>
 <blockquote>
-<p><em>“daily”, “daily960”, “live_rapid”, “live_blitz”, “live_bullet”, “live_bughouse”, “live_blitz960”, “live_threecheck”, “live_crazyhouse”, “live_kingofthehill”, “lessons” and “tactics”</em>.</p>
+<p><em>“daily”,“daily960”, “live_rapid”, “live_blitz”, “live_bullet”, “live_bughouse”, “live_blitz960”, “live_threecheck”, “live_crazyhouse”, “live_kingofthehill”, “lessons”, “tactics”</em></p>
 </blockquote>
-<p>The usernames that are contained in the results can then be passed to <code><a href="reference/get_raw_chessdotcom.html">get_raw_chessdotcom()</a></code> outlined above.</p>
-<div class="sourceCode" id="cb4"><pre class="r"><span class="no">daily_leaders</span> <span class="kw">&lt;-</span> <span class="fu">chessdotcom_leaderboard</span>(<span class="kw">game_type</span> <span class="kw">=</span> <span class="st">"daily"</span>)</pre></div>
+<p>The usernames that are contained in the results can then be passed to <code>get_raw_chessdotcom</code> outlined above.</p>
+<div class="sourceCode" id="cb4"><pre class="r"><span class="no">chessdotcom_leaders</span> <span class="kw">&lt;-</span> <span class="fu"><a href="reference/get_top50_leaderboard.html">get_top50_leaderboard</a></span>(<span class="kw">game_type</span> <span class="kw">=</span> <span class="st">"daily"</span>)</pre></div>
+</div>
+<div id="lichess" class="section level4">
+<h4 class="hasAnchor">
+<a href="#lichess" class="anchor"></a>Lichess</h4>
+<p>The <code>get_lichess_leaderboard()</code> function takes in two parameters; how many players you want returned (with a max of 200 being returned) and the speed variant. Speed variants include;</p>
+<blockquote>
+<p><em>“ultraBullet”, “bullet”, “blitz”, “rapid”, “classical”, “chess960”, “crazyhouse”, “antichess”, “atomic”, “horde”, “kingOfTheHill”, “racingKings”, “threeCheck”</em></p>
+</blockquote>
+<div class="sourceCode" id="cb5"><pre class="r">lichess_leaders &lt;- (how_many_players = 10, speed_variant = "blitz")</pre></div>
 <p>For a detailed guide to using the package and the functions for analysis, see the package <a href="https://jaseziv.github.io/chessR/articles/using_chessR_package.html">vignette</a></p>
+</div>
 </div>
 </div>
 </div>

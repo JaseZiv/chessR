@@ -1,3 +1,8 @@
+# chessR 1.2.0 (2020-05-10)
+
+* Lichess online platform extractions now integrated, including `get_raw_lichess` for games and `lichess_leaderboard` for the top leaders [#5](https://github.com/JaseZiv/chessR/issues/5)
+
+
 # chessR 1.1.0 (2020-05-06)
 
 * New function created (`get_raw_chessdotcom`) deprecate `get_raw_game_data` [#6](https://github.com/JaseZiv/chessR/issues/6)

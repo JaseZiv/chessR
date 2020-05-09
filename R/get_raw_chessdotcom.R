@@ -68,6 +68,9 @@ get_each_player_chessdotcom <- function(username) {
     colnames(df) <- tab_names
     # remove the row names
     rownames(df) <- c()
+    # need to clean up date variables
+    df$Date <-  gsub("\\.", "-", df$Date)
+    df$EndDate <- gsub("\\.", "-", df$EndDate)
     return(df)
   }
   # convert the lists to data frames

@@ -19,9 +19,19 @@ knitr::opts_chunk$set(
 ```
 
 
+## Overview
+
+This package is designed to allow users to extract game data from popular online chess platforms. The platforms currently supported in this package include:
+
+* [chess.com](https://www.chess.com/)
+* [Lichess](https://lichess.org/)
+
+These websites offer a very convenient set of APIs to be able to access data and documentation to these can be found [here for chess.com](https://www.chess.com/news/view/published-data-api) and [here for Lichess](https://lichess.org/api).
+
+
 ## Installation
 
-You can install the chessR package from github with:
+You can install the `chessR` package from github with:
 
 ```{r gh-installation}
 # devtools::install_github("JaseZiv/chessR")
@@ -43,19 +53,29 @@ The functions available in this package are designed to enable the extraction of
 
 ### Data Extraction
 
-The functions detailed below relate to extracting data from chess.com
+The functions detailed below relate to extracting data from the chess gaming sites currently supported in this package.
+
 
 #### Raw Game Data
 
-The `get_raw_chessdotcom` function can take either a single, or multiple usernames. It will output a data frame with all the games played by that user. The function replaces `get_raw_game_data` from version 1.1.0
+The game extraction functions can take a vector of either single or multiple usernames. It will output a data frame with all the games played by that user.
+
+The functions are below.
+
+**Note:**
+These functions query an API, which is rate limited. The limiting rates for chess.com are unknown. For Lichess, the limit is throttled to 15 games per second. Queries could therefore take a few minutes if you're querying a lot of games.
 
 
-```{r get_raw}
-raw_chessdotcom <- get_raw_chessdotcom("JaseZiv")
+```{r get_raw_chessdotcom}
+# function to extract chess.com game data
+chessdotcom_game_data <- get_raw_chessdotcom("JaseZiv")
+glimpse(chessdotcom_game_data)
 ```
 
-```{r inspect_raw}
-glimpse(raw_chessdotcom)
+```{r inspect_raw_licjess}
+# function to extract lichess game data
+lichess_game_data <- get_raw_lichess("Georges")
+glimpse(lichess_game_data)
 ```
 
 #### Analysis Data
@@ -63,6 +83,10 @@ glimpse(raw_chessdotcom)
 The following function will extract the same data that the `get_raw_chessdotcom()` function will, however this function will also include additional columns to make analysing data easier.
 
 The function can be used either on a single player, or a character vector of multiple players.
+
+**Note:**
+This is only available for chess.com extracts
+
 
 ```{r get_analysis}
 chess_analysis_single <- get_game_data("JaseZiv")
@@ -73,27 +97,40 @@ glimpse(chess_analysis_single)
 ```
 
 
-### Extract Leaderboards
+### Leaderboards
 
-The below function allows the user to extract the top 50 leaders on the chess.com leaderboards for a number of different game types.
+The leaderboards of each game platform can be extracted for a number of different games available on each platform. Each are discussed below:
 
-The game types include:
+#### Chess.com
 
-> *"daily", "daily960", "live_rapid", "live_blitz", "live_bullet", "live_bughouse", "live_blitz960", "live_threecheck", "live_crazyhouse", "live_kingofthehill", "lessons" and "tactics"*.
+The below function allows the user to extract the top 50 players of each game type specified. Game types available include:
 
-The usernames that are contained in the results can then be passed to `get_raw_chessdotcom()` outlined above.
+> *"daily","daily960", "live_rapid", "live_blitz", "live_bullet", "live_bughouse", "live_blitz960", "live_threecheck", "live_crazyhouse", "live_kingofthehill", "lessons", "tactics"*
 
-```{r get_leaders}
+The usernames that are contained in the results can then be passed to `get_raw_chessdotcom` outlined above.
+
+```{r get_chessdotcom_leaders}
 daily_leaders <- chessdotcom_leaderboard(game_type = "daily")
-```
-
-```{r inspect_leaders}
 glimpse(daily_leaders)
 ```
 
+
+#### Lichess
+
+The `get_lichess_leaderboard()` function takes in two parameters; how many players you want returned (with a max of 200 being returned) and the speed variant. Speed variants include;
+
+> *"ultraBullet", "bullet", "blitz", "rapid", "classical", "chess960", "crazyhouse", "antichess", "atomic", "horde", "kingOfTheHill", "racingKings", "threeCheck"*
+
+```{r get_lichess_leaders}
+lichess_leaders <- lichess_leaderboard(top_n_players = 10, speed_variant = "blitz")
+glimpse(lichess_leaders)
+```
+
+
+
 ### Analysis Functions
 
-This section will detail some of the function to use for analysis and extracting information from the raw games data extracts.
+This section will detail some of the functions to use for extracting information from the raw games data extracts for analysis.
 
 #### Number of moves in the game
 
@@ -103,10 +140,10 @@ It will parse through the *Moves* column in the extracted data frame and return 
 
 ```{r num_moves}
 # function to extract the number of moves in each game
-raw_chessdotcom$nMoves <- return_num_moves(moves_string = raw_chessdotcom$Moves)
+chessdotcom_game_data$nMoves <- return_num_moves(moves_string = chessdotcom_game_data$Moves)
 
 # inspect output
-head(raw_chessdotcom[, c("Moves", "nMoves")])
+head(chessdotcom_game_data[, c("Moves", "nMoves")])
 ```
 
 #### How the game ended
@@ -115,12 +152,12 @@ The chess.com data extract doesn't have how the game ended on its own. To get th
 
 ```{r game_ending}
 # function to extract the ending of chess.com data
-raw_chessdotcom$Ending <- get_game_ending(termination_string = raw_chessdotcom$Termination, 
-                                          white = raw_chessdotcom$White, 
-                                          black = raw_chessdotcom$Black)
+chessdotcom_game_data$Ending <- get_game_ending(termination_string = chessdotcom_game_data$Termination, 
+                                          white = chessdotcom_game_data$White, 
+                                          black = chessdotcom_game_data$Black)
 
 # inspect output
-head(raw_chessdotcom[, c("Termination", "White", "Black", "Ending")])
+head(chessdotcom_game_data[, c("Termination", "White", "Black", "Ending")])
 ```
 
 
@@ -130,26 +167,26 @@ Given two players, one playing on white and the other on black, we want to be ab
 
 ```{r get_winner}
 # function to extract the winner of each game
-raw_chessdotcom$Winner <- get_winner(result_column = raw_chessdotcom$Result, 
-                                     white = raw_chessdotcom$White, 
-                                     black = raw_chessdotcom$Black)
+chessdotcom_game_data$Winner <- get_winner(result_column = chessdotcom_game_data$Result, 
+                                     white = chessdotcom_game_data$White, 
+                                     black = chessdotcom_game_data$Black)
 
 # inspect output
-head(raw_chessdotcom[, c("White", "Black", "Result", "Winner")])
+head(chessdotcom_game_data[, c("White", "Black", "Result", "Winner")])
 ```
 
 
 ## Bonus: Basic EDA Analysing Games
 
-This section will perform some exploratory data analysis on the analysis data set provided by `get_game_data()`. It is by no means an exhaustive list of topics to analyse, rather, it is designed to give the user a few ideas of what can be done with the analysis data provided.
+This section will perform some exploratory data analysis on the data extracted by `get_raw_chessdotcom()`, and then having used some of the analysis functions explained above. It is by no means an exhaustive list of topics to analyse, rather, it is designed to give the user a few ideas of what can be done with the analysis data provided.
 
 ```{r popular_times}
-chess_analysis_single %>% 
-  count(time_class) %>% 
-  ggplot(aes(x= reorder(time_class,n), y= n)) +
+chessdotcom_game_data %>% 
+  count(TimeClass) %>% 
+  ggplot(aes(x= reorder(TimeClass,n), y= n)) +
   geom_col(fill = "steelblue", colour = "grey40", alpha = 0.7) +
   labs(x= "Game Style", y= "Number of Games") +
-  ggtitle("WHICH TIME CLASSES ARE PLAYED MOST") +
+  ggtitle("WHICH TIME CLASSES ARE PLAYED MOST BY USER") +
   coord_flip() +
   theme_minimal() +
   theme(panel.grid.major.y = element_blank())
@@ -157,8 +194,9 @@ chess_analysis_single %>%
 
 
 ```{r user_result}
-chess_analysis_single %>%
+chessdotcom_game_data %>%
   mutate(MonthEnd = paste(year(EndDate), str_pad(lubridate::month(ymd(EndDate)), 2, side = "left", pad = "0"), sep = "-")) %>% 
+  mutate(UserResult = ifelse(Winner == Username, "Win", ifelse(Winner == "Draw", "Draw", "Loss"))) %>% 
   group_by(MonthEnd, UserResult) %>% 
   summarise(n = n()) %>% 
   mutate(WinPercentage = n / sum(n)) %>% 
@@ -175,27 +213,30 @@ chess_analysis_single %>%
 
 
 ```{r monthly_elo, fig.width=9}
-chess_analysis_single %>%
-  filter(time_class %in% c("blitz", "daily")) %>% 
+chessdotcom_game_data %>%
+  filter(TimeClass %in% c("blitz", "daily")) %>% 
+  mutate(UserELO = as.numeric(ifelse(Username == White, WhiteElo, BlackElo))) %>% 
   mutate(MonthEnd = paste(year(EndDate), str_pad(lubridate::month(ymd(EndDate)), 2, side = "left", pad = "0"), sep = "-")) %>% 
-  group_by(MonthEnd, time_class) %>% 
+  group_by(MonthEnd, TimeClass) %>% 
   summarise(AverageELO = mean(UserELO, na.rm = T)) %>% 
   ggplot(aes(x= MonthEnd, y= AverageELO, group=1)) +
   geom_line(colour= "steelblue", size=1) +
   labs(x= "Month Game Ended", y= "Average ELO") +
   ggtitle("MONTHLY AVERAGE ELO RATING") +
-  facet_wrap(~ time_class, scales = "free_y", ncol = 1) +
+  facet_wrap(~ TimeClass, scales = "free_y", ncol = 1) +
   theme_minimal()
 ```
 
 
 ```{r opponet_elo_results}
-chess_analysis_single %>% 
-  filter(time_class %in% c("blitz", "daily")) %>% 
+chessdotcom_game_data %>% 
+  mutate(OpponentELO = as.numeric(ifelse(Username == White, BlackElo, WhiteElo)),
+         UserResult = ifelse(Winner == Username, "Win", ifelse(Winner == "Draw", "Draw", "Loss"))) %>% 
+  filter(TimeClass %in% c("blitz", "daily")) %>% 
   ggplot(aes(x= OpponentELO, fill = UserResult)) +
   geom_density(alpha = 0.3) +
   ggtitle("HOW DO WE FARE AGAINST DIFFERENT ELOs?") +
-  facet_wrap(~ time_class, scales = "free", ncol = 1) +
+  facet_wrap(~ TimeClass, scales = "free", ncol = 1) +
   theme_minimal()
 
 ```
