@@ -2,7 +2,19 @@
 output: github_document
 ---
 
-# chessR
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = "man/figures/README-",
+  out.width = "100%"
+)
+options(tibble.print_min = 5, tibble.print_max = 5)
+```
+
+# chessR <a href='https:/jaseziv.github.io/chessR'><img src='man/figures/logo.png' align="right" height="219.5" /></a>
 
 <!-- badges: start -->
 [![Travis build status](https://travis-ci.org/JaseZiv/chessR.svg?branch=master)](https://travis-ci.org/JaseZiv/chessR)

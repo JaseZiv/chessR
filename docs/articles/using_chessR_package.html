@@ -6,6 +6,12 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Using the chessR Package • chessR</title>
+<!-- favicons --><link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="../favicon-32x32.png">
+<link rel="apple-touch-icon" type="image/png" sizes="180x180" href="../apple-touch-icon.png">
+<link rel="apple-touch-icon" type="image/png" sizes="120x120" href="../apple-touch-icon-120x120.png">
+<link rel="apple-touch-icon" type="image/png" sizes="76x76" href="../apple-touch-icon-76x76.png">
+<link rel="apple-touch-icon" type="image/png" sizes="60x60" href="../apple-touch-icon-60x60.png">
 <!-- jquery --><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script><!-- Bootstrap --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha256-bZLfwXAP04zRMK2BjiO8iu9pf4FbLqX6zitd+tIvLhE=" crossorigin="anonymous">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha256-nuL8/2cJ5NDSSwnKD8VqreErSWHtnEP9E7AySL+1ev4=" crossorigin="anonymous"></script><!-- bootstrap-toc --><link rel="stylesheet" href="../bootstrap-toc.css">
 <script src="../bootstrap-toc.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous">
@@ -13,6 +19,7 @@
 <!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- pkgdown --><link href="../pkgdown.css" rel="stylesheet">
 <script src="../pkgdown.js"></script><meta property="og:title" content="Using the chessR Package">
 <meta property="og:description" content="chessR">
+<meta property="og:image" content="https://jaseziv.github.io/chessR/logo.png">
 <!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script><!--[if lt IE 9]>
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
@@ -91,7 +98,7 @@
       <h1 data-toc-skip>Using the chessR Package</h1>
                         <h4 class="author">Jason Zivkovic</h4>
             
-            <h4 class="date">2020-05-09</h4>
+            <h4 class="date">2020-05-12</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/JaseZiv/chessR/blob/master/vignettes/using_chessR_package.Rmd"><code>vignettes/using_chessR_package.Rmd</code></a></small>
       <div class="hidden name"><code>using_chessR_package.Rmd</code></div>
@@ -135,7 +142,7 @@
 <span class="no">chessdotcom_game_data</span> <span class="kw">&lt;-</span> <span class="fu"><a href="../reference/get_raw_chessdotcom.html">get_raw_chessdotcom</a></span>(<span class="st">"JaseZiv"</span>)
 <span class="co">#&gt; Extracting  JaseZiv  Data, please wait</span>
 <span class="fu">glimpse</span>(<span class="no">chessdotcom_game_data</span>)
-<span class="co">#&gt; Observations: 179</span>
+<span class="co">#&gt; Observations: 180</span>
 <span class="co">#&gt; Variables: 25</span>
 <span class="co">#&gt; $ GameRules       &lt;chr&gt; "chess", "chess", "chess", "chess", "chess", "chess",…</span>
 <span class="co">#&gt; $ TimeClass       &lt;chr&gt; "blitz", "blitz", "blitz", "blitz", "blitz", "blitz",…</span>
@@ -198,7 +205,7 @@
 <span class="co">#&gt; Extracting  JaseZiv  Data, please wait</span>
 <span class="co">#&gt; Data extracted</span></pre></body></html></div>
 <div class="sourceCode" id="cb5"><html><body><pre class="r"><span class="fu">glimpse</span>(<span class="no">chess_analysis_single</span>)
-<span class="co">#&gt; Observations: 178</span>
+<span class="co">#&gt; Observations: 179</span>
 <span class="co">#&gt; Variables: 36</span>
 <span class="co">#&gt; $ rules           &lt;chr&gt; "chess", "chess", "chess", "chess", "chess", "chess",…</span>
 <span class="co">#&gt; $ time_class      &lt;chr&gt; "blitz", "blitz", "blitz", "blitz", "blitz", "blitz",…</span>
@@ -254,14 +261,14 @@
 <span class="fu">glimpse</span>(<span class="no">daily_leaders</span>)
 <span class="co">#&gt; Observations: 50</span>
 <span class="co">#&gt; Variables: 13</span>
-<span class="co">#&gt; $ player_id   &lt;int&gt; 7848044, 4147249, 1629533, 10506874, 4767295, 2810922, 21…</span>
+<span class="co">#&gt; $ player_id   &lt;int&gt; 7848044, 4147249, 10506874, 4767295, 2810922, 21510544, 4…</span>
 <span class="co">#&gt; $ url         &lt;chr&gt; "https://www.chess.com/member/francisbegbie", "https://ww…</span>
-<span class="co">#&gt; $ username    &lt;chr&gt; "francisbegbie", "mizant", "mackus", "olomi007", "xquse",…</span>
-<span class="co">#&gt; $ score       &lt;int&gt; 2578, 2557, 2535, 2521, 2517, 2503, 2486, 2483, 2482, 248…</span>
+<span class="co">#&gt; $ username    &lt;chr&gt; "francisbegbie", "mizant", "olomi007", "xquse", "pminear"…</span>
+<span class="co">#&gt; $ score       &lt;int&gt; 2578, 2557, 2521, 2519, 2503, 2486, 2483, 2482, 2481, 246…</span>
 <span class="co">#&gt; $ rank        &lt;int&gt; 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17…</span>
 <span class="co">#&gt; $ country     &lt;chr&gt; "https://api.chess.com/pub/country/XE", "https://api.ches…</span>
-<span class="co">#&gt; $ title       &lt;chr&gt; "FM", "FM", "NM", "GM", NA, "NM", NA, "FM", NA, "NM", "FM…</span>
-<span class="co">#&gt; $ name        &lt;chr&gt; "Andy Mack", "Aleksandar Randjelovic", "Mark Bohannon", "…</span>
+<span class="co">#&gt; $ title       &lt;chr&gt; "FM", "FM", "GM", NA, "NM", NA, "FM", NA, "NM", "FM", "FM…</span>
+<span class="co">#&gt; $ name        &lt;chr&gt; "Andy Mack", "Aleksandar Randjelovic", "Aleksander Mista"…</span>
 <span class="co">#&gt; $ status      &lt;chr&gt; "premium", "premium", "premium", "premium", "premium", "p…</span>
 <span class="co">#&gt; $ avatar      &lt;chr&gt; "https://images.chesscomfiles.com/uploads/v1/user/7848044…</span>
 <span class="co">#&gt; $ trend_score &lt;df[,2]&gt; &lt;data.frame[26 x 2]&gt;</span>
@@ -280,10 +287,10 @@
 <span class="co">#&gt; Observations: 10</span>
 <span class="co">#&gt; Variables: 6</span>
 <span class="co">#&gt; $ Rank         &lt;int&gt; 1, 2, 3, 4, 5, 6, 7, 8, 9, 10</span>
-<span class="co">#&gt; $ Title        &lt;chr&gt; NA, "GM", "GM", NA, "GM", "GM", NA, "GM", NA, "GM"</span>
-<span class="co">#&gt; $ Username     &lt;chr&gt; "HansSchmidt", "Azzaro25", "Rakhmanov_Aleksandr", "Super…</span>
-<span class="co">#&gt; $ Rating       &lt;int&gt; 2892, 2864, 2861, 2859, 2853, 2850, 2848, 2843, 2832, 28…</span>
-<span class="co">#&gt; $ Progress     &lt;int&gt; 14, 39, 13, 39, 37, 2, 10, 14, 20, 8</span>
+<span class="co">#&gt; $ Title        &lt;chr&gt; "GM", "GM", NA, NA, "GM", NA, "GM", NA, "GM", "GM"</span>
+<span class="co">#&gt; $ Username     &lt;chr&gt; "Konevlad", "Azzaro25", "HansSchmidt", "Super_Blacknight…</span>
+<span class="co">#&gt; $ Rating       &lt;int&gt; 2940, 2862, 2860, 2859, 2853, 2847, 2839, 2827, 2824, 28…</span>
+<span class="co">#&gt; $ Progress     &lt;int&gt; 1, 20, 22, 39, 37, 3, 24, 31, 12, 8</span>
 <span class="co">#&gt; $ SpeedVariant &lt;chr&gt; "blitz", "blitz", "blitz", "blitz", "blitz", "blitz", "b…</span></pre></body></html></div>
 </div>
 </div>
