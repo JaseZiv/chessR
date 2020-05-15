@@ -98,7 +98,7 @@
       <h1 data-toc-skip>Using the chessR Package</h1>
                         <h4 class="author">Jason Zivkovic</h4>
             
-            <h4 class="date">2020-05-12</h4>
+            <h4 class="date">2020-05-15</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/JaseZiv/chessR/blob/master/vignettes/using_chessR_package.Rmd"><code>vignettes/using_chessR_package.Rmd</code></a></small>
       <div class="hidden name"><code>using_chessR_package.Rmd</code></div>
@@ -142,7 +142,7 @@
 <span class="no">chessdotcom_game_data</span> <span class="kw">&lt;-</span> <span class="fu"><a href="../reference/get_raw_chessdotcom.html">get_raw_chessdotcom</a></span>(<span class="st">"JaseZiv"</span>)
 <span class="co">#&gt; Extracting  JaseZiv  Data, please wait</span>
 <span class="fu">glimpse</span>(<span class="no">chessdotcom_game_data</span>)
-<span class="co">#&gt; Observations: 180</span>
+<span class="co">#&gt; Observations: 181</span>
 <span class="co">#&gt; Variables: 25</span>
 <span class="co">#&gt; $ GameRules       &lt;chr&gt; "chess", "chess", "chess", "chess", "chess", "chess",…</span>
 <span class="co">#&gt; $ TimeClass       &lt;chr&gt; "blitz", "blitz", "blitz", "blitz", "blitz", "blitz",…</span>
@@ -174,7 +174,7 @@
 <span class="co">#&gt; Extracting  Georges  games. Please wait</span>
 <span class="fu">glimpse</span>(<span class="no">lichess_game_data</span>)
 <span class="co">#&gt; Observations: 6</span>
-<span class="co">#&gt; Variables: 19</span>
+<span class="co">#&gt; Variables: 20</span>
 <span class="co">#&gt; $ Event           &lt;chr&gt; "Casual Rapid game", "Rated Blitz game", "Rated Rapid…</span>
 <span class="co">#&gt; $ Site            &lt;chr&gt; "https://lichess.org/lmudvufi", "https://lichess.org/…</span>
 <span class="co">#&gt; $ Date            &lt;chr&gt; "2013.07.13", "2013.07.13", "2013.07.13", "2013.07.13…</span>
@@ -189,6 +189,7 @@
 <span class="co">#&gt; $ Variant         &lt;chr&gt; "Standard", "Standard", "Standard", "Standard", "Stan…</span>
 <span class="co">#&gt; $ TimeControl     &lt;chr&gt; "900+1", "180+0", "600+1", "300+2", "300+2", "1800+0"</span>
 <span class="co">#&gt; $ ECO             &lt;chr&gt; "B12", "C01", "B07", "D00", "C40", "B20"</span>
+<span class="co">#&gt; $ Opening         &lt;chr&gt; "Caro-Kann Defense", "French Defense: Exchange Variat…</span>
 <span class="co">#&gt; $ Termination     &lt;chr&gt; "Time forfeit", "Time forfeit", "Time forfeit", "Norm…</span>
 <span class="co">#&gt; $ Moves           &lt;chr&gt; "1. e4 c6 2. d4 g5 3. Bxg5 h6 4. Bf4 Bg7 5. Nf3 Nf6 6…</span>
 <span class="co">#&gt; $ WhiteRatingDiff &lt;chr&gt; NA, "14", "7", "-6", "306", "-5"</span>
@@ -205,7 +206,7 @@
 <span class="co">#&gt; Extracting  JaseZiv  Data, please wait</span>
 <span class="co">#&gt; Data extracted</span></pre></body></html></div>
 <div class="sourceCode" id="cb5"><html><body><pre class="r"><span class="fu">glimpse</span>(<span class="no">chess_analysis_single</span>)
-<span class="co">#&gt; Observations: 179</span>
+<span class="co">#&gt; Observations: 180</span>
 <span class="co">#&gt; Variables: 36</span>
 <span class="co">#&gt; $ rules           &lt;chr&gt; "chess", "chess", "chess", "chess", "chess", "chess",…</span>
 <span class="co">#&gt; $ time_class      &lt;chr&gt; "blitz", "blitz", "blitz", "blitz", "blitz", "blitz",…</span>
@@ -261,19 +262,19 @@
 <span class="fu">glimpse</span>(<span class="no">daily_leaders</span>)
 <span class="co">#&gt; Observations: 50</span>
 <span class="co">#&gt; Variables: 13</span>
-<span class="co">#&gt; $ player_id   &lt;int&gt; 7848044, 4147249, 10506874, 4767295, 2810922, 21510544, 4…</span>
-<span class="co">#&gt; $ url         &lt;chr&gt; "https://www.chess.com/member/francisbegbie", "https://ww…</span>
-<span class="co">#&gt; $ username    &lt;chr&gt; "francisbegbie", "mizant", "olomi007", "xquse", "pminear"…</span>
-<span class="co">#&gt; $ score       &lt;int&gt; 2578, 2557, 2521, 2519, 2503, 2486, 2483, 2482, 2481, 246…</span>
+<span class="co">#&gt; $ player_id   &lt;int&gt; 10402, 7848044, 4147249, 10506874, 4767295, 2810922, 4107…</span>
+<span class="co">#&gt; $ url         &lt;chr&gt; "https://www.chess.com/member/VPA", "https://www.chess.co…</span>
+<span class="co">#&gt; $ username    &lt;chr&gt; "vpa", "francisbegbie", "mizant", "olomi007", "xquse", "p…</span>
+<span class="co">#&gt; $ score       &lt;int&gt; 2629, 2582, 2558, 2521, 2519, 2503, 2483, 2483, 2481, 247…</span>
 <span class="co">#&gt; $ rank        &lt;int&gt; 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17…</span>
-<span class="co">#&gt; $ country     &lt;chr&gt; "https://api.chess.com/pub/country/XE", "https://api.ches…</span>
-<span class="co">#&gt; $ title       &lt;chr&gt; "FM", "FM", "GM", NA, "NM", NA, "FM", NA, "NM", "FM", "FM…</span>
-<span class="co">#&gt; $ name        &lt;chr&gt; "Andy Mack", "Aleksandar Randjelovic", "Aleksander Mista"…</span>
+<span class="co">#&gt; $ country     &lt;chr&gt; "https://api.chess.com/pub/country/IN", "https://api.ches…</span>
+<span class="co">#&gt; $ title       &lt;chr&gt; "FM", "FM", "FM", "GM", NA, "NM", "FM", NA, "NM", NA, "FM…</span>
+<span class="co">#&gt; $ name        &lt;chr&gt; "Viraf Avari", "Andy Mack", "Aleksandar Randjelovic", "Al…</span>
 <span class="co">#&gt; $ status      &lt;chr&gt; "premium", "premium", "premium", "premium", "premium", "p…</span>
-<span class="co">#&gt; $ avatar      &lt;chr&gt; "https://images.chesscomfiles.com/uploads/v1/user/7848044…</span>
+<span class="co">#&gt; $ avatar      &lt;chr&gt; "https://images.chesscomfiles.com/uploads/v1/user/10402.3…</span>
 <span class="co">#&gt; $ trend_score &lt;df[,2]&gt; &lt;data.frame[26 x 2]&gt;</span>
 <span class="co">#&gt; $ trend_rank  &lt;df[,2]&gt; &lt;data.frame[26 x 2]&gt;</span>
-<span class="co">#&gt; $ flair_code  &lt;chr&gt; "diamond_traditional", "diamond_traditional", "diamond_tr…</span></pre></body></html></div>
+<span class="co">#&gt; $ flair_code  &lt;chr&gt; "white_king", "diamond_traditional", "diamond_traditional…</span></pre></body></html></div>
 </div>
 <div id="lichess" class="section level4">
 <h4 class="hasAnchor">
@@ -287,10 +288,10 @@
 <span class="co">#&gt; Observations: 10</span>
 <span class="co">#&gt; Variables: 6</span>
 <span class="co">#&gt; $ Rank         &lt;int&gt; 1, 2, 3, 4, 5, 6, 7, 8, 9, 10</span>
-<span class="co">#&gt; $ Title        &lt;chr&gt; "GM", "GM", NA, NA, "GM", NA, "GM", NA, "GM", "GM"</span>
-<span class="co">#&gt; $ Username     &lt;chr&gt; "Konevlad", "Azzaro25", "HansSchmidt", "Super_Blacknight…</span>
-<span class="co">#&gt; $ Rating       &lt;int&gt; 2940, 2862, 2860, 2859, 2853, 2841, 2839, 2827, 2824, 28…</span>
-<span class="co">#&gt; $ Progress     &lt;int&gt; 1, 20, 22, 39, 37, 2, 24, 31, 12, 8</span>
+<span class="co">#&gt; $ Title        &lt;chr&gt; "GM", NA, "GM", NA, "GM", NA, "GM", NA, "GM", "GM"</span>
+<span class="co">#&gt; $ Username     &lt;chr&gt; "Konevlad", "HansSchmidt", "Azzaro25", "MikeGScarn", "Wa…</span>
+<span class="co">#&gt; $ Rating       &lt;int&gt; 2922, 2900, 2865, 2846, 2839, 2827, 2827, 2824, 2817, 28…</span>
+<span class="co">#&gt; $ Progress     &lt;int&gt; 14, 30, 19, 14, 24, 31, 17, 20, 22, 17</span>
 <span class="co">#&gt; $ SpeedVariant &lt;chr&gt; "blitz", "blitz", "blitz", "blitz", "blitz", "blitz", "b…</span></pre></body></html></div>
 </div>
 </div>

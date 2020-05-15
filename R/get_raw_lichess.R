@@ -24,7 +24,7 @@ get_raw_lichess <- function(player_names) {
 
     # download the tmp file
     tmp <- tempfile()
-    curl::curl_download(paste0("https://lichess.org/api/games/user/", player_name), tmp)
+    curl::curl_download(paste0("https://lichess.org/api/games/user/", player_name, "?evals=true&clocks=true&opening=true"), tmp)
     # read in the file
     read_in_file <- readLines(tmp)
     # cleaning steps of the file
@@ -52,6 +52,8 @@ get_raw_lichess <- function(player_names) {
     colnames(df) <- tab_names
     # remove the row names
     rownames(df) <- c()
+    # because of a wierd handling of moves with the Evals, need to drop a suprious column
+    df$`1.` <- NULL
     # remove the "+" sign and convert RatingDiff columns to numeric
     column_names <- colnames(df) %>% paste0(collapse = ",")
     if(grepl("WhiteRatingDiff", column_names)) {
