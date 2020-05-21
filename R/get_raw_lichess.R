@@ -52,8 +52,10 @@ get_raw_lichess <- function(player_names) {
     colnames(df) <- tab_names
     # remove the row names
     rownames(df) <- c()
-    # because of a wierd handling of moves with the Evals, need to drop a suprious column
-    df$`1.` <- NULL
+    # because of a wierd handling of moves with the Evals, need to drop these suprious columns, that are indicated by a number
+    # in the column name
+    errorneous_columns <- which(grepl("[0-9]", colnames(df)))
+    df[, errorneous_columns] <- NULL
     # remove the "+" sign and convert RatingDiff columns to numeric
     column_names <- colnames(df) %>% paste0(collapse = ",")
     if(grepl("WhiteRatingDiff", column_names)) {
@@ -76,6 +78,8 @@ get_raw_lichess <- function(player_names) {
       purrr::map_df(create_games_df)
     # apply the user's names
     output$Username <- each_player
+    # filter out games where the variant is 'From Position'
+    output <- output %>% dplyr::filter(Variant != "From Position")
 
     final_output <- dplyr::bind_rows(final_output, output)
   }

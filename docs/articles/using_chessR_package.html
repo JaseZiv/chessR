@@ -98,7 +98,7 @@
       <h1 data-toc-skip>Using the chessR Package</h1>
                         <h4 class="author">Jason Zivkovic</h4>
             
-            <h4 class="date">2020-05-15</h4>
+            <h4 class="date">2020-05-21</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/JaseZiv/chessR/blob/master/vignettes/using_chessR_package.Rmd"><code>vignettes/using_chessR_package.Rmd</code></a></small>
       <div class="hidden name"><code>using_chessR_package.Rmd</code></div>
@@ -142,7 +142,7 @@
 <span class="no">chessdotcom_game_data</span> <span class="kw">&lt;-</span> <span class="fu"><a href="../reference/get_raw_chessdotcom.html">get_raw_chessdotcom</a></span>(<span class="st">"JaseZiv"</span>)
 <span class="co">#&gt; Extracting  JaseZiv  Data, please wait</span>
 <span class="fu">glimpse</span>(<span class="no">chessdotcom_game_data</span>)
-<span class="co">#&gt; Observations: 181</span>
+<span class="co">#&gt; Observations: 187</span>
 <span class="co">#&gt; Variables: 25</span>
 <span class="co">#&gt; $ GameRules       &lt;chr&gt; "chess", "chess", "chess", "chess", "chess", "chess",…</span>
 <span class="co">#&gt; $ TimeClass       &lt;chr&gt; "blitz", "blitz", "blitz", "blitz", "blitz", "blitz",…</span>
@@ -206,7 +206,7 @@
 <span class="co">#&gt; Extracting  JaseZiv  Data, please wait</span>
 <span class="co">#&gt; Data extracted</span></pre></body></html></div>
 <div class="sourceCode" id="cb5"><html><body><pre class="r"><span class="fu">glimpse</span>(<span class="no">chess_analysis_single</span>)
-<span class="co">#&gt; Observations: 180</span>
+<span class="co">#&gt; Observations: 186</span>
 <span class="co">#&gt; Variables: 36</span>
 <span class="co">#&gt; $ rules           &lt;chr&gt; "chess", "chess", "chess", "chess", "chess", "chess",…</span>
 <span class="co">#&gt; $ time_class      &lt;chr&gt; "blitz", "blitz", "blitz", "blitz", "blitz", "blitz",…</span>
@@ -265,10 +265,10 @@
 <span class="co">#&gt; $ player_id   &lt;int&gt; 10402, 7848044, 4147249, 10506874, 4767295, 2810922, 4107…</span>
 <span class="co">#&gt; $ url         &lt;chr&gt; "https://www.chess.com/member/VPA", "https://www.chess.co…</span>
 <span class="co">#&gt; $ username    &lt;chr&gt; "vpa", "francisbegbie", "mizant", "olomi007", "xquse", "p…</span>
-<span class="co">#&gt; $ score       &lt;int&gt; 2629, 2582, 2558, 2521, 2519, 2503, 2483, 2483, 2481, 247…</span>
+<span class="co">#&gt; $ score       &lt;int&gt; 2629, 2582, 2558, 2521, 2520, 2503, 2483, 2483, 2477, 247…</span>
 <span class="co">#&gt; $ rank        &lt;int&gt; 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17…</span>
 <span class="co">#&gt; $ country     &lt;chr&gt; "https://api.chess.com/pub/country/IN", "https://api.ches…</span>
-<span class="co">#&gt; $ title       &lt;chr&gt; "FM", "FM", "FM", "GM", NA, "NM", "FM", NA, "NM", NA, "FM…</span>
+<span class="co">#&gt; $ title       &lt;chr&gt; "FM", "FM", "FM", "GM", NA, "NM", "FM", NA, NA, "NM", "FM…</span>
 <span class="co">#&gt; $ name        &lt;chr&gt; "Viraf Avari", "Andy Mack", "Aleksandar Randjelovic", "Al…</span>
 <span class="co">#&gt; $ status      &lt;chr&gt; "premium", "premium", "premium", "premium", "premium", "p…</span>
 <span class="co">#&gt; $ avatar      &lt;chr&gt; "https://images.chesscomfiles.com/uploads/v1/user/10402.3…</span>
@@ -288,10 +288,10 @@
 <span class="co">#&gt; Observations: 10</span>
 <span class="co">#&gt; Variables: 6</span>
 <span class="co">#&gt; $ Rank         &lt;int&gt; 1, 2, 3, 4, 5, 6, 7, 8, 9, 10</span>
-<span class="co">#&gt; $ Title        &lt;chr&gt; "GM", NA, "GM", NA, "GM", NA, "GM", NA, "GM", "GM"</span>
-<span class="co">#&gt; $ Username     &lt;chr&gt; "Konevlad", "HansSchmidt", "Azzaro25", "MikeGScarn", "Wa…</span>
-<span class="co">#&gt; $ Rating       &lt;int&gt; 2922, 2900, 2865, 2846, 2839, 2827, 2827, 2824, 2817, 28…</span>
-<span class="co">#&gt; $ Progress     &lt;int&gt; 14, 30, 19, 14, 24, 31, 17, 20, 22, 17</span>
+<span class="co">#&gt; $ Title        &lt;chr&gt; "GM", "GM", "GM", NA, "GM", NA, "GM", "GM", "GM", NA</span>
+<span class="co">#&gt; $ Username     &lt;chr&gt; "Konevlad", "Liem_Chess", "Zhigalko_Sergei", "MikeGScarn…</span>
+<span class="co">#&gt; $ Rating       &lt;int&gt; 2927, 2902, 2837, 2835, 2822, 2822, 2816, 2799, 2797, 27…</span>
+<span class="co">#&gt; $ Progress     &lt;int&gt; 1, 9, 8, 11, 7, 14, 17, 12, NA, 4</span>
 <span class="co">#&gt; $ SpeedVariant &lt;chr&gt; "blitz", "blitz", "blitz", "blitz", "blitz", "blitz", "b…</span></pre></body></html></div>
 </div>
 </div>
