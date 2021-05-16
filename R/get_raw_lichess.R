@@ -10,10 +10,8 @@
 #' georges_data <- get_games_lichess(player_names = "Georges")
 #' }
 #'
-#' @import magrittr
-#' @import curl
-#' @import dplyr
-#' @import purrr
+#' @importFrom magrittr %>%
+#' @importFrom rlang .data
 #'
 #' @export
 get_raw_lichess <- function(player_names) {
@@ -79,7 +77,7 @@ get_raw_lichess <- function(player_names) {
     # apply the user's names
     output$Username <- each_player
     # filter out games where the variant is 'From Position'
-    output <- output %>% dplyr::filter(Variant != "From Position")
+    output <- output %>% dplyr::filter(.data$Variant != "From Position")
 
     final_output <- dplyr::bind_rows(final_output, output)
   }

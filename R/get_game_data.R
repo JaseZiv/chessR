@@ -7,13 +7,8 @@
 #'
 #' @param username A string value of a player's name
 #'
-#' @import jsonlite
-#' @import magrittr
-#' @import dplyr
-#' @import tidyr
-#' @import stringr
-#' @import lubridate
-#' @import purrr
+#' @importFrom magrittr %>%
+#' @importFrom rlang .data
 
 get_each_player <- function(username) {
 
@@ -168,7 +163,6 @@ get_each_player <- function(username) {
 #'
 #' @param usernames A character vector of player usernames from chess.com
 #'
-#' @import purrr
 #'
 #' @export
 get_game_data <- function(usernames) {

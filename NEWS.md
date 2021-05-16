@@ -1,7 +1,14 @@
+# chessR 1.2.1 (2020-05-10)
+
+* fixed bug in `get_raw_chessdotcom()` to do with game type bughouse [#9](https://github.com/JaseZiv/chessR/issues/9)
+
+***
+
 # chessR 1.2.0 (2020-05-10)
 
 * Lichess online platform extractions now integrated, including `get_raw_lichess` for games and `lichess_leaderboard` for the top leaders [#5](https://github.com/JaseZiv/chessR/issues/5)
 
+***
 
 # chessR 1.1.0 (2020-05-06)
 
@@ -9,6 +16,7 @@
 * Various analysis functions created
 * `get_top50_leaderboard` deprecated, replaced with `chessdotcom_leaderboard()` [#6](https://github.com/JaseZiv/chessR/issues/6)
 
+***
 
 # chessR 1.0.0 (2020-04-27)
 

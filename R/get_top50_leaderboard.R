@@ -12,8 +12,7 @@
 #'
 #' @param game_type A valid chess.com game type to return the leaderboard for
 #'
-#' @import magrittr
-#' @import jsonlite
+#' @importFrom magrittr %>%
 #'
 #' @export
 get_top50_leaderboard <- function(game_type = "daily") {

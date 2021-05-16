@@ -5,10 +5,7 @@
 #'
 #' @param username A valid unsername from chess.com
 #'
-#' @import magrittr
-#' @import purrr
-#' @import jsonlite
-#' @import dplyr
+#' @importFrom magrittr %>%
 #'
 get_each_player_chessdotcom <- function(username) {
   cat("Extracting ", username, " Data, please wait\n")
@@ -57,20 +54,25 @@ get_each_player_chessdotcom <- function(username) {
 
   # function to extract all elements as columns, and all games as row in a data frame
   convert_to_df <- function(exp_list) {
-    pgn_list <- strsplit(exp_list, "\n") %>% unlist()
-    tab_names <- c(gsub( "\\s.*", "", pgn_list[grep("\\[", pgn_list)][-c(length(pgn_list), (length(pgn_list)-1))]) %>% gsub("\\[", "", .), "Moves")
-    tab_values <- gsub(".*[\"]([^\"]+)[\"].*", "\\1", pgn_list[grep("\\[", pgn_list)])
-    if(length(tab_names) != length(tab_values)) {
-      tab_values <- c(tab_values, NA)
+    if(is.na(exp_list)) {
+      df <- data.frame(Event=NA_character_)
+    } else {
+      pgn_list <- strsplit(exp_list, "\n") %>% unlist()
+      tab_names <- c(gsub( "\\s.*", "", pgn_list[grep("\\[", pgn_list)][-c(length(pgn_list), (length(pgn_list)-1))]) %>% gsub("\\[", "", .), "Moves")
+      tab_values <- gsub(".*[\"]([^\"]+)[\"].*", "\\1", pgn_list[grep("\\[", pgn_list)])
+      if(length(tab_names) != length(tab_values)) {
+        tab_values <- c(tab_values, NA)
+      }
+      #create the df of values
+      df <- rbind(tab_values) %>% data.frame(stringsAsFactors = F)
+      colnames(df) <- tab_names
+      # remove the row names
+      rownames(df) <- c()
+      # need to clean up date variables
+      df$Date <-  gsub("\\.", "-", df$Date)
+      df$EndDate <- gsub("\\.", "-", df$EndDate)
     }
-    #create the df of values
-    df <- rbind(tab_values) %>% data.frame(stringsAsFactors = F)
-    colnames(df) <- tab_names
-    # remove the row names
-    rownames(df) <- c()
-    # need to clean up date variables
-    df$Date <-  gsub("\\.", "-", df$Date)
-    df$EndDate <- gsub("\\.", "-", df$EndDate)
+
     return(df)
   }
   # convert the lists to data frames
@@ -89,8 +91,7 @@ get_each_player_chessdotcom <- function(username) {
 #'
 #' @param usernames A vector of a valid unsername or usernames from chess.com
 #'
-#' @import magrittr
-#' @import purrr
+#' @importFrom magrittr %>%
 #'
 #' @export
 get_raw_chessdotcom <- function(usernames) {

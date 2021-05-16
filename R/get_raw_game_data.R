@@ -5,11 +5,8 @@
 #'
 #' @param username A valid unsername from chess.com
 #'
-#' @import magrittr
-#' @import purrr
-#' @import jsonlite
-#' @import dplyr
-#' @import tidyr
+#' @importFrom magrittr %>%
+#' @importFrom rlang .data
 #'
 get_each_raw <- function(username) {
   cat("Extracting ", username, " Data, please wait\n")
@@ -104,8 +101,6 @@ get_each_raw <- function(username) {
 #'
 #' @param usernames A vector of a valid unsername or usernames from chess.com
 #'
-#' @import magrittr
-#' @import purrr
 #'
 #' @export
 get_raw_game_data <- function(usernames) {

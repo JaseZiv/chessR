@@ -12,8 +12,7 @@
 #'
 #' @param game_type A valid chess.com game type to return the leaderboard for
 #'
-#' @import magrittr
-#' @import jsonlite
+#' @importFrom magrittr %>%
 #'
 #' @export
 chessdotcom_leaderboard <- function(game_type = "daily") {
@@ -47,10 +46,8 @@ chessdotcom_leaderboard <- function(game_type = "daily") {
 #' leaderboards <- purrr::map2_df(top_n_players = 10, c("ultraBullet", "bullet"), lichess_leaderboard)
 #' }
 #'
-#' @import magrittr
-#' @import xml2
-#' @import rvest
-#' @import dplyr
+#' @importFrom magrittr %>%
+#' @importFrom rlang .data
 #'
 #' @export
 lichess_leaderboard <- function(top_n_players, speed_variant) {
@@ -67,7 +64,7 @@ lichess_leaderboard <- function(top_n_players, speed_variant) {
 
   # function to extract the player's title from the Player name string
   extract_title <- function(x){
-    if(str_detect(x, "\\s+")){
+    if(stringr::str_detect(x, "\\s+")){
       x <- gsub( "\\s.*", "", x)
     } else{
       x <- NA

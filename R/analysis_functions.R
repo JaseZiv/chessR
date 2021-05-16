@@ -13,7 +13,7 @@
 #' @return
 #' A numeric vector of the number of moves in each game
 #'
-#' @import magrittr
+#' @importFrom magrittr %>%
 #'
 #' @export
 return_num_moves <- function(moves_string) {
@@ -47,8 +47,7 @@ return_num_moves <- function(moves_string) {
 #' @return
 #' A character vector of the game ending for each game
 #'
-#' @import magrittr
-#' @import stringr
+#' @importFrom magrittr %>%
 #'
 #' @export
 get_game_ending <- function(termination_string, white, black) {
