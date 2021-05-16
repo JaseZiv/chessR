@@ -57,7 +57,8 @@ minutes if you’re querying a lot of games.
 
 ``` r
 # function to extract chess.com game data
-chessdotcom_game_data <- get_raw_chessdotcom(c("JaseZiv", "Smudgy1"))
+chessdotcom_game_data_all_months <- get_raw_chessdotcom(usernames = "JaseZiv")
+chessdotcom_hikaru_recent <- get_raw_chessdotcom(usernames = "Hikaru", year_month = c(202104:202105))
 
 # function to extract lichess game data
 lichess_game_data <- get_raw_lichess("Georges")
