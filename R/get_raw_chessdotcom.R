@@ -4,18 +4,32 @@
 #' chess.com data as a data frame
 #'
 #' @param username A valid unsername from chess.com
+#' @param year_month An integer of YYYYMM
 #'
 #' @importFrom magrittr %>%
 #'
-get_each_player_chessdotcom <- function(username) {
-  cat("Extracting ", username, " Data, please wait\n")
+
+get_each_player_chessdotcom <- function(username, year_month) {
+
+  if(is.na(year_month)) {
+    print(glue::glue("Extracting {username} data for all months played, please wait"))
+  } else {
+    print(glue::glue("Extracting {username} data for {year_month}, please wait"))
+  }
 
   # this function gets a list of all year/months the player(s) has played on chess.com
   get_month_urls <- function(){
     jsonlite::fromJSON(paste0("https://api.chess.com/pub/player/", username, "/games/archives"))$archives
   }
   # apply function to get a character vector of game urls
-  month_urls <- get_month_urls()
+  if(is.na(year_month)) {
+    month_urls <- get_month_urls()
+  } else {
+    month_urls <- get_month_urls()
+    year_mon <- stringr::str_sub(month_urls, start=-7) %>% gsub("/", "", .) %>% as.numeric()
+    month_urls <- data.frame(year_mon, month_urls)
+    month_urls <- month_urls %>% dplyr::filter(year_mon %in% year_month) %>% dplyr::pull(month_urls)
+  }
 
   # this function will parse the list of game urls and extract a json blob
   get_games <- function(y) {
@@ -87,13 +101,15 @@ get_each_player_chessdotcom <- function(username) {
 #' Get Raw chess.com Game Data
 #'
 #' This function returns the raw json data for a player's or list of players'
-#' chess.com data as a data frame
+#' chess.com data as a data frame, for all or select months played
 #'
 #' @param usernames A vector of a valid unsername or usernames from chess.com
+#' @param year_month An integer of YYYYMM
 #'
 #' @importFrom magrittr %>%
 #'
 #' @export
-get_raw_chessdotcom <- function(usernames) {
-  df <- usernames %>% purrr::map_df(get_each_player_chessdotcom)
+get_raw_chessdotcom <- function(usernames, year_month=NA_integer_) {
+  df <- purrr::map2_df(usernames, year_month, get_each_player_chessdotcom)
+  return(df)
 }

@@ -60,6 +60,8 @@ The functions detailed below relate to extracting data from the chess gaming sit
 
 The game extraction functions can take a vector of either single or multiple usernames. It will output a data frame with all the games played by that user.
 
+As of version 1.2.2, `get_raw_chessdotcom()` now accepts an additional argument called `year_month`, a six digit integer of YYYMM, which allows users to filter on which month(s) data is required for.
+
 The functions are below.
 
 **Note:**
@@ -68,8 +70,14 @@ These functions query an API, which is rate limited. The limiting rates for ches
 
 ```{r get_raw_chessdotcom}
 # function to extract chess.com game data
-chessdotcom_game_data <- get_raw_chessdotcom("JaseZiv")
-glimpse(chessdotcom_game_data)
+chessdotcom_game_data_all_months <- get_raw_chessdotcom(usernames = "JaseZiv")
+glimpse(chessdotcom_game_data_all_months)
+```
+
+```{r get_raw_chessdotcom_months}
+# function to extract chess.com game data
+chessdotcom_hikaru_recent <- get_raw_chessdotcom(usernames = "Hikaru", year_month = c(202104:202105))
+glimpse(chessdotcom_hikaru_recent)
 ```
 
 ```{r inspect_raw_licjess}
@@ -140,24 +148,24 @@ It will parse through the *Moves* column in the extracted data frame and return 
 
 ```{r num_moves}
 # function to extract the number of moves in each game
-chessdotcom_game_data$nMoves <- return_num_moves(moves_string = chessdotcom_game_data$Moves)
+chessdotcom_game_data_all_months$nMoves <- return_num_moves(moves_string = chessdotcom_game_data_all_months$Moves)
 
 # inspect output
-head(chessdotcom_game_data[, c("Moves", "nMoves")])
+head(chessdotcom_game_data_all_months[, c("Moves", "nMoves")])
 ```
 
 #### How the game ended
 
 The chess.com data extract doesn't have how the game ended on its own. To get the game ending on its own, the `get_game_ending` function can be used.
 
-```{r game_ending}
+```{r game_ending, eval=FALSE}
 # function to extract the ending of chess.com data
-chessdotcom_game_data$Ending <- get_game_ending(termination_string = chessdotcom_game_data$Termination, 
-                                          white = chessdotcom_game_data$White, 
-                                          black = chessdotcom_game_data$Black)
+chessdotcom_game_data_all_months$Ending <- get_game_ending(termination_string = chessdotcom_game_data_all_months$Termination, 
+                                          white = chessdotcom_game_data_all_months$White, 
+                                          black = chessdotcom_game_data_all_months$Black)
 
 # inspect output
-head(chessdotcom_game_data[, c("Termination", "White", "Black", "Ending")])
+head(chessdotcom_game_data_all_months[, c("Termination", "White", "Black", "Ending")])
 ```
 
 
@@ -167,12 +175,12 @@ Given two players, one playing on white and the other on black, we want to be ab
 
 ```{r get_winner}
 # function to extract the winner of each game
-chessdotcom_game_data$Winner <- get_winner(result_column = chessdotcom_game_data$Result, 
-                                     white = chessdotcom_game_data$White, 
-                                     black = chessdotcom_game_data$Black)
+chessdotcom_game_data_all_months$Winner <- get_winner(result_column = chessdotcom_game_data_all_months$Result, 
+                                     white = chessdotcom_game_data_all_months$White, 
+                                     black = chessdotcom_game_data_all_months$Black)
 
 # inspect output
-head(chessdotcom_game_data[, c("White", "Black", "Result", "Winner")])
+head(chessdotcom_game_data_all_months[, c("White", "Black", "Result", "Winner")])
 ```
 
 
@@ -181,7 +189,7 @@ head(chessdotcom_game_data[, c("White", "Black", "Result", "Winner")])
 This section will perform some exploratory data analysis on the data extracted by `get_raw_chessdotcom()`, and then having used some of the analysis functions explained above. It is by no means an exhaustive list of topics to analyse, rather, it is designed to give the user a few ideas of what can be done with the analysis data provided.
 
 ```{r popular_times}
-chessdotcom_game_data %>% 
+chessdotcom_game_data_all_months %>% 
   count(TimeClass) %>% 
   ggplot(aes(x= reorder(TimeClass,n), y= n)) +
   geom_col(fill = "steelblue", colour = "grey40", alpha = 0.7) +
@@ -194,7 +202,7 @@ chessdotcom_game_data %>%
 
 
 ```{r user_result}
-chessdotcom_game_data %>%
+chessdotcom_game_data_all_months %>%
   mutate(MonthEnd = paste(year(EndDate), str_pad(lubridate::month(ymd(EndDate)), 2, side = "left", pad = "0"), sep = "-")) %>% 
   mutate(UserResult = ifelse(Winner == Username, "Win", ifelse(Winner == "Draw", "Draw", "Loss"))) %>% 
   group_by(MonthEnd, UserResult) %>% 
@@ -213,7 +221,7 @@ chessdotcom_game_data %>%
 
 
 ```{r monthly_elo, fig.width=9}
-chessdotcom_game_data %>%
+chessdotcom_game_data_all_months %>%
   filter(TimeClass %in% c("blitz", "daily")) %>% 
   mutate(UserELO = as.numeric(ifelse(Username == White, WhiteElo, BlackElo))) %>% 
   mutate(MonthEnd = paste(year(EndDate), str_pad(lubridate::month(ymd(EndDate)), 2, side = "left", pad = "0"), sep = "-")) %>% 
@@ -229,7 +237,7 @@ chessdotcom_game_data %>%
 
 
 ```{r opponet_elo_results}
-chessdotcom_game_data %>% 
+chessdotcom_game_data_all_months %>% 
   mutate(OpponentELO = as.numeric(ifelse(Username == White, BlackElo, WhiteElo)),
          UserResult = ifelse(Winner == Username, "Win", ifelse(Winner == "Draw", "Draw", "Loss"))) %>% 
   filter(TimeClass %in% c("blitz", "daily")) %>% 

@@ -4,12 +4,14 @@
 \alias{get_raw_chessdotcom}
 \title{Get Raw chess.com Game Data}
 \usage{
-get_raw_chessdotcom(usernames)
+get_raw_chessdotcom(usernames, year_month = NA_integer_)
 }
 \arguments{
 \item{usernames}{A vector of a valid unsername or usernames from chess.com}
+
+\item{year_month}{An integer of YYYYMM}
 }
 \description{
 This function returns the raw json data for a player's or list of players'
-chess.com data as a data frame
+chess.com data as a data frame, for all or select months played
 }

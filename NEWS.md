@@ -1,4 +1,10 @@
-# chessR 1.2.1 (2020-05-10)
+# chessR 1.2.2 (2021-05-16)
+
+* `get_raw_chessdotcom()` now accepts a YYYYMM argument to limit which months to extract game data for [#2](https://github.com/JaseZiv/chessR/issues/2)
+
+***
+
+# chessR 1.2.1 (2021-05-16)
 
 * fixed bug in `get_raw_chessdotcom()` to do with game type bughouse [#9](https://github.com/JaseZiv/chessR/issues/9)
 

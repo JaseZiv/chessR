@@ -4,10 +4,12 @@
 \alias{get_each_player_chessdotcom}
 \title{Get Single Player Raw chess.com Game Data}
 \usage{
-get_each_player_chessdotcom(username)
+get_each_player_chessdotcom(username, year_month)
 }
 \arguments{
 \item{username}{A valid unsername from chess.com}
+
+\item{year_month}{An integer of YYYYMM}
 }
 \description{
 This function returns the raw json data for a player's

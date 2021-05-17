@@ -1,7 +1,7 @@
 Package: chessR
 Type: Package
 Title: A R Package To Extract and Analyse Online Chess Game Data
-Version: 1.2.1
+Version: 1.2.2
 Authors@R: person("Jason Zivkovic", email = "jase.ziv83@gmail.com",
                   role = c("aut", "cre"))
 URL: https://jaseziv.github.io/chessR/, https://github.com/JaseZiv/chessR
@@ -22,7 +22,8 @@ Imports:
     scales,
     xml2,
     rvest,
-    curl
+    curl,
+    glue
 RoxygenNote: 7.1.1
 Suggests: knitr,
     rmarkdown,
