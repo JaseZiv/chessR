@@ -34,9 +34,6 @@
     <loc>https://jaseziv.github.io/chessR/reference/get_each_player_chessdotcom.html</loc>
   </url>
   <url>
-    <loc>https://jaseziv.github.io/chessR/reference/get_each_raw.html</loc>
-  </url>
-  <url>
     <loc>https://jaseziv.github.io/chessR/reference/get_game_data.html</loc>
   </url>
   <url>
@@ -44,9 +41,6 @@
   </url>
   <url>
     <loc>https://jaseziv.github.io/chessR/reference/get_raw_chessdotcom.html</loc>
-  </url>
-  <url>
-    <loc>https://jaseziv.github.io/chessR/reference/get_raw_game_data.html</loc>
   </url>
   <url>
     <loc>https://jaseziv.github.io/chessR/reference/get_raw_lichess.html</loc>
