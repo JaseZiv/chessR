@@ -8,7 +8,7 @@
 [![Version-Number](https://img.shields.io/github/r-package/v/JaseZiv/chessR?label=chessR%20(Dev))](https://github.com/JaseZiv/chessR/)
 [![R build
 status](https://github.com/JaseZiv/chessR/workflows/R-CMD-check/badge.svg)](https://github.com/JaseZiv/chessR/actions)
-[![codecov](https://codecov.io/gh/JaseZiv/chessR/branch/main/graph/badge.svg?token=WGLU5J34VL)](https://app.codecov.io/gh/JaseZiv/chessR)
+[![codecov](https://codecov.io/gh/JaseZiv/chessR/branch/master/graph/badge.svg?token=PE7LBUOWX7)](https://codecov.io/gh/JaseZiv/chessR)
 <!-- badges: end -->
 
 ## Overview

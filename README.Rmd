@@ -20,7 +20,7 @@ options(tibble.print_min = 5, tibble.print_max = 5)
 [![Version-Number](https://img.shields.io/github/r-package/v/JaseZiv/chessR?label=chessR (Dev))](https://github.com/JaseZiv/chessR/)
 [![R build status](https://github.com/JaseZiv/chessR/workflows/R-CMD-check/badge.svg)](https://github.com/JaseZiv/chessR/actions)
 [![codecov](https://codecov.io/gh/JaseZiv/chessR/branch/master/graph/badge.svg?token=PE7LBUOWX7)](https://codecov.io/gh/JaseZiv/chessR)
-!-- badges: end -->
+<!-- badges: end -->
 
 ## Overview
 
