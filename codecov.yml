@@ -1,6 +1,5 @@
 comment: false
 
-comment: false
 language: R
 sudo: false
 cache: packages
