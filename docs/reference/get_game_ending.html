@@ -90,7 +90,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">chessR</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.2.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.2.3</span>
       </span>
     </div>
 
@@ -98,7 +98,7 @@
       <ul class="nav navbar-nav">
         <li>
   <a href="../index.html">
-    <span class="fas fa fas fa-home fa-lg"></span>
+    <span class="fas fa-home fa-lg"></span>
      
   </a>
 </li>
@@ -124,7 +124,7 @@
       <ul class="nav navbar-nav navbar-right">
         <li>
   <a href="https://github.com/JaseZiv/chessR/">
-    <span class="fab fa fab fa-github fa-lg"></span>
+    <span class="fab fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -150,7 +150,7 @@
     <p>This function returns a character vector of how the game ended from chess.dom.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>get_game_ending</span>(<span class='no'>termination_string</span>, <span class='no'>white</span>, <span class='no'>black</span>)</pre>
+    <pre class="usage"><span class='fu'>get_game_ending</span><span class='op'>(</span><span class='va'>termination_string</span>, <span class='va'>white</span>, <span class='va'>black</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -174,9 +174,11 @@
     <p>A character vector of the game ending for each game</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='kw'>if</span> (<span class='fl'>FALSE</span>) {
-<span class='fu'>get_game_ending</span>(<span class='kw'>termination_string</span> <span class='kw'>=</span> <span class='no'>df</span>$<span class='no'>Termination</span>, <span class='no'>df</span>$<span class='no'>White</span>, <span class='no'>df</span>$<span class='no'>Black</span>)
-}</div></pre>
+    <pre class="examples"><div class='input'><span class='kw'>if</span> <span class='op'>(</span><span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>{</span>
+<span class='fu'>get_game_ending</span><span class='op'>(</span>termination_string <span class='op'>=</span> <span class='va'>df</span><span class='op'>$</span><span class='va'>Termination</span>, <span class='va'>df</span><span class='op'>$</span><span class='va'>White</span>, <span class='va'>df</span><span class='op'>$</span><span class='va'>Black</span><span class='op'>)</span>
+<span class='op'>}</span>
+
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
@@ -192,7 +194,7 @@
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

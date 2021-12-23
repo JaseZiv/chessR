@@ -9,17 +9,6 @@
 #' @importFrom magrittr %>%
 #'
 
-#' Get Single Player Raw chess.com Game Data
-#'
-#' This function returns the raw json data for a player's
-#' chess.com data as a data frame
-#'
-#' @param username A valid unsername from chess.com
-#' @param year_month An integer of YYYYMM
-#'
-#' @importFrom magrittr %>%
-#'
-
 get_each_player_chessdotcom <- function(username, year_month) {
 
   if(is.na(year_month)) {

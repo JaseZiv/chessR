@@ -5,8 +5,10 @@
 
 <!-- badges: start -->
 
-[![Travis build
-status](https://travis-ci.org/JaseZiv/chessR.svg?branch=master)](https://travis-ci.org/JaseZiv/chessR)
+[![Version-Number](https://img.shields.io/github/r-package/v/JaseZiv/chessR?label=chessR%20(Dev))](https://github.com/JaseZiv/chessR/)
+[![R build
+status](https://github.com/JaseZiv/chessR/workflows/R-CMD-check/badge.svg)](https://github.com/JaseZiv/chessR/actions)
+[![codecov](https://codecov.io/gh/JaseZiv/chessR/branch/main/graph/badge.svg?token=WGLU5J34VL)](https://app.codecov.io/gh/JaseZiv/chessR)
 <!-- badges: end -->
 
 ## Overview
@@ -15,8 +17,8 @@ This package is designed to allow users to extract game data from
 popular online chess platforms. The platforms currently supported in
 this package include:
 
-  - [chess.com](https://www.chess.com/)
-  - [Lichess](https://lichess.org/)
+-   [chess.com](https://www.chess.com/)
+-   [Lichess](https://lichess.org/)
 
 These websites offer a very convenient set of APIs to be able to access
 data and documentation to these can be found [here for
@@ -91,29 +93,29 @@ different games available on each platform. Each are discussed below:
 The below function allows the user to extract the top 50 players of each
 game type specified. Game types available include:
 
-> *“daily”,“daily960”, “live\_rapid”, “live\_blitz”, “live\_bullet”,
-> “live\_bughouse”, “live\_blitz960”, “live\_threecheck”,
-> “live\_crazyhouse”, “live\_kingofthehill”, “lessons”, “tactics”*
+> *“daily”,“daily960”, “live_rapid”, “live_blitz”, “live_bullet”,
+> “live_bughouse”, “live_blitz960”, “live_threecheck”,
+> “live_crazyhouse”, “live_kingofthehill”, “lessons”, “tactics”*
 
 The usernames that are contained in the results can then be passed to
 `get_raw_chessdotcom` outlined above.
 
 ``` r
-chessdotcom_leaders <- get_top50_leaderboard(game_type = "daily")
+chessdotcom_leaders <- chessdotcom_leaderboard(game_type = "daily")
 ```
 
 #### Lichess
 
-The `get_lichess_leaderboard()` function takes in two parameters; how
-many players you want returned (with a max of 200 being returned) and
-the speed variant. Speed variants include;
+The `lichess_leaderboard()` function takes in two parameters; how many
+players you want returned (with a max of 200 being returned) and the
+speed variant. Speed variants include;
 
 > *“ultraBullet”, “bullet”, “blitz”, “rapid”, “classical”, “chess960”,
 > “crazyhouse”, “antichess”, “atomic”, “horde”, “kingOfTheHill”,
 > “racingKings”, “threeCheck”*
 
 ``` r
-lichess_leaders <- (how_many_players = 10, speed_variant = "blitz")
+lichess_leaders <- lichess_leaderboard(top_n_players = 10, speed_variant = "blitz")
 ```
 
 For a detailed guide to using the package and the functions for

@@ -17,7 +17,9 @@ options(tibble.print_min = 5, tibble.print_max = 5)
 # chessR <a href='https:/jaseziv.github.io/chessR'><img src='man/figures/logo.png' align="right" height="219.5" /></a>
 
 <!-- badges: start -->
-[![Travis build status](https://travis-ci.org/JaseZiv/chessR.svg?branch=master)](https://travis-ci.org/JaseZiv/chessR)
+[![Version-Number](https://img.shields.io/github/r-package/v/JaseZiv/chessR?label=chessR (Dev))](https://github.com/JaseZiv/chessR/)
+[![R build status](https://github.com/JaseZiv/chessR/workflows/R-CMD-check/badge.svg)](https://github.com/JaseZiv/chessR/actions)
+[![codecov](https://codecov.io/gh/JaseZiv/chessR/branch/main/graph/badge.svg?token=WGLU5J34VL)](https://app.codecov.io/gh/JaseZiv/chessR)
 <!-- badges: end -->
 
 ## Overview
@@ -99,17 +101,17 @@ The below function allows the user to extract the top 50 players of each game ty
 The usernames that are contained in the results can then be passed to `get_raw_chessdotcom` outlined above.
 
 ```{r get_leaders, eval=FALSE}
-chessdotcom_leaders <- get_top50_leaderboard(game_type = "daily")
+chessdotcom_leaders <- chessdotcom_leaderboard(game_type = "daily")
 ```
 
 #### Lichess
 
-The `get_lichess_leaderboard()` function takes in two parameters; how many players you want returned (with a max of 200 being returned) and the speed variant. Speed variants include;
+The `lichess_leaderboard()` function takes in two parameters; how many players you want returned (with a max of 200 being returned) and the speed variant. Speed variants include;
 
 > *"ultraBullet", "bullet", "blitz", "rapid", "classical", "chess960", "crazyhouse", "antichess", "atomic", "horde", "kingOfTheHill", "racingKings", "threeCheck"*
 
 ```{r get_lichess_leaders, eval=FALSE}
-lichess_leaders <- (how_many_players = 10, speed_variant = "blitz")
+lichess_leaders <- lichess_leaderboard(top_n_players = 10, speed_variant = "blitz")
 ```
 
 

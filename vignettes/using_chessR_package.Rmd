@@ -129,7 +129,7 @@ The `get_lichess_leaderboard()` function takes in two parameters; how many playe
 
 > *"ultraBullet", "bullet", "blitz", "rapid", "classical", "chess960", "crazyhouse", "antichess", "atomic", "horde", "kingOfTheHill", "racingKings", "threeCheck"*
 
-```{r get_lichess_leaders}
+```{r get_lichess_leaders, eval=FALSE}
 lichess_leaders <- lichess_leaderboard(top_n_players = 10, speed_variant = "blitz")
 glimpse(lichess_leaders)
 ```
@@ -158,11 +158,12 @@ head(chessdotcom_game_data_all_months[, c("Moves", "nMoves")])
 
 The chess.com data extract doesn't have how the game ended on its own. To get the game ending on its own, the `get_game_ending` function can be used.
 
-```{r game_ending, eval=FALSE}
+```{r game_ending}
 # function to extract the ending of chess.com data
-chessdotcom_game_data_all_months$Ending <- get_game_ending(termination_string = chessdotcom_game_data_all_months$Termination, 
-                                          white = chessdotcom_game_data_all_months$White, 
-                                          black = chessdotcom_game_data_all_months$Black)
+chessdotcom_game_data_all_months$Ending <- mapply(get_game_ending,
+                                                  termination_string = chessdotcom_game_data_all_months$Termination,
+                                                  white = chessdotcom_game_data_all_months$White,
+                                                  black = chessdotcom_game_data_all_months$Black)
 
 # inspect output
 head(chessdotcom_game_data_all_months[, c("Termination", "White", "Black", "Ending")])

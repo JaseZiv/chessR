@@ -1,3 +1,9 @@
+# chessR 1.2.3 (2021-12-23)
+
+* `get_raw_game_data()` previously deprecated, now removed
+
+***
+
 # chessR 1.2.2 (2021-05-16)
 
 * `get_raw_chessdotcom()` now accepts a YYYYMM argument to limit which months to extract game data for [#2](https://github.com/JaseZiv/chessR/issues/2)
