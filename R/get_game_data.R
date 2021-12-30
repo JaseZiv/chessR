@@ -72,7 +72,7 @@ get_each_player <- function(username) {
     cleaned_df <- cleaned_df %>% dplyr::filter(!stringr::str_detect(.data$pgn, "club/matches"))
 
     cleaned_df <- cleaned_df %>%
-      tidyr::separate(.data$pgn, into = c("Event", "Site", "Date", "Round", "White", "Black", "Result", "ECO", "ECOUrl", "CurrentPosition", "Timezone",
+      tidyr::separate(.data$pgn, into = c("Event", "Site", "Date", "Round", "White", "Black", "Result", "CurrentPosition", "Timezone", "ECO", "ECOUrl",
                                     "UTCDate", "UTCTime", "WhiteElo", "BlackElo", "TimeControl", "Termination", "StartTime", "EndDate", "EndTime",
                                     "Link", "Moves"), sep = "]\n")
 
