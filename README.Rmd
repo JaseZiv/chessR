@@ -114,5 +114,21 @@ The `lichess_leaderboard()` function takes in two parameters; how many players y
 lichess_leaders <- lichess_leaderboard(top_n_players = 10, speed_variant = "blitz")
 ```
 
+#### Visualising games
+
+With the additional [`{chess}`](https://cran.r-project.org/package=chess) package, you can visualise a game. For example, a recent Hikaru Nakamura vs Daniel Naroditsky game on chess.com:
+```{r, eval = FALSE}
+# extract just one year-month of Hikaru's games from chess.com
+hikaru <- chessR:::get_each_player_chessdotcom("hikaru", "202112")
+# convert to {chess} 'game' format
+m <- extract_moves_as_game(hikaru[11, ])
+# plot each move and save all as a gif
+gifski::save_gif({
+  plot_game(m, interactive = FALSE)
+}, 
+gif_file = "~/Hikaru_Naroditsky.gif", 
+delay = 1)
+```
+![](img/Hikaru_Naroditsky.gif)
 
 For a detailed guide to using the package and the functions for analysis, see the package [vignette](https://jaseziv.github.io/chessR/articles/using_chessR_package.html)
