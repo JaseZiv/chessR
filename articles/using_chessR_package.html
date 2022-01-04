@@ -46,7 +46,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">chessR</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.2.3</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.2.4</span>
       </span>
     </div>
 
@@ -94,7 +94,7 @@
       <h1 data-toc-skip>Using the chessR Package</h1>
                         <h4 data-toc-skip class="author">Jason Zivkovic</h4>
             
-            <h4 data-toc-skip class="date">2021-12-23</h4>
+            <h4 data-toc-skip class="date">2022-01-04</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/JaseZiv/chessR/blob/HEAD/vignettes/using_chessR_package.Rmd" class="external-link"><code>vignettes/using_chessR_package.Rmd</code></a></small>
       <div class="hidden name"><code>using_chessR_package.Rmd</code></div>
@@ -141,7 +141,7 @@
 <span class="va">chessdotcom_game_data_all_months</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/get_raw_chessdotcom.html">get_raw_chessdotcom</a></span><span class="op">(</span>usernames <span class="op">=</span> <span class="st">"JaseZiv"</span><span class="op">)</span>
 <span class="co">#&gt; Extracting JaseZiv data for all months played, please wait</span>
 <span class="fu">glimpse</span><span class="op">(</span><span class="va">chessdotcom_game_data_all_months</span><span class="op">)</span>
-<span class="co">#&gt; Rows: 355</span>
+<span class="co">#&gt; Rows: 362</span>
 <span class="co">#&gt; Columns: 25</span>
 <span class="co">#&gt; $ GameRules       <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "chess", "chess", "chess", "chess", "chess", "chess", …</span>
 <span class="co">#&gt; $ TimeClass       <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "blitz", "blitz", "blitz", "blitz", "blitz", "blitz", …</span>
@@ -243,7 +243,7 @@
 <span class="co">#&gt; Data extracted</span></code></pre></div>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu">glimpse</span><span class="op">(</span><span class="va">chess_analysis_single</span><span class="op">)</span>
-<span class="co">#&gt; Rows: 354</span>
+<span class="co">#&gt; Rows: 361</span>
 <span class="co">#&gt; Columns: 36</span>
 <span class="co">#&gt; $ rules           <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "chess", "chess", "chess", "chess", "chess", "chess", …</span>
 <span class="co">#&gt; $ time_class      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "blitz", "blitz", "blitz", "blitz", "blitz", "blitz", …</span>
@@ -254,10 +254,10 @@
 <span class="co">#&gt; $ White           <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "JaseZiv", "Commander0101", "JaseZiv", "oscarbazan", "…</span>
 <span class="co">#&gt; $ Black           <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "hKotla", "JaseZiv", "oscarbazan", "JaseZiv", "oscarba…</span>
 <span class="co">#&gt; $ Result          <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "0-1", "1-0", "1-0", "1-0", "1-0", "0-1", "0-1", "0-1"…</span>
-<span class="co">#&gt; $ ECO             <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "rn4nr/pbB1kppp/4pq2/2pp2N1/4P2K/6P1/7P/5B1R w - -", "…</span>
-<span class="co">#&gt; $ ECOUrl          <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "UTC", "UTC", "UTC", "UTC", "UTC", "UTC", "UTC", "UTC"…</span>
-<span class="co">#&gt; $ CurrentPosition <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "C00", "A40", "B00", "D02", "B00", "B40", "B00", "A00"…</span>
-<span class="co">#&gt; $ Timezone        <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "https://www.chess.com/openings/French-Defense-Reti-Sp…</span>
+<span class="co">#&gt; $ CurrentPosition <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "rn4nr/pbB1kppp/4pq2/2pp2N1/4P2K/6P1/7P/5B1R w - -", "…</span>
+<span class="co">#&gt; $ Timezone        <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "UTC", "UTC", "UTC", "UTC", "UTC", "UTC", "UTC", "UTC"…</span>
+<span class="co">#&gt; $ ECO             <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "C00", "A40", "B00", "D02", "B00", "B40", "B00", "A00"…</span>
+<span class="co">#&gt; $ ECOUrl          <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "https://www.chess.com/openings/French-Defense-Reti-Sp…</span>
 <span class="co">#&gt; $ UTCDate         <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "2019.02.12", "2019.02.12", "2019.02.12", "2019.02.12"…</span>
 <span class="co">#&gt; $ UTCTime         <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "05:44:13", "07:45:57", "07:54:52", "07:55:50", "08:02…</span>
 <span class="co">#&gt; $ WhiteElo        <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "867", "757", "819", "792", "808", "797", "821", "773"…</span>
@@ -280,7 +280,7 @@
 <span class="co">#&gt; $ UserResult      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "Loss", "Loss", "Win", "Loss", "Win", "Win", "Loss", "…</span>
 <span class="co">#&gt; $ DaysTaken       <span style="color: #949494; font-style: italic;">&lt;drtn&gt;</span> 0 days, 0 days, 0 days, 0 days, 0 days, 0 days, 0 day…</span>
 <span class="co">#&gt; $ GameEnding      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "on time", "on time", "by checkmate", "on time", "on t…</span>
-<span class="co">#&gt; $ Opening         <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "UTC", "UTC", "UTC", "UTC", "UTC", "UTC", "UTC", "UTC"…</span></code></pre></div>
+<span class="co">#&gt; $ Opening         <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "Defense-Reti-Spielmann-Attack", "Pawn-Opening-Polish-…</span></code></pre></div>
 </div>
 </div>
 <div class="section level3">
@@ -300,15 +300,15 @@
 <span class="fu">glimpse</span><span class="op">(</span><span class="va">daily_leaders</span><span class="op">)</span>
 <span class="co">#&gt; Rows: 50</span>
 <span class="co">#&gt; Columns: 13</span>
-<span class="co">#&gt; $ player_id   <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> 7848044, 4147249, 1629533, 152749737, 4767295, 164824121, …</span>
+<span class="co">#&gt; $ player_id   <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> 7848044, 4147249, 1629533, 4767295, 64443566, 27902236, 28…</span>
 <span class="co">#&gt; $ url         <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "https://www.chess.com/member/francisbegbie", "https://www…</span>
-<span class="co">#&gt; $ username    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "francisbegbie", "mizant", "Mackus", "Robinko_Gindomill", …</span>
-<span class="co">#&gt; $ score       <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> 2616, 2566, 2559, 2548, 2543, 2539, 2536, 2528, 2504, 2499…</span>
+<span class="co">#&gt; $ username    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "francisbegbie", "mizant", "Mackus", "XQUSE", "IMUffeVinth…</span>
+<span class="co">#&gt; $ score       <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> 2616, 2566, 2559, 2543, 2535, 2528, 2504, 2504, 2499, 2487…</span>
 <span class="co">#&gt; $ rank        <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17,…</span>
 <span class="co">#&gt; $ country     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "https://api.chess.com/pub/country/XE", "https://api.chess…</span>
-<span class="co">#&gt; $ title       <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "FM", "FM", "NM", NA, NA, NA, "IM", "NM", "NM", NA, NA, "F…</span>
-<span class="co">#&gt; $ name        <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "Andy Mack", "Aleksandar Randjelovic", "Mark Bohannon", "G…</span>
-<span class="co">#&gt; $ status      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "premium", "premium", "premium", "basic", "premium", "basi…</span>
+<span class="co">#&gt; $ title       <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "FM", "FM", "NM", NA, "IM", "NM", "NM", NA, NA, NA, "FM", …</span>
+<span class="co">#&gt; $ name        <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "Andy Mack", "Aleksandar Randjelovic", "Mark Bohannon", "O…</span>
+<span class="co">#&gt; $ status      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "premium", "premium", "premium", "premium", "premium", "pr…</span>
 <span class="co">#&gt; $ avatar      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "https://images.chesscomfiles.com/uploads/v1/user/7848044.…</span>
 <span class="co">#&gt; $ trend_score <span style="color: #949494; font-style: italic;">&lt;df[,2]&gt;</span> &lt;data.frame[26 x 2]&gt;</span>
 <span class="co">#&gt; $ trend_rank  <span style="color: #949494; font-style: italic;">&lt;df[,2]&gt;</span> &lt;data.frame[26 x 2]&gt;</span>

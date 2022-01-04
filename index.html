@@ -46,7 +46,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="index.html">chessR</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.2.3</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.2.4</span>
       </span>
     </div>
 
@@ -172,6 +172,23 @@
 </blockquote>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">lichess_leaders</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/lichess_leaderboard.html">lichess_leaderboard</a></span><span class="op">(</span>top_n_players <span class="op">=</span> <span class="fl">10</span>, speed_variant <span class="op">=</span> <span class="st">"blitz"</span><span class="op">)</span></code></pre></div>
+</div>
+<div class="section level4">
+<h4 id="visualising-games">Visualising games<a class="anchor" aria-label="anchor" href="#visualising-games"></a>
+</h4>
+<p>With the additional <a href="https://cran.r-project.org/package=chess" class="external-link"><code>{chess}</code></a> package, you can visualise a game. For example, a recent Hikaru Nakamura vs Daniel Naroditsky game on chess.com:</p>
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># extract just one year-month of Hikaru's games from chess.com</span>
+<span class="va">hikaru</span> <span class="op">&lt;-</span> <span class="fu">chessR</span><span class="fu">:::</span><span class="fu"><a href="reference/get_each_player_chessdotcom.html">get_each_player_chessdotcom</a></span><span class="op">(</span><span class="st">"hikaru"</span>, <span class="st">"202112"</span><span class="op">)</span>
+<span class="co"># convert to {chess} 'game' format</span>
+<span class="va">m</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/extract_moves_as_game.html">extract_moves_as_game</a></span><span class="op">(</span><span class="va">hikaru</span><span class="op">[</span><span class="fl">11</span>, <span class="op">]</span><span class="op">)</span>
+<span class="co"># plot each move and save all as a gif</span>
+<span class="fu">gifski</span><span class="fu">::</span><span class="fu">save_gif</span><span class="op">(</span><span class="op">{</span>
+  <span class="fu"><a href="reference/plot_moves.html">plot_moves</a></span><span class="op">(</span><span class="va">m</span>, interactive <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span>
+<span class="op">}</span>, 
+gif_file <span class="op">=</span> <span class="st">"~/Hikaru_Naroditsky.gif"</span>, 
+delay <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></code></pre></div>
+<p><img src="img/Hikaru_Naroditsky.gif"></p>
 <p>For a detailed guide to using the package and the functions for analysis, see the package <a href="https://jaseziv.github.io/chessR/articles/using_chessR_package.html">vignette</a></p>
 </div>
 </div>
@@ -207,6 +224,7 @@
 <h2 data-toc-skip>Developers</h2>
 <ul class="list-unstyled">
 <li>Jason Zivkovic <br><small class="roles"> Author, maintainer </small>  </li>
+<li><a href="authors.html">More about authors...</a></li>
 </ul>
 </div>
 
