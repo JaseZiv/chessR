@@ -132,7 +132,7 @@ hikaru <- chessR:::get_each_player_chessdotcom("hikaru", "202112")
 m <- extract_moves_as_game(hikaru[11, ])
 # plot each move and save all as a gif
 gifski::save_gif({
-  plot_game(m, interactive = FALSE)
+  plot_moves(m, interactive = FALSE)
 }, 
 gif_file = "~/Hikaru_Naroditsky.gif", 
 delay = 1)

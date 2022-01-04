@@ -55,9 +55,9 @@ extract_moves_as_game <- function(game) {
 #' \dontrun{
 #' hikaru <- chessR:::get_each_player_chessdotcom("hikaru", "202112")
 #' m <- extract_moves_as_game(hikaru[11, ])
-#' plot_game(m)
+#' plot_moves(m)
 #' }
-plot_game <- function(game, interactive = TRUE) {
+plot_moves <- function(game, interactive = TRUE) {
   if (!requireNamespace("chess", quietly = TRUE)) {
     stop("This function requires the {chess} package to be installed.")
   }
