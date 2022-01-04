@@ -1,0 +1,15 @@
+test_that("move parsing produces a data.frame of moves", {
+  chessdotcom_hikaru_recent <- get_raw_chessdotcom(usernames = "Hikaru", year_month = c(202104))
+  moves <- chessdotcom_hikaru_recent[1, "Moves"]
+  move_df <- extract_moves(moves)
+  testthat::skip_on_cran()
+  expect_s3_class(move_df, "data.frame")
+  expect_true(nrow(move_df) > 0L)
+  expect_identical(colnames(move_df), c("white", "black"))
+  expect_true(move_df[1, 1] != "")
+  expect_true(move_df[1, 2] != "")
+  expect_true(grepl("[a-h]", move_df[1, 1]))
+  expect_true(grepl("[a-h]", move_df[1, 2]))
+  expect_true(grepl("[1-8]", move_df[1, 1]))
+  expect_true(grepl("[1-8]", move_df[1, 2]))
+})
