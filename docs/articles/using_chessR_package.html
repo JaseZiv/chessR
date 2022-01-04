@@ -44,7 +44,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">chessR</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.2.3</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.2.4</span>
       </span>
     </div>
 
@@ -98,7 +98,7 @@
       <h1 data-toc-skip>Using the chessR Package</h1>
                         <h4 class="author">Jason Zivkovic</h4>
             
-            <h4 class="date">2021-12-23</h4>
+            <h4 class="date">2022-01-05</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/JaseZiv/chessR/blob/master/vignettes/using_chessR_package.Rmd"><code>vignettes/using_chessR_package.Rmd</code></a></small>
       <div class="hidden name"><code>using_chessR_package.Rmd</code></div>
@@ -145,7 +145,7 @@
 <span class="va">chessdotcom_game_data_all_months</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/get_raw_chessdotcom.html">get_raw_chessdotcom</a></span><span class="op">(</span>usernames <span class="op">=</span> <span class="st">"JaseZiv"</span><span class="op">)</span>
 <span class="co">#&gt; Extracting JaseZiv data for all months played, please wait</span>
 <span class="fu">glimpse</span><span class="op">(</span><span class="va">chessdotcom_game_data_all_months</span><span class="op">)</span>
-<span class="co">#&gt; Rows: 355</span>
+<span class="co">#&gt; Rows: 362</span>
 <span class="co">#&gt; Columns: 25</span>
 <span class="co">#&gt; $ GameRules       &lt;chr&gt; "chess", "chess", "chess", "chess", "chess", "chess", …</span>
 <span class="co">#&gt; $ TimeClass       &lt;chr&gt; "blitz", "blitz", "blitz", "blitz", "blitz", "blitz", …</span>
@@ -247,7 +247,7 @@
 <span class="co">#&gt; Data extracted</span></code></pre></div>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu">glimpse</span><span class="op">(</span><span class="va">chess_analysis_single</span><span class="op">)</span>
-<span class="co">#&gt; Rows: 354</span>
+<span class="co">#&gt; Rows: 361</span>
 <span class="co">#&gt; Columns: 36</span>
 <span class="co">#&gt; $ rules           &lt;chr&gt; "chess", "chess", "chess", "chess", "chess", "chess", …</span>
 <span class="co">#&gt; $ time_class      &lt;chr&gt; "blitz", "blitz", "blitz", "blitz", "blitz", "blitz", …</span>
@@ -258,10 +258,10 @@
 <span class="co">#&gt; $ White           &lt;chr&gt; "JaseZiv", "Commander0101", "JaseZiv", "oscarbazan", "…</span>
 <span class="co">#&gt; $ Black           &lt;chr&gt; "hKotla", "JaseZiv", "oscarbazan", "JaseZiv", "oscarba…</span>
 <span class="co">#&gt; $ Result          &lt;chr&gt; "0-1", "1-0", "1-0", "1-0", "1-0", "0-1", "0-1", "0-1"…</span>
-<span class="co">#&gt; $ ECO             &lt;chr&gt; "rn4nr/pbB1kppp/4pq2/2pp2N1/4P2K/6P1/7P/5B1R w - -", "…</span>
-<span class="co">#&gt; $ ECOUrl          &lt;chr&gt; "UTC", "UTC", "UTC", "UTC", "UTC", "UTC", "UTC", "UTC"…</span>
-<span class="co">#&gt; $ CurrentPosition &lt;chr&gt; "C00", "A40", "B00", "D02", "B00", "B40", "B00", "A00"…</span>
-<span class="co">#&gt; $ Timezone        &lt;chr&gt; "https://www.chess.com/openings/French-Defense-Reti-Sp…</span>
+<span class="co">#&gt; $ CurrentPosition &lt;chr&gt; "rn4nr/pbB1kppp/4pq2/2pp2N1/4P2K/6P1/7P/5B1R w - -", "…</span>
+<span class="co">#&gt; $ Timezone        &lt;chr&gt; "UTC", "UTC", "UTC", "UTC", "UTC", "UTC", "UTC", "UTC"…</span>
+<span class="co">#&gt; $ ECO             &lt;chr&gt; "C00", "A40", "B00", "D02", "B00", "B40", "B00", "A00"…</span>
+<span class="co">#&gt; $ ECOUrl          &lt;chr&gt; "https://www.chess.com/openings/French-Defense-Reti-Sp…</span>
 <span class="co">#&gt; $ UTCDate         &lt;chr&gt; "2019.02.12", "2019.02.12", "2019.02.12", "2019.02.12"…</span>
 <span class="co">#&gt; $ UTCTime         &lt;chr&gt; "05:44:13", "07:45:57", "07:54:52", "07:55:50", "08:02…</span>
 <span class="co">#&gt; $ WhiteElo        &lt;chr&gt; "867", "757", "819", "792", "808", "797", "821", "773"…</span>
@@ -284,7 +284,7 @@
 <span class="co">#&gt; $ UserResult      &lt;chr&gt; "Loss", "Loss", "Win", "Loss", "Win", "Win", "Loss", "…</span>
 <span class="co">#&gt; $ DaysTaken       &lt;drtn&gt; 0 days, 0 days, 0 days, 0 days, 0 days, 0 days, 0 day…</span>
 <span class="co">#&gt; $ GameEnding      &lt;chr&gt; "on time", "on time", "by checkmate", "on time", "on t…</span>
-<span class="co">#&gt; $ Opening         &lt;chr&gt; "UTC", "UTC", "UTC", "UTC", "UTC", "UTC", "UTC", "UTC"…</span></code></pre></div>
+<span class="co">#&gt; $ Opening         &lt;chr&gt; "Defense-Reti-Spielmann-Attack", "Pawn-Opening-Polish-…</span></code></pre></div>
 </div>
 </div>
 <div id="leaderboards" class="section level3">
@@ -304,15 +304,15 @@
 <span class="fu">glimpse</span><span class="op">(</span><span class="va">daily_leaders</span><span class="op">)</span>
 <span class="co">#&gt; Rows: 50</span>
 <span class="co">#&gt; Columns: 13</span>
-<span class="co">#&gt; $ player_id   &lt;int&gt; 7848044, 4147249, 1629533, 152749737, 4767295, 164824121, …</span>
+<span class="co">#&gt; $ player_id   &lt;int&gt; 7848044, 4147249, 1629533, 4767295, 64443566, 27902236, 28…</span>
 <span class="co">#&gt; $ url         &lt;chr&gt; "https://www.chess.com/member/francisbegbie", "https://www…</span>
-<span class="co">#&gt; $ username    &lt;chr&gt; "francisbegbie", "mizant", "Mackus", "Robinko_Gindomill", …</span>
-<span class="co">#&gt; $ score       &lt;int&gt; 2616, 2566, 2559, 2548, 2543, 2539, 2536, 2528, 2504, 2499…</span>
+<span class="co">#&gt; $ username    &lt;chr&gt; "francisbegbie", "mizant", "Mackus", "XQUSE", "IMUffeVinth…</span>
+<span class="co">#&gt; $ score       &lt;int&gt; 2616, 2566, 2559, 2543, 2535, 2528, 2504, 2504, 2499, 2487…</span>
 <span class="co">#&gt; $ rank        &lt;int&gt; 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17,…</span>
 <span class="co">#&gt; $ country     &lt;chr&gt; "https://api.chess.com/pub/country/XE", "https://api.chess…</span>
-<span class="co">#&gt; $ title       &lt;chr&gt; "FM", "FM", "NM", NA, NA, NA, "IM", "NM", "NM", NA, NA, "F…</span>
-<span class="co">#&gt; $ name        &lt;chr&gt; "Andy Mack", "Aleksandar Randjelovic", "Mark Bohannon", "G…</span>
-<span class="co">#&gt; $ status      &lt;chr&gt; "premium", "premium", "premium", "basic", "premium", "basi…</span>
+<span class="co">#&gt; $ title       &lt;chr&gt; "FM", "FM", "NM", NA, "IM", "NM", "NM", NA, NA, NA, "FM", …</span>
+<span class="co">#&gt; $ name        &lt;chr&gt; "Andy Mack", "Aleksandar Randjelovic", "Mark Bohannon", "O…</span>
+<span class="co">#&gt; $ status      &lt;chr&gt; "premium", "premium", "premium", "premium", "premium", "pr…</span>
 <span class="co">#&gt; $ avatar      &lt;chr&gt; "https://images.chesscomfiles.com/uploads/v1/user/7848044.…</span>
 <span class="co">#&gt; $ trend_score &lt;df[,2]&gt; &lt;data.frame[26 x 2]&gt;</span>
 <span class="co">#&gt; $ trend_rank  &lt;df[,2]&gt; &lt;data.frame[26 x 2]&gt;</span>
@@ -330,6 +330,23 @@
 <span class="fu">glimpse</span><span class="op">(</span><span class="va">lichess_leaders</span><span class="op">)</span></code></pre></div>
 </div>
 </div>
+<div id="visualising-games" class="section level3">
+<h3 class="hasAnchor">
+<a href="#visualising-games" class="anchor"></a>Visualising games</h3>
+<p>With the additional <a href="https://cran.r-project.org/package=chess"><code>{chess}</code></a> package, you can visualise a game. For example, a recent Hikaru Nakamura vs Daniel Naroditsky game on chess.com:</p>
+<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># extract just one year-month of Hikaru's games from chess.com</span>
+<span class="va">hikaru</span> <span class="op">&lt;-</span> <span class="fu">chessR</span><span class="fu">:::</span><span class="fu"><a href="../reference/get_each_player_chessdotcom.html">get_each_player_chessdotcom</a></span><span class="op">(</span><span class="st">"hikaru"</span>, <span class="st">"202112"</span><span class="op">)</span>
+<span class="co"># convert to {chess} 'game' format</span>
+<span class="va">m</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/extract_moves_as_game.html">extract_moves_as_game</a></span><span class="op">(</span><span class="va">hikaru</span><span class="op">[</span><span class="fl">11</span>, <span class="op">]</span><span class="op">)</span>
+<span class="co"># plot each move and save all as a gif</span>
+<span class="fu">gifski</span><span class="fu">::</span><span class="fu">save_gif</span><span class="op">(</span><span class="op">{</span>
+  <span class="fu"><a href="../reference/plot_moves.html">plot_moves</a></span><span class="op">(</span><span class="va">m</span>, interactive <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span>
+<span class="op">}</span>, 
+gif_file <span class="op">=</span> <span class="st">"~/Hikaru_Naroditsky.gif"</span>, 
+delay <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></code></pre></div>
+<p><img src="img/Hikaru_Naroditsky.gif"></p>
+</div>
 <div id="analysis-functions" class="section level3">
 <h3 class="hasAnchor">
 <a href="#analysis-functions" class="anchor"></a>Analysis Functions</h3>
@@ -339,7 +356,7 @@
 <a href="#number-of-moves-in-the-game" class="anchor"></a>Number of moves in the game</h4>
 <p>To be able to see how many moves a game lasted, the <code>return_num_moves</code> function can be used.</p>
 <p>It will parse through the <em>Moves</em> column in the extracted data frame and return a vector of moves, each one being for each game.</p>
-<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># function to extract the number of moves in each game</span>
 <span class="va">chessdotcom_game_data_all_months</span><span class="op">$</span><span class="va">nMoves</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/return_num_moves.html">return_num_moves</a></span><span class="op">(</span>moves_string <span class="op">=</span> <span class="va">chessdotcom_game_data_all_months</span><span class="op">$</span><span class="va">Moves</span><span class="op">)</span>
 
@@ -364,7 +381,7 @@
 <h4 class="hasAnchor">
 <a href="#how-the-game-ended" class="anchor"></a>How the game ended</h4>
 <p>The chess.com data extract doesn’t have how the game ended on its own. To get the game ending on its own, the <code>get_game_ending</code> function can be used.</p>
-<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># function to extract the ending of chess.com data</span>
 <span class="va">chessdotcom_game_data_all_months</span><span class="op">$</span><span class="va">Ending</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/mapply.html">mapply</a></span><span class="op">(</span><span class="va">get_game_ending</span>,
                                                   termination_string <span class="op">=</span> <span class="va">chessdotcom_game_data_all_months</span><span class="op">$</span><span class="va">Termination</span>,
@@ -385,7 +402,7 @@
 <h4 class="hasAnchor">
 <a href="#game-winner" class="anchor"></a>Game Winner</h4>
 <p>Given two players, one playing on white and the other on black, we want to be able to know the username of the winner. To get this information, use the <code>get_winner</code> function.</p>
-<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># function to extract the winner of each game</span>
 <span class="va">chessdotcom_game_data_all_months</span><span class="op">$</span><span class="va">Winner</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/get_winner.html">get_winner</a></span><span class="op">(</span>result_column <span class="op">=</span> <span class="va">chessdotcom_game_data_all_months</span><span class="op">$</span><span class="va">Result</span>, 
                                      white <span class="op">=</span> <span class="va">chessdotcom_game_data_all_months</span><span class="op">$</span><span class="va">White</span>, 
@@ -407,7 +424,7 @@
 <h2 class="hasAnchor">
 <a href="#bonus-basic-eda-analysing-games" class="anchor"></a>Bonus: Basic EDA Analysing Games</h2>
 <p>This section will perform some exploratory data analysis on the data extracted by <code><a href="../reference/get_raw_chessdotcom.html">get_raw_chessdotcom()</a></code>, and then having used some of the analysis functions explained above. It is by no means an exhaustive list of topics to analyse, rather, it is designed to give the user a few ideas of what can be done with the analysis data provided.</p>
-<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">chessdotcom_game_data_all_months</span> <span class="op">%&gt;%</span> 
   <span class="fu">count</span><span class="op">(</span><span class="va">TimeClass</span><span class="op">)</span> <span class="op">%&gt;%</span> 
   <span class="fu">ggplot</span><span class="op">(</span><span class="fu">aes</span><span class="op">(</span>x<span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/reorder.factor.html">reorder</a></span><span class="op">(</span><span class="va">TimeClass</span>,<span class="va">n</span><span class="op">)</span>, y<span class="op">=</span> <span class="va">n</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
@@ -418,7 +435,7 @@
   <span class="fu">theme_minimal</span><span class="op">(</span><span class="op">)</span> <span class="op">+</span>
   <span class="fu">theme</span><span class="op">(</span>panel.grid.major.y <span class="op">=</span> <span class="fu">element_blank</span><span class="op">(</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 <p><img src="using_chessR_package_files/figure-html/popular_times-1.png" width="700"></p>
-<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">chessdotcom_game_data_all_months</span> <span class="op">%&gt;%</span>
   <span class="fu">mutate</span><span class="op">(</span>MonthEnd <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste</a></span><span class="op">(</span><span class="fu">year</span><span class="op">(</span><span class="va">EndDate</span><span class="op">)</span>, <span class="fu">str_pad</span><span class="op">(</span><span class="fu">lubridate</span><span class="fu">::</span><span class="fu"><a href="https://lubridate.tidyverse.org/reference/month.html">month</a></span><span class="op">(</span><span class="fu">ymd</span><span class="op">(</span><span class="va">EndDate</span><span class="op">)</span><span class="op">)</span>, <span class="fl">2</span>, side <span class="op">=</span> <span class="st">"left"</span>, pad <span class="op">=</span> <span class="st">"0"</span><span class="op">)</span>, sep <span class="op">=</span> <span class="st">"-"</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span> 
   <span class="fu">mutate</span><span class="op">(</span>UserResult <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/ifelse.html">ifelse</a></span><span class="op">(</span><span class="va">Winner</span> <span class="op">==</span> <span class="va">Username</span>, <span class="st">"Win"</span>, <span class="fu"><a href="https://rdrr.io/r/base/ifelse.html">ifelse</a></span><span class="op">(</span><span class="va">Winner</span> <span class="op">==</span> <span class="st">"Draw"</span>, <span class="st">"Draw"</span>, <span class="st">"Loss"</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span> 
@@ -434,7 +451,7 @@
   <span class="fu">ggtitle</span><span class="op">(</span><span class="st">"MONTHLY WINNING %"</span><span class="op">)</span> <span class="op">+</span>
   <span class="fu">theme_minimal</span><span class="op">(</span><span class="op">)</span></code></pre></div>
 <p><img src="using_chessR_package_files/figure-html/user_result-1.png" width="700"></p>
-<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">chessdotcom_game_data_all_months</span> <span class="op">%&gt;%</span>
   <span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span><span class="op">(</span><span class="va">TimeClass</span> <span class="op">%in%</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"blitz"</span>, <span class="st">"daily"</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span> 
   <span class="fu">mutate</span><span class="op">(</span>UserELO <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/numeric.html">as.numeric</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/ifelse.html">ifelse</a></span><span class="op">(</span><span class="va">Username</span> <span class="op">==</span> <span class="va">White</span>, <span class="va">WhiteElo</span>, <span class="va">BlackElo</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span> 
@@ -448,7 +465,7 @@
   <span class="fu">facet_wrap</span><span class="op">(</span><span class="op">~</span> <span class="va">TimeClass</span>, scales <span class="op">=</span> <span class="st">"free_y"</span>, ncol <span class="op">=</span> <span class="fl">1</span><span class="op">)</span> <span class="op">+</span>
   <span class="fu">theme_minimal</span><span class="op">(</span><span class="op">)</span></code></pre></div>
 <p><img src="using_chessR_package_files/figure-html/monthly_elo-1.png" width="864"></p>
-<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">chessdotcom_game_data_all_months</span> <span class="op">%&gt;%</span> 
   <span class="fu">mutate</span><span class="op">(</span>OpponentELO <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/numeric.html">as.numeric</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/ifelse.html">ifelse</a></span><span class="op">(</span><span class="va">Username</span> <span class="op">==</span> <span class="va">White</span>, <span class="va">BlackElo</span>, <span class="va">WhiteElo</span><span class="op">)</span><span class="op">)</span>,
          UserResult <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/ifelse.html">ifelse</a></span><span class="op">(</span><span class="va">Winner</span> <span class="op">==</span> <span class="va">Username</span>, <span class="st">"Win"</span>, <span class="fu"><a href="https://rdrr.io/r/base/ifelse.html">ifelse</a></span><span class="op">(</span><span class="va">Winner</span> <span class="op">==</span> <span class="st">"Draw"</span>, <span class="st">"Draw"</span>, <span class="st">"Loss"</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span> 

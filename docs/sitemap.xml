@@ -10,13 +10,16 @@
     <loc>https://jaseziv.github.io/chessR//reference/chessdotcom_leaderboard.html</loc>
   </url>
   <url>
+    <loc>https://jaseziv.github.io/chessR//reference/extract_moves.html</loc>
+  </url>
+  <url>
+    <loc>https://jaseziv.github.io/chessR//reference/extract_moves_as_game.html</loc>
+  </url>
+  <url>
     <loc>https://jaseziv.github.io/chessR//reference/get_each_player.html</loc>
   </url>
   <url>
     <loc>https://jaseziv.github.io/chessR//reference/get_each_player_chessdotcom.html</loc>
-  </url>
-  <url>
-    <loc>https://jaseziv.github.io/chessR//reference/get_each_raw.html</loc>
   </url>
   <url>
     <loc>https://jaseziv.github.io/chessR//reference/get_game_data.html</loc>
@@ -28,9 +31,6 @@
     <loc>https://jaseziv.github.io/chessR//reference/get_raw_chessdotcom.html</loc>
   </url>
   <url>
-    <loc>https://jaseziv.github.io/chessR//reference/get_raw_game_data.html</loc>
-  </url>
-  <url>
     <loc>https://jaseziv.github.io/chessR//reference/get_raw_lichess.html</loc>
   </url>
   <url>
@@ -38,6 +38,9 @@
   </url>
   <url>
     <loc>https://jaseziv.github.io/chessR//reference/lichess_leaderboard.html</loc>
+  </url>
+  <url>
+    <loc>https://jaseziv.github.io/chessR//reference/plot_moves.html</loc>
   </url>
   <url>
     <loc>https://jaseziv.github.io/chessR//reference/return_num_moves.html</loc>
