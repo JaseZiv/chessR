@@ -24,7 +24,7 @@ or a list of usernames"><meta property="og:image" content="https://jaseziv.githu
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">chessR</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.2.4</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.5.0</span>
       </span>
     </div>
 
@@ -79,12 +79,24 @@ or a list of usernames</p>
     <dl><dt>usernames</dt>
 <dd><p>A character vector of player usernames from chess.com</p></dd>
 </dl></div>
+    <div id="value">
+    <h2>Value</h2>
+    <p>a dataframe of chess.com data plus additional analysis columns</p>
+    </div>
     <div id="details">
     <h2>Details</h2>
     <p>This function will take in a list of player usernames and return
 a dataframe of game metadata</p>
     </div>
 
+    <div id="ref-examples">
+    <h2>Examples</h2>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span></span>
+<span class="r-in"><span class="va">chess_analysis_single</span> <span class="op">&lt;-</span> <span class="fu">get_game_data</span><span class="op">(</span>usernames <span class="op">=</span> <span class="st">"JaseZiv"</span><span class="op">)</span></span>
+<span class="r-in"><span class="va">chess_analysis_multiple</span> <span class="op">&lt;-</span> <span class="fu">get_game_data</span><span class="op">(</span>usernames <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"JaseZiv"</span>, <span class="st">"Smudgy1"</span><span class="op">)</span><span class="op">)</span></span>
+<span class="r-in"><span class="op">}</span></span>
+</code></pre></div>
+    </div>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top"><h2 data-toc-skip>Contents</h2>
@@ -97,7 +109,7 @@ a dataframe of game metadata</p>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.1.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.</p>
 </div>
 
       </footer></div>
