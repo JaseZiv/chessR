@@ -7,11 +7,21 @@
 get_raw_chessdotcom(usernames, year_month = NA_integer_)
 }
 \arguments{
-\item{usernames}{A vector of a valid unsername or usernames from chess.com}
+\item{usernames}{A vector of a valid username or usernames from chess.com}
 
 \item{year_month}{An integer of YYYYMM}
+}
+\value{
+a dataframe of chessdotcom data
 }
 \description{
 This function returns the raw json data for a player's or list of players'
 chess.com data as a data frame, for all or select months played
+}
+\examples{
+\dontrun{
+get_raw_chessdotcom(usernames = "JaseZiv")
+get_raw_chessdotcom(usernames = "JaseZiv", year_month = c(202112:202201))
+get_raw_chessdotcom(usernames = c("JaseZiv", "Smudgy1"), year_month = 202201)
+}
 }

@@ -1,3 +1,18 @@
+# chessR 1.5.0
+
+Package documentation upgrades to address further CRAN submission feedback
+
+
+# chessR 1.2.4 (2021-12-30)
+
+The following functions were created to aid in the visualisation of matches played:
+
+* `extract_moves()`
+* `extract_moves_as_game()`
+* `plot_game()`
+
+***
+
 # chessR 1.2.3 (2021-12-23)
 
 * `get_raw_game_data()` previously deprecated, now removed
@@ -32,7 +47,7 @@
 
 # chessR 1.0.0 (2020-04-27)
 
-Intial release of the `chessR` package
+Initial release of the `chessR` package
 
 * Added function for extracting raw chess.com data in a data frame
 * Added a function that in addition to extracting the raw data, also included additional features

@@ -1,7 +1,7 @@
 Package: chessR
 Type: Package
-Title: A R Package To Extract and Analyse Online Chess Game Data
-Version: 1.2.4
+Title: Functions to Extract, Clean and Analyse Online Chess Game Data
+Version: 1.5.0
 Authors@R: c(person("Jason Zivkovic", email = "jase.ziv83@gmail.com",
                   role = c("aut", "cre")),
              person("Jonathan", "Carroll", 
@@ -9,12 +9,13 @@ Authors@R: c(person("Jason Zivkovic", email = "jase.ziv83@gmail.com",
                     role = "ctb", 
                     comment = c(ORCID = "0000-0002-1404-5264"))
             )
-URL: https://jaseziv.github.io/chessR/, https://github.com/JaseZiv/chessR
+URL: https://github.com/JaseZiv/chessR
 BugReports: https://github.com/JaseZiv/chessR/issues
-Description: This R package will enable users to extract chess game data from popular chess sites, including lichess.org and chess.com and then perform analysis on that game data.
+Description: A set of functions to enable users to extract chess game data from 
+    popular chess sites, including 'Lichess'<https://lichess.org/> and 
+    'Chess.com' <https://www.chess.com/> and then perform analysis on that game data.
 License: GPL-3
 Encoding: UTF-8
-LazyData: true
 Imports:
     rlang,
     jsonlite,
@@ -24,11 +25,9 @@ Imports:
     stringr,
     lubridate,
     magrittr,
-    scales,
     xml2,
     rvest,
-    curl,
-    glue
+    curl
 RoxygenNote: 7.1.2
 Suggests: 
     knitr,

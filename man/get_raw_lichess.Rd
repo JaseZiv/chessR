@@ -7,15 +7,17 @@
 get_raw_lichess(player_names)
 }
 \arguments{
-\item{player_names}{A vector of a valid unsername or usernames from chess.com}
+\item{player_names}{A vector of a valid username or usernames from Lichess}
+}
+\value{
+a dataframe of lichess data
 }
 \description{
 This function returns the raw json data for a player's or list of players'
-chess.com data as a data frame
+Lichess data as a data frame
 }
 \examples{
 \dontrun{
 georges_data <- get_games_lichess(player_names = "Georges")
 }
-
 }

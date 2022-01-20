@@ -9,6 +9,9 @@ get_game_data(usernames)
 \arguments{
 \item{usernames}{A character vector of player usernames from chess.com}
 }
+\value{
+a dataframe of chess.com data plus additional analysis columns
+}
 \description{
 \code{get_game_data} returns a dataframe of game data for either a single user
 or a list of usernames
@@ -16,4 +19,10 @@ or a list of usernames
 \details{
 This function will take in a list of player usernames and return
 a dataframe of game metadata
+}
+\examples{
+\dontrun{
+chess_analysis_single <- get_game_data(usernames = "JaseZiv")
+chess_analysis_multiple <- get_game_data(usernames = c("JaseZiv", "Smudgy1"))
+}
 }

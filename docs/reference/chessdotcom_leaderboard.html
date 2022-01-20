@@ -91,7 +91,7 @@ data frame of the top 50 players on chess.com." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">chessR</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.2.4</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.5.0</span>
       </span>
     </div>
 
@@ -163,6 +163,9 @@ data frame of the top 50 players on chess.com.</p>
     </tr>
     </table>
 
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
+
+    <p>a dataframe of the chess.com top 50 players based on game_type selected</p>
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
     <p>The leaderboard options (games) include:</p>
@@ -171,6 +174,11 @@ data frame of the top 50 players on chess.com.</p>
 <em>"live_blitz960"</em>, <em>"live_threecheck" </em>, <em>"live_crazyhouse"</em>,
 <em>"live_kingofthehill"</em>, <em>"lessons"</em>, <em>"tactics"</em></p>
 
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><div class='input'><span class='kw'>if</span> <span class='op'>(</span><span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>{</span>
+<span class='fu'>chessdotcom_leaderboard</span><span class='op'>(</span>game_type <span class='op'>=</span> <span class='st'>"daily"</span><span class='op'>)</span>
+<span class='op'>}</span>
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

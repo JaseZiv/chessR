@@ -10,8 +10,7 @@
 #' return_num_moves(moves_string = df$Moves)
 #' }
 #'
-#' @return
-#' A numeric vector of the number of moves in each game
+#' @return A numeric vector of the number of moves in each game
 #'
 #' @importFrom magrittr %>%
 #'
@@ -44,8 +43,7 @@ return_num_moves <- function(moves_string) {
 #' get_game_ending(termination_string = df$Termination, df$White, df$Black)
 #' }
 #'
-#' @return
-#' A character vector of the game ending for each game
+#' @return A character vector of the game ending for each game
 #'
 #' @importFrom magrittr %>%
 #'
@@ -79,8 +77,7 @@ get_game_ending <- function(termination_string, white, black) {
 #' get_winner(df$Result, df$White, df$Black)
 #' }
 #'
-#' @return
-#' A character vector of the game ending for each game
+#' @return A character vector of the game ending for each game
 #'
 #' @export
 get_winner <- function(result_column, white, black){

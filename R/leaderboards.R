@@ -12,9 +12,16 @@
 #'
 #' @param game_type A valid chess.com game type to return the leaderboard for
 #'
+#' @return a dataframe of the chess.com top 50 players based on game_type selected
+#'
 #' @importFrom magrittr %>%
 #'
 #' @export
+#'
+#' @examples
+#' \dontrun{
+#' chessdotcom_leaderboard(game_type = "daily")
+#' }
 chessdotcom_leaderboard <- function(game_type = "daily") {
   df <- jsonlite::fromJSON("https://api.chess.com/pub/leaderboards")[game_type] %>% unname() %>% data.frame()
   df$X.id <- NULL
@@ -39,6 +46,8 @@ chessdotcom_leaderboard <- function(game_type = "daily") {
 #'
 #' @param top_n_players The number of players (up to 200) you want returned
 #' @param speed_variant A valid lichess speed variant to return the leaderboard for
+#'
+#' @return a dataframe of the lichess top players based on speed_variant and top_n_players selected
 #'
 #' @examples
 #' \dontrun{

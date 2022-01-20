@@ -7,9 +7,12 @@
 get_each_player_chessdotcom(username, year_month)
 }
 \arguments{
-\item{username}{A valid unsername from chess.com}
+\item{username}{A valid username from chess.com}
 
 \item{year_month}{An integer of YYYYMM}
+}
+\value{
+a dataframe of chess.com data
 }
 \description{
 This function returns the raw json data for a player's

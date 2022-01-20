@@ -1,14 +1,20 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# chessR <a href='https:/jaseziv.github.io/chessR'><img src='man/figures/logo.png' align="right" height="219.5" /></a>
+# chessR <a href='https://jaseziv.github.io/chessR/'><img src='man/figures/logo.png' align="right" height="219.5" /></a>
 
 <!-- badges: start -->
 
 [![Version-Number](https://img.shields.io/github/r-package/v/JaseZiv/chessR?label=chessR%20(Dev))](https://github.com/JaseZiv/chessR/)
 [![R build
 status](https://github.com/JaseZiv/chessR/workflows/R-CMD-check/badge.svg)](https://github.com/JaseZiv/chessR/actions)
-[![codecov](https://codecov.io/gh/JaseZiv/chessR/branch/master/graph/badge.svg?token=PE7LBUOWX7)](https://codecov.io/gh/JaseZiv/chessR)
+[![codecov](https://codecov.io/gh/JaseZiv/chessR/branch/master/graph/badge.svg?token=PE7LBUOWX7)](https://app.codecov.io/gh/JaseZiv/chessR)
+
+[![CRAN
+status](https://www.r-pkg.org/badges/version-last-release/chessR?style=for-the-badge)](https://CRAN.R-project.org/package=chessR)
+[![CRAN
+downloads](http://cranlogs.r-pkg.org/badges/grand-total/chessR)](https://CRAN.R-project.org/package=chessR)
+[![Downloads](https://cranlogs.r-pkg.org/badges/chessR)](https://cran.r-project.org/package=chessR)
 <!-- badges: end -->
 
 ## Overview
@@ -27,12 +33,27 @@ for Lichess](https://lichess.org/api).
 
 ## Installation
 
-You can install the `chessR` package from github with:
+You can install the CRAN version of
+[**`chessR`**](https://CRAN.R-project.org/package=chessR) with:
+
+``` r
+install.packages("chessR")
+```
+
+You can install the released version of
+[**`chessR`**](https://github.com/JaseZiv/chessR/) from
+[GitHub](https://github.com/JaseZiv/worldfootballR) with:
 
 ``` r
 # install.packages("devtools")
 devtools::install_github("JaseZiv/chessR")
 ```
+
+``` r
+library(chessR)
+```
+
+------------------------------------------------------------------------
 
 ## Usage
 
@@ -80,7 +101,7 @@ vector of multiple players.
 ``` r
 chess_analysis_single <- get_game_data("JaseZiv")
 
-chess_analysis_multiple <- get_game_data(c("JaseZiv", "elroch"))
+chess_analysis_multiple <- get_game_data(c("JaseZiv", "Smudgy1"))
 ```
 
 ### Leaderboards

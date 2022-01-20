@@ -11,6 +11,9 @@ lichess_leaderboard(top_n_players, speed_variant)
 
 \item{speed_variant}{A valid lichess speed variant to return the leaderboard for}
 }
+\value{
+a dataframe of the lichess top players based on speed_variant and top_n_players selected
+}
 \description{
 This function takes in two parameters; how many players you want
 returned (max 200) and the speed variant. The result is a data

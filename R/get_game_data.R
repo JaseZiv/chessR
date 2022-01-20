@@ -9,10 +9,9 @@
 #'
 #' @importFrom magrittr %>%
 #' @importFrom rlang .data
-
 get_each_player <- function(username) {
 
-  cat("Extracting ", username, " Data, please wait\n")
+  # cat("Extracting ", username, " Data, please wait\n")
 
 
 
@@ -141,7 +140,7 @@ get_each_player <- function(username) {
     convert_to_df() %>%
     clean_pgn() %>% dplyr::distinct(.keep_all = TRUE)
 
-  cat("Data extracted\n")
+  # cat("Data extracted\n")
 
 
   return(output)
@@ -163,8 +162,15 @@ get_each_player <- function(username) {
 #'
 #' @param usernames A character vector of player usernames from chess.com
 #'
+#' @return a dataframe of chess.com data plus additional analysis columns
 #'
 #' @export
+#'
+#' @examples
+#' \dontrun{
+#' chess_analysis_single <- get_game_data(usernames = "JaseZiv")
+#' chess_analysis_multiple <- get_game_data(usernames = c("JaseZiv", "Smudgy1"))
+#' }
 get_game_data <- function(usernames) {
   df <- purrr::map_df(usernames, get_each_player)
 

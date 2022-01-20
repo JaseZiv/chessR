@@ -19,7 +19,7 @@ Plot a game
 }
 \examples{
 \dontrun{
-hikaru <- chessR:::get_each_player_chessdotcom("hikaru", "202112")
+hikaru <- get_each_player_chessdotcom("hikaru", "202112")
 m <- extract_moves_as_game(hikaru[11, ])
 plot_moves(m)
 }

@@ -9,6 +9,9 @@ chessdotcom_leaderboard(game_type = "daily")
 \arguments{
 \item{game_type}{A valid chess.com game type to return the leaderboard for}
 }
+\value{
+a dataframe of the chess.com top 50 players based on game_type selected
+}
 \description{
 This function takes in one parameter, the game_type, and returns a
 data frame of the top 50 players on chess.com.
@@ -20,4 +23,9 @@ The leaderboard options (games) include:
 \emph{"live_blitz"}, \emph{"live_bullet"}, \emph{"live_bughouse"},
 \emph{"live_blitz960"}, \emph{"live_threecheck" }, \emph{"live_crazyhouse"},
 \emph{"live_kingofthehill"}, \emph{"lessons"}, \emph{"tactics"}
+}
+\examples{
+\dontrun{
+chessdotcom_leaderboard(game_type = "daily")
+}
 }

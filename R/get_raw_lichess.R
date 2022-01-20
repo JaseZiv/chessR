@@ -1,24 +1,26 @@
 #' Get Raw Lichess Game Data
 #'
 #' This function returns the raw json data for a player's or list of players'
-#' chess.com data as a data frame
+#' Lichess data as a data frame
 #'
-#' @param player_names A vector of a valid unsername or usernames from chess.com
+#' @param player_names A vector of a valid username or usernames from Lichess
 #'
-#' @examples
-#' \dontrun{
-#' georges_data <- get_games_lichess(player_names = "Georges")
-#' }
+#' @return a dataframe of lichess data
 #'
 #' @importFrom magrittr %>%
 #' @importFrom rlang .data
 #'
 #' @export
+#'
+#' @examples
+#' \dontrun{
+#' georges_data <- get_games_lichess(player_names = "Georges")
+#' }
 get_raw_lichess <- function(player_names) {
 
   get_file <- function(player_name) {
 
-    cat("Extracting ", player_name, " games. Please wait\n")
+    # cat("Extracting ", player_name, " games. Please wait\n")
 
     # download the tmp file
     tmp <- tempfile()

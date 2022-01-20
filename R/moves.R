@@ -1,7 +1,6 @@
 #' Extract moves from a game as a data.frame
 #'
-#' @md
-#' @param moves_string string containing moves built by `chessR` (e.g. from \url{chess.com})
+#' @param moves_string string containing moves built by `chessR` (e.g. from \url{https://www.chess.com/})
 #'
 #' @return cleaned moves as a data.frame
 #' @export
@@ -10,7 +9,7 @@ extract_moves <- function(moves_string) {
   clean <- stringr::str_remove_all(moves_string, "\\\n")
   noclock <- stringr::str_remove_all(clean, "\\{.*?\\}")
   remove_ending <- stringr::str_remove(noclock, "[0-9]-[0-9]")
-  parsed <- tidyr::separate_rows(data.frame(move = remove_ending), move, sep = "[0-9]+\\.")
+  parsed <- tidyr::separate_rows(data.frame(move = remove_ending), .data$move, sep = "[0-9]+\\.")
   parsed <- parsed[-1, ]
   if (nrow(parsed) %% 2 == 1) {
     # end game early or white wins
@@ -26,7 +25,6 @@ extract_moves <- function(moves_string) {
 
 #' Extract moves and create `chess` game
 #'
-#' @md
 #' @param game a single row of a `data.frame` provided by `chessR` containing move information
 #'
 #' @return a [chess::game()] game object
@@ -53,7 +51,7 @@ extract_moves_as_game <- function(game) {
 #'
 #' @examples
 #' \dontrun{
-#' hikaru <- chessR:::get_each_player_chessdotcom("hikaru", "202112")
+#' hikaru <- get_each_player_chessdotcom("hikaru", "202112")
 #' m <- extract_moves_as_game(hikaru[11, ])
 #' plot_moves(m)
 #' }
