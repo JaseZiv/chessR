@@ -44,4 +44,3 @@ ggplot2::ggplot(v,
                              colour = colour)) +
   ggplot2::geom_point()
 
-
