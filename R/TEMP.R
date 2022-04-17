@@ -35,7 +35,8 @@ v <- stringr::str_split(x, "\\[|\\}")[[1]] %>%
     dplyr::row_number() %% 2 == 0,
     "Black",
     "White"),
-    move_number = floor((1 + dplyr::row_number()) / 2))
+    move_number = floor((1 + dplyr::row_number()) / 2),
+    move_time = )
 
 ggplot2::ggplot(v,
                 ggplot2::aes(x = move_number,
