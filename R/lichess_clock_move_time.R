@@ -91,31 +91,3 @@ lichess_clock_move_time <- function(games_list){
   }
 
 }
-
-# test <- lichess_clock_move_time(games_list = lichess_game_data)
-#
-# ggplot2::ggplot(v,
-#                 ggplot2::aes(x = move_time,
-#                              fill = colour)) +
-#   ggplot2::geom_histogram()
-
-# # move time by move number
-# username <- "LordyLeroy"
-#
-# ggplot2::ggplot(test %>%
-#                   dplyr::filter(
-#                     (White == username & colour == "White") |
-#                       (Black == username & colour == "Black"),
-#                     dplyr::between(move_number, 2, 9),
-#                     move_time <= 100),
-#                 ggplot2::aes(x = move_time,
-#                              fill = as.factor(move_number))) +
-#   ggplot2::geom_density() +
-#   ggplot2::coord_flip() +
-#   ggplot2::labs(x = "Move time (seconds)",
-#                 y = "Density",
-#                 fill = "Move number",
-#                 title = "Density of move time by colour (white or black)",
-#                 subtitle = paste0("User: ", username)) +
-#   ggplot2::theme_minimal() +
-#   ggplot2::facet_wrap(~ colour)
