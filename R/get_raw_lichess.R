@@ -14,7 +14,7 @@
 #'
 #' @examples
 #' \dontrun{
-#' georges_data <- get_games_lichess(player_names = "Georges")
+#' georges_data <- get_raw_lichess(player_names = "Georges")
 #' }
 get_raw_lichess <- function(player_names) {
 
