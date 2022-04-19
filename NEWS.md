@@ -1,7 +1,14 @@
+# chessR 1.5.0.1000
+
+New function `lichess_clock_move_time` created to extract clock and move times from Lichess game data
+
+***
+
 # chessR 1.5.0
 
 Package documentation upgrades to address further CRAN submission feedback
 
+***
 
 # chessR 1.2.4 (2021-12-30)
 
