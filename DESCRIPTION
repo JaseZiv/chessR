@@ -1,13 +1,16 @@
 Package: chessR
 Type: Package
 Title: Functions to Extract, Clean and Analyse Online Chess Game Data
-Version: 1.5.0
+Version: 1.5.0.1000
 Authors@R: c(person("Jason Zivkovic", email = "jase.ziv83@gmail.com",
                   role = c("aut", "cre")),
              person("Jonathan", "Carroll", 
                     email = "rpkg@jcarroll.com.au", 
                     role = "ctb", 
-                    comment = c(ORCID = "0000-0002-1404-5264"))
+                    comment = c(ORCID = "0000-0002-1404-5264")),
+             person("Dan", "Wakeling", 
+                    email = "danwakeling7@gmail.com", 
+                    role = "ctb")
             )
 URL: https://github.com/JaseZiv/chessR
 BugReports: https://github.com/JaseZiv/chessR/issues
