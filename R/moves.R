@@ -78,7 +78,8 @@ plot_moves <- function(game, interactive = TRUE) {
   }
   step <- chess::root(game)
   plot(step)
-  for (i in seq_len(chess::move_number(game))) {
+  for (i in seq_len(2*chess::move_number(game))) {
+    if (chess::is_checkmate(step)) break
     step <- chess::forward(step)
     plot(step)
     if (interactive) {
