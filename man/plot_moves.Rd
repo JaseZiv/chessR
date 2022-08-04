@@ -10,6 +10,8 @@ plot_moves(game, interactive = TRUE, sleep = 1)
 \item{game}{a [chess::game()] object, likely with moves identified}
 
 \item{interactive}{wait for 'Enter' after each move? Turn off to use in a gif}
+
+\item{sleep}{how long to wait between moves}
 }
 \value{
 `NULL`, (invisibly) - called for the side-effect of plotting
