@@ -6,7 +6,11 @@
 #' @export
 extract_moves <- function(moves_string) {
   stopifnot("only a single moves_string can be provided" = length(moves_string) == 1L)
+  # remove newlines
   clean <- stringr::str_remove_all(moves_string, "\\\n")
+  # remove explored lines
+  clean <- stringr::str_remove_all(moves_string, "\\(.*?\\)")
+  # remove annotations
   noclock <- stringr::str_remove_all(clean, "\\{.*?\\}")
   remove_ending <- stringr::str_remove(noclock, "[0-9]-[0-9]")
   parsed <- tidyr::separate_rows(data.frame(move = remove_ending), .data$move, sep = "[0-9]+\\.")
