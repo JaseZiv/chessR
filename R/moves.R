@@ -1,11 +1,18 @@
 #' Extract moves from a game as a data.frame
 #'
 #' @param moves_string string containing moves built by `chessR` (e.g. from \url{https://www.chess.com/})
+#'     or the filename of a PGN file
 #'
 #' @return cleaned moves as a data.frame
 #' @export
 extract_moves <- function(moves_string) {
   stopifnot("only a single moves_string can be provided" = length(moves_string) == 1L)
+
+  # read PGN filefile
+  if (file.exists(moves_string)) {
+    moves_string <- extract_moves_from_pgn(moves_string)
+  }
+
   # remove newlines
   clean <- stringr::str_remove_all(moves_string, "\\\n")
   # remove explored lines
@@ -30,6 +37,7 @@ extract_moves <- function(moves_string) {
 #' Extract moves and create `chess` game
 #'
 #' @param game a single row of a `data.frame` provided by `chessR` containing move information
+#'    or the filename of a PGN file
 #'
 #' @return a [chess::game()] game object
 #' @export
@@ -37,11 +45,16 @@ extract_moves_as_game <- function(game) {
   if (!requireNamespace("chess", quietly = TRUE)) {
     stop("This function requires the {chess} package to be installed.")
   }
-  stopifnot("only a single game can be converted" = nrow(game) == 1L)
-  moves <- extract_moves(game$Moves)
+  moves <- if (length(game) == 1 && file.exists(game)) {
+    gamedata <- extract_moves_from_pgn(game)
+    extract_moves(gamedata)
+  } else {
+    stopifnot("only a single game can be converted" = nrow(game) == 1L)
+    extract_moves(game$Moves)
+  }
   c_moves <- c(as.matrix(t(moves)))
   c_moves <- c_moves[c_moves != ""]
-  game <- do.call(chess::move, c(list(chess::game()), as.list(c_moves)))
+  do.call(chess::move, c(list(chess::game()), as.list(c_moves)))
 }
 
 
@@ -77,4 +90,8 @@ plot_moves <- function(game, interactive = TRUE) {
   return(invisible(NULL))
 }
 
-
+extract_moves_from_pgn <- function(filename) {
+  stopifnot(length(filename) == 1 && is.character(filename))
+  d <- readLines(filename, encoding = "UTF-8")
+  d[grep("^1\\.", d)]
+}

@@ -7,7 +7,8 @@
 extract_moves(moves_string)
 }
 \arguments{
-\item{moves_string}{string containing moves built by `chessR` (e.g. from \url{https://www.chess.com/})}
+\item{moves_string}{string containing moves built by `chessR` (e.g. from \url{https://www.chess.com/})
+or the filename of a PGN file}
 }
 \value{
 cleaned moves as a data.frame
