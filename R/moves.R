@@ -62,6 +62,7 @@ extract_moves_as_game <- function(game) {
 #'
 #' @param game a [chess::game()] object, likely with moves identified
 #' @param interactive wait for 'Enter' after each move? Turn off to use in a gif
+#' @param sleep how long to wait between moves
 #'
 #' @return `NULL`, (invisibly) - called for the side-effect of plotting
 #' @export
@@ -72,7 +73,7 @@ extract_moves_as_game <- function(game) {
 #' m <- extract_moves_as_game(hikaru[11, ])
 #' plot_moves(m)
 #' }
-plot_moves <- function(game, interactive = TRUE) {
+plot_moves <- function(game, interactive = TRUE, sleep = 1) {
   if (!requireNamespace("chess", quietly = TRUE)) {
     stop("This function requires the {chess} package to be installed.")
   }
@@ -85,7 +86,7 @@ plot_moves <- function(game, interactive = TRUE) {
     if (interactive) {
       readline("Press enter to continue...")
     } else {
-      Sys.sleep(1)
+      Sys.sleep(sleep)
     }
   }
   return(invisible(NULL))
