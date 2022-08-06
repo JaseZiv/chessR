@@ -7,7 +7,8 @@
 extract_moves_as_game(game)
 }
 \arguments{
-\item{game}{a single row of a `data.frame` provided by `chessR` containing move information}
+\item{game}{a single row of a `data.frame` provided by `chessR` containing move information
+or the filename of a PGN file}
 }
 \value{
 a [chess::game()] game object
