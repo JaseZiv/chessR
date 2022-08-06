@@ -24,7 +24,7 @@ of Lichess data with clock and move times"><meta property="og:image" content="ht
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">chessR</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.5.0.1000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.5.0.2000</span>
       </span>
     </div>
 
@@ -71,25 +71,28 @@ of Lichess data with clock and move times</p>
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">lichess_clock_move_time</span><span class="op">(</span><span class="va">games_list</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">lichess_clock_move_time</span><span class="op">(</span><span class="va">games_list</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>games_list</dt>
 <dd><p>A data frame of lichess data which can be generated from chessR::get_raw_lichess("username")</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p>a data frame of lichess data with move time, clock time, and move numbers</p>
+    
+
+<p>a data frame of lichess data with move time, clock time, and move numbers</p>
     </div>
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span></span>
-<span class="r-in"><span class="va">lordy_leroy_data</span> <span class="op">&lt;-</span> <span class="fu"><a href="get_raw_lichess.html">get_raw_lichess</a></span><span class="op">(</span>player_names <span class="op">=</span> <span class="st">"LordyLeroy"</span><span class="op">)</span></span>
-<span class="r-in"><span class="va">lordy_leroy_data_with_times</span> <span class="op">&lt;-</span> <span class="fu">lichess_clock_move_time</span><span class="op">(</span>games_list <span class="op">=</span> <span class="va">lordy_leroy_data</span><span class="op">)</span></span>
-<span class="r-in"><span class="op">}</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span></span></span>
+<span class="r-in"><span><span class="va">lordy_leroy_data</span> <span class="op">&lt;-</span> <span class="fu"><a href="get_raw_lichess.html">get_raw_lichess</a></span><span class="op">(</span>player_names <span class="op">=</span> <span class="st">"LordyLeroy"</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">lordy_leroy_data_with_times</span> <span class="op">&lt;-</span> <span class="fu">lichess_clock_move_time</span><span class="op">(</span>games_list <span class="op">=</span> <span class="va">lordy_leroy_data</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="op">}</span></span></span>
 </code></pre></div>
     </div>
   </div>
@@ -104,7 +107,7 @@ of Lichess data with clock and move times</p>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.</p>
 </div>
 
       </footer></div>

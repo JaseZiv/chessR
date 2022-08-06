@@ -24,7 +24,7 @@ chess.com data as a data frame, for all or select months played"><meta property=
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">chessR</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.5.0.1000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.5.0.2000</span>
       </span>
     </div>
 
@@ -71,28 +71,33 @@ chess.com data as a data frame, for all or select months played</p>
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">get_raw_chessdotcom</span><span class="op">(</span><span class="va">usernames</span>, year_month <span class="op">=</span> <span class="cn">NA_integer_</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">get_raw_chessdotcom</span><span class="op">(</span><span class="va">usernames</span>, year_month <span class="op">=</span> <span class="cn">NA_integer_</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>usernames</dt>
 <dd><p>A vector of a valid username or usernames from chess.com</p></dd>
+
+
 <dt>year_month</dt>
 <dd><p>An integer of YYYYMM</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p>a dataframe of chessdotcom data</p>
+    
+
+<p>a dataframe of chessdotcom data</p>
     </div>
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span></span>
-<span class="r-in"><span class="fu">get_raw_chessdotcom</span><span class="op">(</span>usernames <span class="op">=</span> <span class="st">"JaseZiv"</span><span class="op">)</span></span>
-<span class="r-in"><span class="fu">get_raw_chessdotcom</span><span class="op">(</span>usernames <span class="op">=</span> <span class="st">"JaseZiv"</span>, year_month <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">202112</span><span class="op">:</span><span class="fl">202201</span><span class="op">)</span><span class="op">)</span></span>
-<span class="r-in"><span class="fu">get_raw_chessdotcom</span><span class="op">(</span>usernames <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"JaseZiv"</span>, <span class="st">"Smudgy1"</span><span class="op">)</span>, year_month <span class="op">=</span> <span class="fl">202201</span><span class="op">)</span></span>
-<span class="r-in"><span class="op">}</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span></span></span>
+<span class="r-in"><span><span class="fu">get_raw_chessdotcom</span><span class="op">(</span>usernames <span class="op">=</span> <span class="st">"JaseZiv"</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu">get_raw_chessdotcom</span><span class="op">(</span>usernames <span class="op">=</span> <span class="st">"JaseZiv"</span>, year_month <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">202112</span><span class="op">:</span><span class="fl">202201</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu">get_raw_chessdotcom</span><span class="op">(</span>usernames <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"JaseZiv"</span>, <span class="st">"Smudgy1"</span><span class="op">)</span>, year_month <span class="op">=</span> <span class="fl">202201</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="op">}</span></span></span>
 </code></pre></div>
     </div>
   </div>
@@ -107,7 +112,7 @@ chess.com data as a data frame, for all or select months played</p>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.</p>
 </div>
 
       </footer></div>

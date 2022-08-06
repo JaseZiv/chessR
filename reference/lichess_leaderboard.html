@@ -25,7 +25,7 @@ frame for each game type"><meta property="og:image" content="https://jaseziv.git
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">chessR</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.5.0.1000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.5.0.2000</span>
       </span>
     </div>
 
@@ -73,19 +73,24 @@ frame for each game type</p>
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">lichess_leaderboard</span><span class="op">(</span><span class="va">top_n_players</span>, <span class="va">speed_variant</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">lichess_leaderboard</span><span class="op">(</span><span class="va">top_n_players</span>, <span class="va">speed_variant</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>top_n_players</dt>
 <dd><p>The number of players (up to 200) you want returned</p></dd>
+
+
 <dt>speed_variant</dt>
 <dd><p>A valid lichess speed variant to return the leaderboard for</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p>a dataframe of the lichess top players based on speed_variant and top_n_players selected</p>
+    
+
+<p>a dataframe of the lichess top players based on speed_variant and top_n_players selected</p>
     </div>
     <div id="details">
     <h2>Details</h2>
@@ -99,11 +104,11 @@ frame for each game type</p>
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span></span>
-<span class="r-in"><span class="va">top10_blitz</span> <span class="op">&lt;-</span> <span class="fu">lichess_leaderboard</span><span class="op">(</span>top_n_players <span class="op">=</span> <span class="fl">10</span>, speed_variant <span class="op">=</span> <span class="st">"blitz"</span><span class="op">)</span></span>
-<span class="r-in"><span class="va">leaderboards</span> <span class="op">&lt;-</span> <span class="fu">purrr</span><span class="fu">::</span><span class="fu"><a href="https://purrr.tidyverse.org/reference/map2.html" class="external-link">map2_df</a></span><span class="op">(</span>top_n_players <span class="op">=</span> <span class="fl">10</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"ultraBullet"</span>, <span class="st">"bullet"</span><span class="op">)</span>, <span class="va">lichess_leaderboard</span><span class="op">)</span></span>
-<span class="r-in"><span class="op">}</span></span>
-<span class="r-in"></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span></span></span>
+<span class="r-in"><span><span class="va">top10_blitz</span> <span class="op">&lt;-</span> <span class="fu">lichess_leaderboard</span><span class="op">(</span>top_n_players <span class="op">=</span> <span class="fl">10</span>, speed_variant <span class="op">=</span> <span class="st">"blitz"</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">leaderboards</span> <span class="op">&lt;-</span> <span class="fu">purrr</span><span class="fu">::</span><span class="fu"><a href="https://purrr.tidyverse.org/reference/map2.html" class="external-link">map2_df</a></span><span class="op">(</span>top_n_players <span class="op">=</span> <span class="fl">10</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"ultraBullet"</span>, <span class="st">"bullet"</span><span class="op">)</span>, <span class="va">lichess_leaderboard</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="op">}</span></span></span>
+<span class="r-in"><span></span></span>
 </code></pre></div>
     </div>
   </div>
@@ -118,7 +123,7 @@ frame for each game type</p>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.</p>
 </div>
 
       </footer></div>

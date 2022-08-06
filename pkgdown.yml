@@ -1,9 +1,9 @@
 pandoc: 2.7.3
-pkgdown: 2.0.2
+pkgdown: 2.0.6
 pkgdown_sha: ~
 articles:
   using_chessR_package: using_chessR_package.html
-last_built: 2022-04-24T11:43Z
+last_built: 2022-08-06T13:09Z
 urls:
   reference: https://jaseziv.github.io/chessR/reference
   article: https://jaseziv.github.io/chessR/articles
