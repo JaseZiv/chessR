@@ -1,51 +1,81 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://jaseziv.github.io/chessR//index.html</loc>
+    <loc>https://jaseziv.github.io/chessR/404.html</loc>
   </url>
   <url>
-    <loc>https://jaseziv.github.io/chessR//reference/chessR.html</loc>
+    <loc>https://jaseziv.github.io/chessR/CONDUCT.html</loc>
   </url>
   <url>
-    <loc>https://jaseziv.github.io/chessR//reference/chessdotcom_leaderboard.html</loc>
+    <loc>https://jaseziv.github.io/chessR/articles/index.html</loc>
   </url>
   <url>
-    <loc>https://jaseziv.github.io/chessR//reference/extract_moves.html</loc>
+    <loc>https://jaseziv.github.io/chessR/articles/using_chessR_package.html</loc>
   </url>
   <url>
-    <loc>https://jaseziv.github.io/chessR//reference/extract_moves_as_game.html</loc>
+    <loc>https://jaseziv.github.io/chessR/authors.html</loc>
   </url>
   <url>
-    <loc>https://jaseziv.github.io/chessR//reference/get_each_player.html</loc>
+    <loc>https://jaseziv.github.io/chessR/index.html</loc>
   </url>
   <url>
-    <loc>https://jaseziv.github.io/chessR//reference/get_each_player_chessdotcom.html</loc>
+    <loc>https://jaseziv.github.io/chessR/news/index.html</loc>
   </url>
   <url>
-    <loc>https://jaseziv.github.io/chessR//reference/get_game_data.html</loc>
+    <loc>https://jaseziv.github.io/chessR/reference/chessR.html</loc>
   </url>
   <url>
-    <loc>https://jaseziv.github.io/chessR//reference/get_game_ending.html</loc>
+    <loc>https://jaseziv.github.io/chessR/reference/chessdotcom_leaderboard.html</loc>
   </url>
   <url>
-    <loc>https://jaseziv.github.io/chessR//reference/get_raw_chessdotcom.html</loc>
+    <loc>https://jaseziv.github.io/chessR/reference/extract_moves.html</loc>
   </url>
   <url>
-    <loc>https://jaseziv.github.io/chessR//reference/get_raw_lichess.html</loc>
+    <loc>https://jaseziv.github.io/chessR/reference/extract_moves_as_game.html</loc>
   </url>
   <url>
-    <loc>https://jaseziv.github.io/chessR//reference/get_winner.html</loc>
+    <loc>https://jaseziv.github.io/chessR/reference/get_each_player.html</loc>
   </url>
   <url>
-    <loc>https://jaseziv.github.io/chessR//reference/lichess_leaderboard.html</loc>
+    <loc>https://jaseziv.github.io/chessR/reference/get_each_player_chessdotcom.html</loc>
   </url>
   <url>
-    <loc>https://jaseziv.github.io/chessR//reference/plot_moves.html</loc>
+    <loc>https://jaseziv.github.io/chessR/reference/get_each_raw.html</loc>
   </url>
   <url>
-    <loc>https://jaseziv.github.io/chessR//reference/return_num_moves.html</loc>
+    <loc>https://jaseziv.github.io/chessR/reference/get_game_data.html</loc>
   </url>
   <url>
-    <loc>https://jaseziv.github.io/chessR//articles/using_chessR_package.html</loc>
+    <loc>https://jaseziv.github.io/chessR/reference/get_game_ending.html</loc>
+  </url>
+  <url>
+    <loc>https://jaseziv.github.io/chessR/reference/get_raw_chessdotcom.html</loc>
+  </url>
+  <url>
+    <loc>https://jaseziv.github.io/chessR/reference/get_raw_game_data.html</loc>
+  </url>
+  <url>
+    <loc>https://jaseziv.github.io/chessR/reference/get_raw_lichess.html</loc>
+  </url>
+  <url>
+    <loc>https://jaseziv.github.io/chessR/reference/get_top50_leaderboard.html</loc>
+  </url>
+  <url>
+    <loc>https://jaseziv.github.io/chessR/reference/get_winner.html</loc>
+  </url>
+  <url>
+    <loc>https://jaseziv.github.io/chessR/reference/index.html</loc>
+  </url>
+  <url>
+    <loc>https://jaseziv.github.io/chessR/reference/lichess_clock_move_time.html</loc>
+  </url>
+  <url>
+    <loc>https://jaseziv.github.io/chessR/reference/lichess_leaderboard.html</loc>
+  </url>
+  <url>
+    <loc>https://jaseziv.github.io/chessR/reference/plot_moves.html</loc>
+  </url>
+  <url>
+    <loc>https://jaseziv.github.io/chessR/reference/return_num_moves.html</loc>
   </url>
 </urlset>
