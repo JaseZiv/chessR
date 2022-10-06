@@ -1,7 +1,7 @@
 Package: chessR
 Type: Package
 Title: Functions to Extract, Clean and Analyse Online Chess Game Data
-Version: 1.5.1
+Version: 1.5.2
 Authors@R: c(person("Jason Zivkovic", email = "jase.ziv83@gmail.com",
                   role = c("aut", "cre")),
              person("Jonathan", "Carroll", 
@@ -30,7 +30,8 @@ Imports:
     magrittr,
     xml2,
     rvest,
-    curl
+    curl,
+    httr
 RoxygenNote: 7.2.0
 Suggests: 
     knitr,

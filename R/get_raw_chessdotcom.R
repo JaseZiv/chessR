@@ -20,13 +20,18 @@ get_each_player_chessdotcom <- function(username, year_month) {
 
   # this function gets a list of all year/months the player(s) has played on chess.com
   get_month_urls <- function(){
-    jsonlite::fromJSON(paste0("https://api.chess.com/pub/player/", username, "/games/archives"))$archives
+    # jsonlite::fromJSON(paste0("https://api.chess.com/pub/player/", username, "/games/archives"))$archives
+    resp <- httr::GET(url = paste0("https://api.chess.com/pub/player/", username, "/games/archives"))
+    check_status(resp)
+    resp <- resp %>% httr::content()
+    resp <- resp$archives
+    return(resp)
   }
   # apply function to get a character vector of game urls
   if(is.na(year_month)) {
     month_urls <- get_month_urls()
   } else {
-    month_urls <- get_month_urls()
+    month_urls <- get_month_urls() %>% unlist()
     year_mon <- stringr::str_sub(month_urls, start=-7) %>% gsub("/", "", .) %>% as.numeric()
     month_urls <- data.frame(year_mon, month_urls)
     month_urls <- month_urls %>% dplyr::filter(year_mon %in% year_month) %>% dplyr::pull(month_urls)

@@ -16,8 +16,17 @@ get_each_player <- function(username) {
 
 
   # this function gets a list of all year/months the player(s) has played on chess.com
+  # get_game_urls <- function(){
+  #   jsonlite::fromJSON(paste0("https://api.chess.com/pub/player/", username, "/games/archives"))$archives
+  # }
+
+
   get_game_urls <- function(){
-    jsonlite::fromJSON(paste0("https://api.chess.com/pub/player/", username, "/games/archives"))$archives
+    resp <- httr::GET(url = paste0("https://api.chess.com/pub/player/", username, "/games/archives"))
+    check_status(resp)
+    resp <- resp %>% httr::content()
+    resp <- resp$archives
+    return(resp)
   }
 
   # this function will parse the list of game urls and extract a json blob

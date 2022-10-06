@@ -1,3 +1,9 @@
+# chessR 1.5.2
+
+CRAN suggestions for functions to fail gracefully.
+
+***
+
 # chessR 1.5.1
 
 Bugfix: `plot_moves()` now correctly shows _all_ moves (@jonocarroll)
