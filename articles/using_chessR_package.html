@@ -46,7 +46,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">chessR</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.5.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.5.2</span>
       </span>
     </div>
 
@@ -94,7 +94,7 @@
       <h1 data-toc-skip>Using the chessR Package</h1>
                         <h4 data-toc-skip class="author">Jason Zivkovic</h4>
             
-            <h4 data-toc-skip class="date">2022-08-10</h4>
+            <h4 data-toc-skip class="date">2022-10-06</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/JaseZiv/chessR/blob/HEAD/vignettes/using_chessR_package.Rmd" class="external-link"><code>vignettes/using_chessR_package.Rmd</code></a></small>
       <div class="hidden name"><code>using_chessR_package.Rmd</code></div>
@@ -299,22 +299,22 @@
 <span><span class="fu">glimpse</span><span class="op">(</span><span class="va">daily_leaders</span><span class="op">)</span></span>
 <span><span class="co">#&gt; Rows: 50</span></span>
 <span><span class="co">#&gt; Columns: 16</span></span>
-<span><span class="co">#&gt; $ player_id   <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> 7848044, 4147249, 4767295, 21510544, 2883344, 41078100, 19…</span></span>
+<span><span class="co">#&gt; $ player_id   <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> 7848044, 19872960, 148796673, 2305524, 21510544, 48978632,…</span></span>
 <span><span class="co">#&gt; $ url         <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "https://www.chess.com/member/francisbegbie", "https://www…</span></span>
-<span><span class="co">#&gt; $ username    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "francisbegbie", "mizant", "XQUSE", "Rainbow68", "MartinMa…</span></span>
-<span><span class="co">#&gt; $ score       <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> 2622, 2589, 2543, 2534, 2513, 2512, 2499, 2497, 2494, 2492…</span></span>
+<span><span class="co">#&gt; $ username    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "francisbegbie", "igorkovalenko", "YoAdrian76", "Zgorl", "…</span></span>
+<span><span class="co">#&gt; $ score       <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> 2622, 2588, 2556, 2547, 2541, 2516, 2499, 2498, 2494, 2492…</span></span>
 <span><span class="co">#&gt; $ rank        <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17,…</span></span>
 <span><span class="co">#&gt; $ country     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "https://api.chess.com/pub/country/XE", "https://api.chess…</span></span>
-<span><span class="co">#&gt; $ title       <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "FM", "FM", NA, NA, "FM", "FM", NA, NA, NA, "NM", NA, "FM"…</span></span>
-<span><span class="co">#&gt; $ name        <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "Andy Mack", "Aleksandar Randjelovic", "Osorio David", "Ra…</span></span>
-<span><span class="co">#&gt; $ status      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "premium", "premium", "premium", "premium", "premium", "pr…</span></span>
+<span><span class="co">#&gt; $ title       <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "FM", "GM", NA, "FM", NA, NA, NA, "FM", NA, "FM", "NM", "F…</span></span>
+<span><span class="co">#&gt; $ name        <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "Andy Mack", "Igor Kovalenko", NA, NA, "Rainer", "Kees Nie…</span></span>
+<span><span class="co">#&gt; $ status      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "premium", "premium", "premium", "premium", "premium", "ba…</span></span>
 <span><span class="co">#&gt; $ avatar      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "https://images.chesscomfiles.com/uploads/v1/user/7848044.…</span></span>
 <span><span class="co">#&gt; $ trend_score <span style="color: #949494; font-style: italic;">&lt;df[,2]&gt;</span> &lt;data.frame[26 x 2]&gt;</span></span>
 <span><span class="co">#&gt; $ trend_rank  <span style="color: #949494; font-style: italic;">&lt;df[,2]&gt;</span> &lt;data.frame[26 x 2]&gt;</span></span>
-<span><span class="co">#&gt; $ flair_code  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "diamond_traditional", "diamond_traditional", "diamond_…</span></span>
-<span><span class="co">#&gt; $ win_count   <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> 676, 211, 717, 144, 80, 62, 392, 28, 56, 386, 14, 286, …</span></span>
-<span><span class="co">#&gt; $ loss_count  <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> 1, 0, 2, 21, 21, 5, 2, 0, 14, 7, 0, 204, 0, 26, 3, 0, 0, 3…</span></span>
-<span><span class="co">#&gt; $ draw_count  <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> 3, 6, 1, 19, 12, 30, 4, 3, 11, 11, 2, 36, 1, 20, 1, 2, 2, …</span></span></code></pre></div>
+<span><span class="co">#&gt; $ flair_code  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "diamond_traditional", "diamond_traditional", "clover",…</span></span>
+<span><span class="co">#&gt; $ win_count   <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> 679, 103, 36, 294, 147, 88, 393, 85, 56, 26, 401, 62, 1…</span></span>
+<span><span class="co">#&gt; $ loss_count  <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> 1, 1, 0, 204, 21, 26, 2, 10, 14, 0, 7, 5, 1, 0, 41, 9, 32,…</span></span>
+<span><span class="co">#&gt; $ draw_count  <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> 3, 7, 3, 38, 19, 21, 4, 23, 11, 1, 11, 31, 3, 3, 38, 45, 1…</span></span></code></pre></div>
 </div>
 <div class="section level4">
 <h4 id="lichess">Lichess<a class="anchor" aria-label="anchor" href="#lichess"></a>
@@ -411,14 +411,14 @@
 <span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">lichess_game_data_with_time</span><span class="op">)</span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 6 × 7</span></span></span>
-<span><span class="co">#&gt;   Site                   White Black colour move_…¹ clock_time           move_…²</span></span>
-<span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;Duration&gt;</span>           <span style="color: #949494; font-style: italic;">&lt;Durat&gt;</span></span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span> https://lichess.org/o… mobi… Lord… White        1 600s (~10 minutes)   0s     </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span> https://lichess.org/o… mobi… Lord… Black        1 600s (~10 minutes)   0s     </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span> https://lichess.org/o… mobi… Lord… White        2 587s (~9.78 minutes) 13s    </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">4</span> https://lichess.org/o… mobi… Lord… Black        2 596s (~9.93 minutes) 4s     </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">5</span> https://lichess.org/o… mobi… Lord… White        3 567s (~9.45 minutes) 20s    </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">6</span> https://lichess.org/o… mobi… Lord… Black        3 591s (~9.85 minutes) 5s     </span></span>
+<span><span class="co">#&gt;   Site                  White Black colour move_…¹ clock_time            move_…²</span></span>
+<span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                 <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;Duration&gt;</span>            <span style="color: #949494; font-style: italic;">&lt;Durat&gt;</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span> https://lichess.org/… Lord… Ches… White        1 600s (~10 minutes)    0s     </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span> https://lichess.org/… Lord… Ches… Black        1 600s (~10 minutes)    0s     </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span> https://lichess.org/… Lord… Ches… White        2 603s (~10.05 minutes) 2s     </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">4</span> https://lichess.org/… Lord… Ches… Black        2 603s (~10.05 minutes) 2s     </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">5</span> https://lichess.org/… Lord… Ches… White        3 606s (~10.1 minutes)  2s     </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">6</span> https://lichess.org/… Lord… Ches… Black        3 605s (~10.08 minutes) 3s     </span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># … with abbreviated variable names ¹​move_number, ²​move_time</span></span></span></code></pre></div>
 <p>For example, plot how move times tend to increase with increased move number in the opening with black, compared to white.</p>
 <div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
