@@ -4,6 +4,11 @@
 #' Lichess data as a data frame
 #'
 #' @param player_names A vector of a valid username or usernames from Lichess
+#' @param since Games played since this date. An object of class `Date` or a
+#'   string of the form `"yyyy-mm-dd"`. If `NULL`, defaults to account creation
+#'   date.
+#' @param until Games played until this date. An object of class `Date` or a
+#'   string of the form `"yyyy-mm-dd"`. If `NULL`, defaults to now.
 #'
 #' @return a dataframe of lichess data
 #'
@@ -15,16 +20,32 @@
 #' @examples
 #' \dontrun{
 #' georges_data <- get_raw_lichess(player_names = "Georges")
+#' the_knife_data <- get_raw_lichess("the_knife", since = "2023-08-13", until = "2023-08-14")
 #' }
-get_raw_lichess <- function(player_names) {
+get_raw_lichess <- function(player_names, since = NULL, until = NULL) {
 
   get_file <- function(player_name) {
 
     # cat("Extracting ", player_name, " games. Please wait\n")
 
+    since_query <- ""
+    if (!is.null(since)) {
+      since_integer <- as.integer(as.Date(since)) * 86400 * 1000
+      since_query <- paste0("&since=", since_integer)
+    }
+
+    until_query <- ""
+    if (!is.null(until)) {
+      until_integer <- ((as.integer(as.Date(until)) + 1) * 86400 * 1000) - 1
+      until_query <- paste0("&until=", until_integer)
+    }
+
     # download the tmp file
     tmp <- tempfile()
-    curl::curl_download(paste0("https://lichess.org/api/games/user/", player_name, "?evals=true&clocks=true&opening=true"), tmp)
+    curl::curl_download(
+      paste0("https://lichess.org/api/games/user/", player_name, "?evals=true&clocks=true&opening=true", since_query, until_query),
+      tmp
+    )
     # read in the file
     read_in_file <- readLines(tmp)
     # cleaning steps of the file

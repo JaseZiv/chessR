@@ -4,10 +4,17 @@
 \alias{get_raw_lichess}
 \title{Get Raw Lichess Game Data}
 \usage{
-get_raw_lichess(player_names)
+get_raw_lichess(player_names, since = NULL, until = NULL)
 }
 \arguments{
 \item{player_names}{A vector of a valid username or usernames from Lichess}
+
+\item{since}{Games played since this date. An object of class `Date` or a
+string of the form `"yyyy-mm-dd"`. If `NULL`, defaults to account creation
+date.}
+
+\item{until}{Games played until this date. An object of class `Date` or a
+string of the form `"yyyy-mm-dd"`. If `NULL`, defaults to now.}
 }
 \value{
 a dataframe of lichess data
@@ -19,5 +26,6 @@ Lichess data as a data frame
 \examples{
 \dontrun{
 georges_data <- get_raw_lichess(player_names = "Georges")
+the_knife_data <- get_raw_lichess("the_knife", since = "2023-08-13", until = "2023-08-14")
 }
 }
