@@ -30,14 +30,14 @@ get_raw_lichess <- function(player_names, since = NULL, until = NULL) {
 
     since_query <- ""
     if (!is.null(since)) {
-      # API parameters since awaits number of milliseconds since 1970-01-01
+      # API parameter since awaits number of milliseconds since 1970-01-01
       since_integer <- as.integer(as.Date(since)) * 86400 * 1000
       since_query <- paste0("&since=", since_integer)
     }
 
     until_query <- ""
     if (!is.null(until)) {
-      # API parameters until awaits number of milliseconds since 1970-01-01
+      # API parameter until awaits number of milliseconds since 1970-01-01
       until_integer <- ((as.integer(as.Date(until)) + 1) * 86400 * 1000) - 1
       until_query <- paste0("&until=", until_integer)
     }
