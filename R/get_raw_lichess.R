@@ -101,10 +101,12 @@ get_raw_lichess <- function(player_names, since = NULL, until = NULL) {
       purrr::map_df(create_games_df)
     # apply the user's names
     output$Username <- each_player
-    # filter out games where the variant is 'From Position'
-    output <- output %>% dplyr::filter(.data$Variant != "From Position")
+    if (nrow(output)) {
+      # filter out games where the variant is 'From Position'
+      output <- output %>% dplyr::filter(.data$Variant != "From Position")
+      final_output <- dplyr::bind_rows(final_output, output)
+    }
 
-    final_output <- dplyr::bind_rows(final_output, output)
   }
   return(final_output)
 }
