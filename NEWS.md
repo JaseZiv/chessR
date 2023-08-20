@@ -1,3 +1,10 @@
+# chessR 1.5.3
+
+Feature: `get_raw_lichess()` can now be filtered by date with the parameters
+`since` and `until` (@py-b #16)
+
+***
+
 # chessR 1.5.2
 
 CRAN suggestions for functions to fail gracefully.
