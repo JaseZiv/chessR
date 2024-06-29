@@ -3,6 +3,8 @@
 Bugfix: prevent scientific notation in time queries for `get_raw_lichess()`
 (@py-b #18)
 
+***
+
 # chessR 1.5.3
 
 Feature: `get_raw_lichess()` can now be filtered by date with the parameters
