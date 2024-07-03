@@ -12,7 +12,7 @@
 <link rel="apple-touch-icon" type="image/png" sizes="120x120" href="../apple-touch-icon-120x120.png">
 <link rel="apple-touch-icon" type="image/png" sizes="76x76" href="../apple-touch-icon-76x76.png">
 <link rel="apple-touch-icon" type="image/png" sizes="60x60" href="../apple-touch-icon-60x60.png">
-<!-- jquery --><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script><!-- Bootstrap --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha256-bZLfwXAP04zRMK2BjiO8iu9pf4FbLqX6zitd+tIvLhE=" crossorigin="anonymous">
+<!-- jquery --><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script><!-- Bootstrap --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha256-bZLfwXAP04zRMK2BjiO8iu9pf4FbLqX6zitd+tIvLhE=" crossorigin="anonymous">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha256-nuL8/2cJ5NDSSwnKD8VqreErSWHtnEP9E7AySL+1ev4=" crossorigin="anonymous"></script><!-- bootstrap-toc --><link rel="stylesheet" href="../bootstrap-toc.css">
 <script src="../bootstrap-toc.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous">
@@ -46,7 +46,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">chessR</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.5.3</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.5.4</span>
       </span>
     </div>
 
@@ -95,7 +95,7 @@
                         <h4 data-toc-skip class="author">Jason
 Zivkovic</h4>
             
-            <h4 data-toc-skip class="date">2023-08-20</h4>
+            <h4 data-toc-skip class="date">2024-07-03</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/JaseZiv/chessR/blob/HEAD/vignettes/using_chessR_package.Rmd" class="external-link"><code>vignettes/using_chessR_package.Rmd</code></a></small>
       <div class="hidden name"><code>using_chessR_package.Rmd</code></div>
@@ -164,7 +164,7 @@ a few minutes if you’re querying a lot of games.</p>
 <code class="sourceCode R"><span><span class="co"># function to extract chess.com game data</span></span>
 <span><span class="va">chessdotcom_game_data_all_months</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/get_raw_chessdotcom.html">get_raw_chessdotcom</a></span><span class="op">(</span>usernames <span class="op">=</span> <span class="st">"JaseZiv"</span><span class="op">)</span></span>
 <span><span class="fu">glimpse</span><span class="op">(</span><span class="va">chessdotcom_game_data_all_months</span><span class="op">)</span></span>
-<span><span class="co">#&gt; Rows: 413</span></span>
+<span><span class="co">#&gt; Rows: 430</span></span>
 <span><span class="co">#&gt; Columns: 25</span></span>
 <span><span class="co">#&gt; $ GameRules       <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "chess", "chess", "chess", "chess", "chess", "chess", …</span></span>
 <span><span class="co">#&gt; $ TimeClass       <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "blitz", "blitz", "blitz", "blitz", "blitz", "blitz", …</span></span>
@@ -203,13 +203,13 @@ a few minutes if you’re querying a lot of games.</p>
 <span><span class="co">#&gt; $ Site            <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "Chess.com", "Chess.com", "Chess.com", "Chess.com", "C…</span></span>
 <span><span class="co">#&gt; $ Date            <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "2021-04-01", "2021-04-01", "2021-04-01", "2021-04-01"…</span></span>
 <span><span class="co">#&gt; $ Round           <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-",…</span></span>
-<span><span class="co">#&gt; $ White           <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "731291", "Hikaru", "GMSrinath", "Hikaru", "Msb2", "Hi…</span></span>
+<span><span class="co">#&gt; $ White           <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "Lempire123", "Hikaru", "GMSrinath", "Hikaru", "Msb2",…</span></span>
 <span><span class="co">#&gt; $ Black           <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "Hikaru", "SchmakAttack", "Hikaru", "Sanan_Sjugirov", …</span></span>
 <span><span class="co">#&gt; $ Result          <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "0-1", "1-0", "0-1", "0-1", "0-1", "1-0", "0-1", "1-0"…</span></span>
 <span><span class="co">#&gt; $ Tournament      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "https://www.chess.com/tournament/live/bullet-chess-ch…</span></span>
 <span><span class="co">#&gt; $ CurrentPosition <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "1r1q1r1k/4n2p/p2pn1pP/1ppB4/P3Pp2/2NP4/1PP2PP1/2KR3R …</span></span>
 <span><span class="co">#&gt; $ Timezone        <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "UTC", "UTC", "UTC", "UTC", "UTC", "UTC", "UTC", "UTC"…</span></span>
-<span><span class="co">#&gt; $ ECO             <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "B06", "A06", "A04", "A04", "A40", "A06", "B06", "A04"…</span></span>
+<span><span class="co">#&gt; $ ECO             <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "B06", "A06", "A04", "A04", "B06", "A06", "B06", "A04"…</span></span>
 <span><span class="co">#&gt; $ ECOUrl          <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "https://www.chess.com/openings/Modern-Defense-with-1-…</span></span>
 <span><span class="co">#&gt; $ UTCDate         <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "2021.04.01", "2021.04.01", "2021.04.01", "2021.04.01"…</span></span>
 <span><span class="co">#&gt; $ UTCTime         <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "16:00:00", "16:02:58", "16:05:37", "16:08:38", "16:11…</span></span>
@@ -231,7 +231,7 @@ a few minutes if you’re querying a lot of games.</p>
 <span><span class="fu">glimpse</span><span class="op">(</span><span class="va">lichess_game_data</span><span class="op">)</span></span>
 <span><span class="co">#&gt; Rows: 6</span></span>
 <span><span class="co">#&gt; Columns: 19</span></span>
-<span><span class="co">#&gt; $ Event           <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "Casual Rapid game", "Rated Blitz game", "Rated Rapid …</span></span>
+<span><span class="co">#&gt; $ Event           <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "Casual rapid game", "Rated blitz game", "Rated rapid …</span></span>
 <span><span class="co">#&gt; $ Site            <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "https://lichess.org/lmudvufi", "https://lichess.org/l…</span></span>
 <span><span class="co">#&gt; $ Date            <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "2013.07.13", "2013.07.13", "2013.07.13", "2013.07.13"…</span></span>
 <span><span class="co">#&gt; $ White           <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "baninoyz", "gevorg", "Gul_Sno", "Burina", "georges", …</span></span>
@@ -265,7 +265,7 @@ extracts</p>
 <code class="sourceCode R"><span><span class="va">chess_analysis_single</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/get_game_data.html">get_game_data</a></span><span class="op">(</span><span class="st">"JaseZiv"</span><span class="op">)</span></span></code></pre></div>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu">glimpse</span><span class="op">(</span><span class="va">chess_analysis_single</span><span class="op">)</span></span>
-<span><span class="co">#&gt; Rows: 412</span></span>
+<span><span class="co">#&gt; Rows: 429</span></span>
 <span><span class="co">#&gt; Columns: 36</span></span>
 <span><span class="co">#&gt; $ rules           <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "chess", "chess", "chess", "chess", "chess", "chess", …</span></span>
 <span><span class="co">#&gt; $ time_class      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "blitz", "blitz", "blitz", "blitz", "blitz", "blitz", …</span></span>
@@ -328,22 +328,22 @@ each game type specified. Game types available include:</p>
 <span><span class="fu">glimpse</span><span class="op">(</span><span class="va">daily_leaders</span><span class="op">)</span></span>
 <span><span class="co">#&gt; Rows: 50</span></span>
 <span><span class="co">#&gt; Columns: 16</span></span>
-<span><span class="co">#&gt; $ player_id   <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> 2305524, 140339819, 1967855, 32506052, 52897514, 1946148, …</span></span>
+<span><span class="co">#&gt; $ player_id   <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> 2305524, 1748537, 32506052, 48978632, 7848044, 1946148, 26…</span></span>
 <span><span class="co">#&gt; $ url         <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "https://www.chess.com/member/Zgorl", "https://www.chess.c…</span></span>
-<span><span class="co">#&gt; $ username    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "Zgorl", "zoroastrians", "cschess", "JolinTsai", "FormerPr…</span></span>
-<span><span class="co">#&gt; $ score       <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> 2598, 2528, 2513, 2511, 2508, 2500, 2499, 2492, 2479, 2460…</span></span>
+<span><span class="co">#&gt; $ username    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "Zgorl", "Julio_Becerra", "JolinTsai", "Ryzeaf", "francisb…</span></span>
+<span><span class="co">#&gt; $ score       <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> 2594, 2552, 2549, 2516, 2506, 2503, 2487, 2487, 2481, 2443…</span></span>
 <span><span class="co">#&gt; $ rank        <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17,…</span></span>
 <span><span class="co">#&gt; $ country     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "https://api.chess.com/pub/country/NL", "https://api.chess…</span></span>
-<span><span class="co">#&gt; $ title       <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "FM", NA, "FM", "GM", "GM", NA, "FM", "FM", "IM", "FM", NA…</span></span>
-<span><span class="co">#&gt; $ status      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "premium", "basic", "premium", "premium", "premium", "prem…</span></span>
+<span><span class="co">#&gt; $ title       <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "FM", "GM", "GM", NA, "FM", NA, "FM", "FM", NA, "IM", NA, …</span></span>
+<span><span class="co">#&gt; $ name        <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "Rob Schoorl", "Julio Becerra", "蔡依林", "Kees Nieuwelink…</span></span>
+<span><span class="co">#&gt; $ status      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "premium", "premium", "premium", "basic", "premium", "prem…</span></span>
 <span><span class="co">#&gt; $ avatar      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "https://images.chesscomfiles.com/uploads/v1/user/2305524.…</span></span>
 <span><span class="co">#&gt; $ trend_score <span style="color: #949494; font-style: italic;">&lt;df[,2]&gt;</span> &lt;data.frame[26 x 2]&gt;</span></span>
 <span><span class="co">#&gt; $ trend_rank  <span style="color: #949494; font-style: italic;">&lt;df[,2]&gt;</span> &lt;data.frame[26 x 2]&gt;</span></span>
-<span><span class="co">#&gt; $ flair_code  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "white_bishop", "nothing", "diamond_traditional", "diam…</span></span>
-<span><span class="co">#&gt; $ win_count   <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> 438, 5, 91, 417, 16, 405, 102, 136, 193, 701, 183, 347,…</span></span>
-<span><span class="co">#&gt; $ loss_count  <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> 204, 2, 10, 9, 0, 2, 21, 4, 16, 4, 37, 19, 2, 19, 25, 15, …</span></span>
-<span><span class="co">#&gt; $ draw_count  <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> 54, 0, 23, 52, 7, 4, 20, 16, 41, 5, 16, 47, 13, 27, 71, 12…</span></span>
-<span><span class="co">#&gt; $ name        <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> NA, NA, "Charles Schulien", "蔡依林", "David Navara", NA, …</span></span></code></pre></div>
+<span><span class="co">#&gt; $ flair_code  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "white_bishop", "diamond_traditional", "diamond_pink", …</span></span>
+<span><span class="co">#&gt; $ win_count   <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> 534, 156, 443, 95, 720, 417, 89, 102, 124, 252, 74, 111…</span></span>
+<span><span class="co">#&gt; $ loss_count  <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> 206, 27, 9, 26, 4, 2, 15, 11, 22, 19, 5, 24, 119, 1, 19, 0…</span></span>
+<span><span class="co">#&gt; $ draw_count  <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> 65, 37, 52, 22, 6, 4, 12, 23, 32, 49, 8, 23, 73, 2, 56, 1,…</span></span></code></pre></div>
 </div>
 <div class="section level4">
 <h4 id="lichess">Lichess<a class="anchor" aria-label="anchor" href="#lichess"></a>
@@ -454,12 +454,12 @@ using the <code>lichess_clock_move_time</code> function.</p>
 <span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 6 × 7</span></span></span>
 <span><span class="co">#&gt;   Site             White Black colour move_number clock_time           move_time</span></span>
 <span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>            <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>        <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;Duration&gt;</span>           <span style="color: #949494; font-style: italic;">&lt;Duratio&gt;</span></span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span> https://lichess… amir… Lord… White            1 480s (~8 minutes)    0s       </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span> https://lichess… amir… Lord… Black            1 480s (~8 minutes)    0s       </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span> https://lichess… amir… Lord… White            2 479s (~7.98 minutes) 1s       </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">4</span> https://lichess… amir… Lord… Black            2 476s (~7.93 minutes) 4s       </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">5</span> https://lichess… amir… Lord… White            3 478s (~7.97 minutes) 1s       </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">6</span> https://lichess… amir… Lord… Black            3 475s (~7.92 minutes) 1s</span></span></code></pre></div>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span> https://lichess… inve… Lord… White            1 300s (~5 minutes)    0s       </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span> https://lichess… inve… Lord… Black            1 300s (~5 minutes)    0s       </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span> https://lichess… inve… Lord… White            2 301s (~5.02 minutes) 2s       </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">4</span> https://lichess… inve… Lord… Black            2 302s (~5.03 minutes) 1s       </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">5</span> https://lichess… inve… Lord… White            3 303s (~5.05 minutes) 1s       </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">6</span> https://lichess… inve… Lord… Black            3 304s (~5.07 minutes) 1s</span></span></code></pre></div>
 <p>For example, plot how move times tend to increase with increased move
 number in the opening with black, compared to white.</p>
 <div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
@@ -567,7 +567,7 @@ provided.</p>
 
 <div class="pkgdown">
   <p></p>
-<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.7.</p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.9.</p>
 </div>
 
       </footer>
