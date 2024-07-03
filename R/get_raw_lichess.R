@@ -28,6 +28,9 @@ get_raw_lichess <- function(player_names, since = NULL, until = NULL) {
 
     # cat("Extracting ", player_name, " games. Please wait\n")
 
+    old_scipen = getOption("scipen")
+    options(scipen = 1000000)
+
     since_query <- ""
     if (!is.null(since)) {
       # API parameter since awaits number of milliseconds since 1970-01-01
@@ -41,6 +44,8 @@ get_raw_lichess <- function(player_names, since = NULL, until = NULL) {
       until_integer <- ((as.integer(as.Date(until)) + 1) * 86400 * 1000) - 1
       until_query <- paste0("&until=", until_integer)
     }
+
+    options(scipen = old_scipen)
 
     # download the tmp file
     tmp <- tempfile()
