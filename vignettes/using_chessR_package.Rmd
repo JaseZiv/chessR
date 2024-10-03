@@ -385,7 +385,7 @@ ggplot(lichess_game_data_with_time %>%
   facet_wrap(~ colour)
 ```
 
-![plot of chunk plot_lichess_clock_move](figure/plot_lichess_clock_move-1.png)
+![plot of chunk plot_lichess_clock_move](./plot_lichess_clock_move-1.png)
 
 
 ## Bonus: Basic EDA Analysing Games
@@ -405,7 +405,7 @@ chessdotcom_game_data_all_months %>%
   theme(panel.grid.major.y = element_blank())
 ```
 
-![plot of chunk popular_times](figure/popular_times-1.png)
+![plot of chunk popular_times](./popular_times-1.png)
 
 
 
@@ -426,7 +426,7 @@ chessdotcom_game_data_all_months %>%
   theme_minimal()
 ```
 
-![plot of chunk user_result](figure/user_result-1.png)
+![plot of chunk user_result](./user_result-1.png)
 
 
 
@@ -446,7 +446,7 @@ chessdotcom_game_data_all_months %>%
   theme_minimal()
 ```
 
-![plot of chunk monthly_elo](figure/monthly_elo-1.png)
+![plot of chunk monthly_elo](./monthly_elo-1.png)
 
 
 
@@ -462,7 +462,7 @@ chessdotcom_game_data_all_months %>%
   theme_minimal()
 ```
 
-![plot of chunk opponet_elo_results](figure/opponet_elo_results-1.png)
+![plot of chunk opponet_elo_results](./opponet_elo_results-1.png)
 
 
 
