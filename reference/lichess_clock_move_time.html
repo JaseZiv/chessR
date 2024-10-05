@@ -10,7 +10,7 @@ of Lichess data with clock and move times"><meta property="og:image" content="ht
 
   gtag('config', 'UA-145056765-2');
 </script></head><body data-spy="scroll" data-target="#toc">
-    
+
 
     <div class="container template-reference-topic">
       <header><div class="navbar navbar-default navbar-fixed-top" role="navigation">
@@ -24,7 +24,7 @@ of Lichess data with clock and move times"><meta property="og:image" content="ht
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">chessR</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.5.4</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.5.5</span>
       </span>
     </div>
 
@@ -35,7 +35,7 @@ of Lichess data with clock and move times"><meta property="og:image" content="ht
 <li class="dropdown">
   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Articles
-     
+
     <span class="caret"></span>
   </a>
   <ul class="dropdown-menu" role="menu"><li>
@@ -48,20 +48,20 @@ of Lichess data with clock and move times"><meta property="og:image" content="ht
       </ul><ul class="nav navbar-nav navbar-right"><li>
   <a href="https://github.com/JaseZiv/chessR/" class="external-link">
     <span class="fab fa-github fa-lg"></span>
-     
+
   </a>
 </li>
       </ul></div><!--/.nav-collapse -->
   </div><!--/.container -->
 </div><!--/.navbar -->
 
-      
+
 
       </header><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Get Time Information from Lichess Game Data</h1>
-    <small class="dont-index">Source: <a href="https://github.com/JaseZiv/chessR/blob/HEAD/R/lichess_clock_move_time.R" class="external-link"><code>R/lichess_clock_move_time.R</code></a></small>
+    <small class="dont-index">Source: <a href="https://github.com/JaseZiv/chessR/blob/master/R/lichess_clock_move_time.R" class="external-link"><code>R/lichess_clock_move_time.R</code></a></small>
     <div class="hidden name"><code>lichess_clock_move_time.Rd</code></div>
     </div>
 
@@ -76,23 +76,23 @@ of Lichess data with clock and move times</p>
 
     <div id="arguments">
     <h2>Arguments</h2>
-    <dl><dt>games_list</dt>
+
+
+<dl><dt id="arg-games-list">games_list<a class="anchor" aria-label="anchor" href="#arg-games-list"></a></dt>
 <dd><p>A data frame of lichess data which can be generated from chessR::get_raw_lichess("username")</p></dd>
 
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    
-
-<p>a data frame of lichess data with move time, clock time, and move numbers</p>
+    <p>a data frame of lichess data with move time, clock time, and move numbers</p>
     </div>
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span></span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span> <span class="co"># \dontrun{</span></span></span>
 <span class="r-in"><span><span class="va">lordy_leroy_data</span> <span class="op">&lt;-</span> <span class="fu"><a href="get_raw_lichess.html">get_raw_lichess</a></span><span class="op">(</span>player_names <span class="op">=</span> <span class="st">"LordyLeroy"</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="va">lordy_leroy_data_with_times</span> <span class="op">&lt;-</span> <span class="fu">lichess_clock_move_time</span><span class="op">(</span>games_list <span class="op">=</span> <span class="va">lordy_leroy_data</span><span class="op">)</span></span></span>
-<span class="r-in"><span><span class="op">}</span></span></span>
+<span class="r-in"><span><span class="op">}</span> <span class="co"># }</span></span></span>
 </code></pre></div>
     </div>
   </div>
@@ -107,15 +107,15 @@ of Lichess data with clock and move times</p>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.9.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.1.</p>
 </div>
 
       </footer></div>
 
-  
 
 
-  
+
+
 
   </body></html>
 

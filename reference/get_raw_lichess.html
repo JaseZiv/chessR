@@ -10,7 +10,7 @@ Lichess data as a data frame"><meta property="og:image" content="https://jaseziv
 
   gtag('config', 'UA-145056765-2');
 </script></head><body data-spy="scroll" data-target="#toc">
-    
+
 
     <div class="container template-reference-topic">
       <header><div class="navbar navbar-default navbar-fixed-top" role="navigation">
@@ -24,7 +24,7 @@ Lichess data as a data frame"><meta property="og:image" content="https://jaseziv
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">chessR</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.5.4</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.5.5</span>
       </span>
     </div>
 
@@ -35,7 +35,7 @@ Lichess data as a data frame"><meta property="og:image" content="https://jaseziv
 <li class="dropdown">
   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Articles
-     
+
     <span class="caret"></span>
   </a>
   <ul class="dropdown-menu" role="menu"><li>
@@ -48,20 +48,20 @@ Lichess data as a data frame"><meta property="og:image" content="https://jaseziv
       </ul><ul class="nav navbar-nav navbar-right"><li>
   <a href="https://github.com/JaseZiv/chessR/" class="external-link">
     <span class="fab fa-github fa-lg"></span>
-     
+
   </a>
 </li>
       </ul></div><!--/.nav-collapse -->
   </div><!--/.container -->
 </div><!--/.navbar -->
 
-      
+
 
       </header><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Get Raw Lichess Game Data</h1>
-    <small class="dont-index">Source: <a href="https://github.com/JaseZiv/chessR/blob/HEAD/R/get_raw_lichess.R" class="external-link"><code>R/get_raw_lichess.R</code></a></small>
+    <small class="dont-index">Source: <a href="https://github.com/JaseZiv/chessR/blob/master/R/get_raw_lichess.R" class="external-link"><code>R/get_raw_lichess.R</code></a></small>
     <div class="hidden name"><code>get_raw_lichess.Rd</code></div>
     </div>
 
@@ -76,34 +76,34 @@ Lichess data as a data frame</p>
 
     <div id="arguments">
     <h2>Arguments</h2>
-    <dl><dt>player_names</dt>
+
+
+<dl><dt id="arg-player-names">player_names<a class="anchor" aria-label="anchor" href="#arg-player-names"></a></dt>
 <dd><p>A vector of a valid username or usernames from Lichess</p></dd>
 
 
-<dt>since</dt>
+<dt id="arg-since">since<a class="anchor" aria-label="anchor" href="#arg-since"></a></dt>
 <dd><p>Games played since this date. An object of class `Date` or a
 string of the form `"yyyy-mm-dd"`. If `NULL`, defaults to account creation
 date.</p></dd>
 
 
-<dt>until</dt>
+<dt id="arg-until">until<a class="anchor" aria-label="anchor" href="#arg-until"></a></dt>
 <dd><p>Games played until this date. An object of class `Date` or a
 string of the form `"yyyy-mm-dd"`. If `NULL`, defaults to now.</p></dd>
 
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    
-
-<p>a dataframe of lichess data</p>
+    <p>a dataframe of lichess data</p>
     </div>
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span></span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span> <span class="co"># \dontrun{</span></span></span>
 <span class="r-in"><span><span class="va">georges_data</span> <span class="op">&lt;-</span> <span class="fu">get_raw_lichess</span><span class="op">(</span>player_names <span class="op">=</span> <span class="st">"Georges"</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="va">the_knife_data</span> <span class="op">&lt;-</span> <span class="fu">get_raw_lichess</span><span class="op">(</span><span class="st">"the_knife"</span>, since <span class="op">=</span> <span class="st">"2023-08-13"</span>, until <span class="op">=</span> <span class="st">"2023-08-14"</span><span class="op">)</span></span></span>
-<span class="r-in"><span><span class="op">}</span></span></span>
+<span class="r-in"><span><span class="op">}</span> <span class="co"># }</span></span></span>
 </code></pre></div>
     </div>
   </div>
@@ -118,15 +118,15 @@ string of the form `"yyyy-mm-dd"`. If `NULL`, defaults to now.</p></dd>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.9.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.1.</p>
 </div>
 
       </footer></div>
 
-  
 
 
-  
+
+
 
   </body></html>
 
