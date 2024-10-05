@@ -1,0 +1,304 @@
+---
+title: "Using the chessR Package"
+author: "Jason Zivkovic"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Using the chessR Package}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = "./",
+  message=FALSE,
+  warning=FALSE
+)
+```
+
+
+## Overview
+
+This package is designed to allow users to extract game data from popular online chess platforms. The platforms currently supported in this package include:
+
+* [chess.com](https://www.chess.com/)
+* [Lichess](https://lichess.org/)
+
+These websites offer a very convenient set of APIs to be able to access data and documentation to these can be found [here for chess.com](https://www.chess.com/news/view/published-data-api) and [here for Lichess](https://lichess.org/api).
+
+
+## Installation
+
+You can install the CRAN version of [**```chessR```** ](https://CRAN.R-project.org/package=chessR) with:
+
+```{r cran-installation, eval=FALSE}
+install.packages("chessR")
+```
+
+You can install the released version of [**```chessR```**](https://github.com/JaseZiv/chessR/) from [GitHub](https://github.com/JaseZiv/worldfootballR) with:
+
+```{r gh-installation, eval=FALSE}
+# install.packages("devtools")
+devtools::install_github("JaseZiv/chessR")
+```
+
+
+```{r load_libs, warning=FALSE, message=FALSE}
+library(chessR)
+```
+
+```{r packages_for_eda, include=FALSE}
+library(ggplot2)
+library(dplyr)
+library(stringr)
+library(lubridate)
+```
+
+
+## Usage
+
+The functions available in this package are designed to enable the extraction of chess game data.
+
+### Data Extraction
+
+The functions detailed below relate to extracting data from the chess gaming sites currently supported in this package.
+
+
+#### Raw Game Data
+
+The game extraction functions can take a vector of either single or multiple usernames. It will output a data frame with all the games played by that user.
+
+As of version 1.2.2, `get_raw_chessdotcom()` now accepts an additional argument called `year_month`, a six digit integer of YYYYMM, which allows users to filter on which month(s) data is required for.
+
+The functions are below.
+
+**Note:**
+These functions query an API, which is rate limited. The limiting rates for chess.com are unknown. For Lichess, the limit is throttled to 15 games per second. Queries could therefore take a few minutes if you're querying a lot of games.
+
+
+```{r get_raw_chessdotcom}
+# function to extract chess.com game data
+chessdotcom_game_data_all_months <- get_raw_chessdotcom(usernames = "JaseZiv")
+glimpse(chessdotcom_game_data_all_months)
+```
+
+```{r get_raw_chessdotcom_months}
+# function to extract chess.com game data
+chessdotcom_hikaru_recent <- get_raw_chessdotcom(usernames = "Hikaru", year_month = c(202104:202105))
+glimpse(chessdotcom_hikaru_recent)
+```
+
+```{r inspect_raw_lichess}
+# function to extract lichess game data
+lichess_game_data <- get_raw_lichess("Georges", since = "2024-06-01")
+glimpse(lichess_game_data)
+```
+
+#### Analysis Data
+
+The following function will extract the same data that the `get_raw_chessdotcom()` function will, however this function will also include additional columns to make analysing data easier.
+
+The function can be used either on a single player, or a character vector of multiple players.
+
+**Note:**
+This is only available for chess.com extracts
+
+
+```{r get_analysis}
+chess_analysis_single <- get_game_data("JaseZiv")
+```
+
+```{r inspect_analysis}
+glimpse(chess_analysis_single)
+```
+
+
+### Leaderboards
+
+The leaderboards of each game platform can be extracted for a number of different games available on each platform. Each are discussed below:
+
+#### Chess.com
+
+The below function allows the user to extract the top 50 players of each game type specified. Game types available include:
+
+> *"daily","daily960", "live_rapid", "live_blitz", "live_bullet", "live_bughouse", "live_blitz960", "live_threecheck", "live_crazyhouse", "live_kingofthehill", "lessons", "tactics"*
+
+The usernames that are contained in the results can then be passed to `get_raw_chessdotcom` outlined above.
+
+```{r get_chessdotcom_leaders}
+daily_leaders <- chessdotcom_leaderboard(game_type = "daily")
+glimpse(daily_leaders)
+```
+
+
+#### Lichess
+
+The `get_lichess_leaderboard()` function takes in two parameters; how many players you want returned (with a max of 200 being returned) and the speed variant. Speed variants include;
+
+> *"ultraBullet", "bullet", "blitz", "rapid", "classical", "chess960", "crazyhouse", "antichess", "atomic", "horde", "kingOfTheHill", "racingKings", "threeCheck"*
+
+```{r get_lichess_leaders, eval=FALSE}
+lichess_leaders <- lichess_leaderboard(top_n_players = 10, speed_variant = "blitz")
+glimpse(lichess_leaders)
+```
+
+
+
+### Analysis Functions
+
+This section will detail some of the functions to use for extracting information from the raw games data extracts for analysis.
+
+#### Number of moves in the game
+
+To be able to see how many moves a game lasted, the `return_num_moves` function can be used.
+
+It will parse through the *Moves* column in the extracted data frame and return a vector of moves, each one being for each game.
+
+```{r num_moves}
+# function to extract the number of moves in each game
+chessdotcom_game_data_all_months$nMoves <- return_num_moves(moves_string = chessdotcom_game_data_all_months$Moves)
+
+# inspect output
+head(chessdotcom_game_data_all_months[, c("Moves", "nMoves")])
+```
+
+#### How the game ended
+
+The chess.com data extract doesn't have how the game ended on its own. To get the game ending on its own, the `get_game_ending` function can be used.
+
+```{r game_ending}
+# function to extract the ending of chess.com data
+chessdotcom_game_data_all_months$Ending <- mapply(get_game_ending,
+                                                  termination_string = chessdotcom_game_data_all_months$Termination,
+                                                  white = chessdotcom_game_data_all_months$White,
+                                                  black = chessdotcom_game_data_all_months$Black)
+
+# inspect output
+head(chessdotcom_game_data_all_months[, c("Termination", "White", "Black", "Ending")])
+```
+
+
+#### Game Winner
+
+Given two players, one playing on white and the other on black, we want to be able to know the username of the winner. To get this information, use the `get_winner` function.
+
+```{r get_winner}
+# function to extract the winner of each game
+chessdotcom_game_data_all_months$Winner <- get_winner(result_column = chessdotcom_game_data_all_months$Result, 
+                                                      white = chessdotcom_game_data_all_months$White, 
+                                                      black = chessdotcom_game_data_all_months$Black)
+
+# inspect output
+head(chessdotcom_game_data_all_months[, c("White", "Black", "Result", "Winner")])
+```
+
+#### Lichess clock and move times
+
+Extract the clock time and move times from a Lichess games list, using the `lichess_clock_move_time` function.
+
+```{r lichess_clock_move}
+# Get Lichess game data
+lichess_game_data <- get_raw_lichess("LordyLeroy", since = "2024-08-01")
+
+lichess_game_data_with_time <- lichess_clock_move_time(games_list = lichess_game_data)
+
+head(lichess_game_data_with_time)
+
+```
+
+For example, plot how move times tend to increase with increased move number in the opening with black, compared to white.
+
+```{r plot_lichess_clock_move}
+
+username <- "LordyLeroy"
+
+ggplot(lichess_game_data_with_time %>%
+         filter((White == username & colour == "White") |
+                  (Black == username & colour == "Black"),
+                between(move_number, 2, 9),
+                move_time <= 100),
+       aes(x = move_time,
+           fill = as.factor(move_number))) +
+  geom_density() +
+  coord_flip() +
+  labs(x = "Move time (seconds)",
+       y = "Density",
+       fill = "Move number",
+       title = "Density of move time by colour (white or black)",
+       subtitle = paste0("User: ", username)) +
+  theme_minimal() +
+  facet_wrap(~ colour)
+
+```
+
+
+## Bonus: Basic EDA Analysing Games
+
+This section will perform some exploratory data analysis on the data extracted by `get_raw_chessdotcom()`, and then having used some of the analysis functions explained above. It is by no means an exhaustive list of topics to analyse, rather, it is designed to give the user a few ideas of what can be done with the analysis data provided.
+
+```{r popular_times}
+chessdotcom_game_data_all_months %>% 
+  count(TimeClass) %>% 
+  ggplot(aes(x= reorder(TimeClass,n), y= n)) +
+  geom_col(fill = "steelblue", colour = "grey40", alpha = 0.7) +
+  labs(x= "Game Style", y= "Number of Games") +
+  ggtitle("WHICH TIME CLASSES ARE PLAYED MOST BY USER") +
+  coord_flip() +
+  theme_minimal() +
+  theme(panel.grid.major.y = element_blank())
+```
+
+
+```{r user_result}
+chessdotcom_game_data_all_months %>%
+  mutate(MonthEnd = paste(year(EndDate), str_pad(lubridate::month(ymd(EndDate)), 2, side = "left", pad = "0"), sep = "-")) %>% 
+  mutate(UserResult = ifelse(Winner == Username, "Win", ifelse(Winner == "Draw", "Draw", "Loss"))) %>% 
+  group_by(MonthEnd, UserResult) %>% 
+  summarise(n = n()) %>% 
+  mutate(WinPercentage = n / sum(n)) %>% 
+  filter(UserResult == "Win") %>% 
+  ggplot(aes(x= MonthEnd, y= WinPercentage, group=1)) +
+  geom_line(colour= "steelblue", size=1) +
+  geom_hline(yintercept = 0.5, linetype = 2, colour = "grey40") +
+  scale_y_continuous(limits = c(0,1)) +
+  labs(x= "Month Game Ended", y= "Win %") +
+  ggtitle("MONTHLY WINNING %") +
+  theme_minimal()
+```
+
+
+
+```{r monthly_elo, fig.width=9}
+chessdotcom_game_data_all_months %>%
+  filter(TimeClass %in% c("blitz", "daily")) %>% 
+  mutate(UserELO = as.numeric(ifelse(Username == White, WhiteElo, BlackElo))) %>% 
+  mutate(MonthEnd = paste(year(EndDate), str_pad(lubridate::month(ymd(EndDate)), 2, side = "left", pad = "0"), sep = "-")) %>% 
+  group_by(MonthEnd, TimeClass) %>% 
+  summarise(AverageELO = mean(UserELO, na.rm = T)) %>% 
+  ggplot(aes(x= MonthEnd, y= AverageELO, group=1)) +
+  geom_line(colour= "steelblue", size=1) +
+  labs(x= "Month Game Ended", y= "Average ELO") +
+  ggtitle("MONTHLY AVERAGE ELO RATING") +
+  facet_wrap(~ TimeClass, scales = "free_y", ncol = 1) +
+  theme_minimal()
+```
+
+
+```{r opponet_elo_results}
+chessdotcom_game_data_all_months %>% 
+  mutate(OpponentELO = as.numeric(ifelse(Username == White, BlackElo, WhiteElo)),
+         UserResult = ifelse(Winner == Username, "Win", ifelse(Winner == "Draw", "Draw", "Loss"))) %>% 
+  filter(TimeClass %in% c("blitz", "daily")) %>% 
+  ggplot(aes(x= OpponentELO, fill = UserResult)) +
+  geom_density(alpha = 0.3) +
+  ggtitle("HOW DO WE FARE AGAINST DIFFERENT ELOs?") +
+  facet_wrap(~ TimeClass, scales = "free", ncol = 1) +
+  theme_minimal()
+
+```
+
+
+
