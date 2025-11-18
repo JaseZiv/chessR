@@ -16,7 +16,7 @@
 #' get_raw_chessdotcom(usernames = "JaseZiv", year_month = c(202112:202201))
 #' get_raw_chessdotcom(usernames = c("JaseZiv", "Smudgy1"), year_month = 202201)
 #' }
-get_raw_chessdotcom <- function(usernames, year_month=NA_integer_) {
-  df <- purrr::map2_df(usernames, year_month, get_each_player_chessdotcom)
+get_raw_chessdotcom <- function(usernames, year_month = NA_integer_) {
+  df <- map2_df(usernames, year_month, get_each_player_chessdotcom)
   return(df)
 }
