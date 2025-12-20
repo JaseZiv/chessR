@@ -2,7 +2,6 @@
 
 export(chessdotcom_leaderboard)
 export(get_each_player)
-export(get_each_player_chessdotcom)
 export(get_game_data)
 export(get_game_ending)
 export(get_raw_chessdotcom)

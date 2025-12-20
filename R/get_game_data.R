@@ -10,141 +10,19 @@
 #' @export
 get_each_player <- function(username) {
 
+  ## If the function took too long we could consider uncommenting these messages, otherwise just remove.
+
   # cat("Extracting ", username, " Data, please wait\n")
 
-
-
-  # this function gets a list of all year/months the player(s) has played on chess.com
-  # get_game_urls <- function(){
-  #   jsonlite::fromJSON(paste0("https://api.chess.com/pub/player/", username, "/games/archives"))$archives
-  # }
-
-
-  get_game_urls <- function(username){
-    resp <- httr::GET(url = paste0("https://api.chess.com/pub/player/", username, "/games/archives"))
-    check_status(resp)
-    resp <- resp |> httr::content()
-    resp <- resp$archives
-    return(resp)
-  }
-
-  # this function will parse the list of game urls and extract a json blob
-  get_games <- function(y) {
-    y <- jsonlite::fromJSON(y)
-  }
-
-
-  convert_to_df <- function(games_list) {
-
-    # function to extract the game and moves data required for analysis
-    extract_pgn <- function(x){
-      tryCatch( {x <- x$games$pgn}, error = function(x) {x <- NA}) |> as.character() |> data.frame() |> dplyr::mutate_if(is.factor, as.character)
-    }
-    pgn <- games_list |>
-      purrr::map_df(extract_pgn)
-
-    # function to extract the rules of each game
-    extract_rules <- function(x){
-      tryCatch( {x <- x$games$rules}, error = function(x) {x <- NA}) |> as.character() |> data.frame() |> dplyr::mutate_if(is.factor, as.character)
-    }
-
-    # function to extract the time class of each game (ie blitz, bullet, daily, etc)
-    extract_time_class <- function(x){
-      tryCatch( {x <- x$games$time_class}, error = function(x) {x <- NA}) |> as.character() |> data.frame() |> dplyr::mutate_if(is.factor, as.character)
-    }
-
-    rules <- games_list |>
-      purrr::map_df(extract_rules)
-
-    time_class <- games_list |>
-      purrr::map_df(extract_time_class)
-
-    df <- cbind(rules, time_class, pgn) |> data.frame()
-    colnames(df) <- c("rules", "time_class", "pgn")
-    return(df)
-
-  }
-
-  # clean each game string, separate columns and convert to df
-  clean_pgn <- function(df) {
-    # notes:
-    # this function will exclude "abandoned" games that didn't have a move recorded.
-    # if it was abandoned and an opening was created, then it will be included in the results
-
-    cleaned_df <- df[grep("\\{", df$pgn),]
-
-    cleaned_df <- cleaned_df |> dplyr::filter(rules == "chess")
-    cleaned_df <- cleaned_df |> dplyr::filter(time_class %in% c("blitz", "bullet",  "daily",  "rapid"))
-    cleaned_df <- cleaned_df |> dplyr::filter(!stringr::str_detect(pgn, "Tournament"))
-    cleaned_df <- cleaned_df |> dplyr::filter(!stringr::str_detect(pgn, "club/matches"))
-
-    cleaned_df <- cleaned_df |>
-      tidyr::separate(pgn, into = c("Event", "Site", "Date", "Round", "White", "Black", "Result", "CurrentPosition", "Timezone", "ECO", "ECOUrl",
-                                    "UTCDate", "UTCTime", "WhiteElo", "BlackElo", "TimeControl", "Termination", "StartTime", "EndDate", "EndTime",
-                                    "Link", "Moves"), sep = "]\n")
-
-
-    # create a vector of the variables that contains the data we need withing double quotes
-    vars_to_extract <- c("Event", "Site", "Date", "Round", "White", "Black", "Result", "ECO", "ECOUrl", "CurrentPosition", "Timezone",
-                         "UTCDate", "UTCTime", "WhiteElo", "BlackElo", "TimeControl", "Termination", "StartTime", "EndDate", "EndTime",
-                         "Link")
-    # function to extract the data contained within the double quotes
-    extract_data <- function(x) {sub('[^\"]+\"([^\"]+).*', '\\1', x)}
-    # extract the data
-    cleaned_df <- cleaned_df |>
-      dplyr::mutate_at(vars_to_extract, extract_data) |> dplyr::mutate_if(is.factor, as.character)
-
-    # create a variable to indicate which colour won the game
-    cleaned_df <- cleaned_df |>
-      dplyr::mutate(winner = ifelse(Result == "0-1", "Black", ifelse(Result == "1-0", "White", "Draw")))
-
-    # create a username variable for analysis purposes
-    cleaned_df$Username <- username
-
-    # function to extract the ending in the ending url
-    ending <- function(user, string, opponent) {
-
-      return(string |>
-               str_remove_all(paste0(user, "|", opponent, "|won |\\-")) |>
-               str_squish())
-    }
-
-
-    # data cleaning and preprocessing
-    cleaned_df <- cleaned_df |>
-      # convert date variables to ymd using lubridate::ymd()
-      dplyr::mutate(Date = lubridate::ymd(Date),
-                    EndDate = lubridate::ymd(EndDate)) |>
-      # feature engineering of some new features for analysis
-      dplyr::mutate(n_Moves = return_num_moves(Moves),
-                    UserOpponent = ifelse(White == Username, Black, White),
-                    UserColour = ifelse(Username == White, "White", "Black"),
-                    OpponentColour = ifelse(UserOpponent == White, "White", "Black"),
-                    UserELO = as.numeric(ifelse(Username == White, WhiteElo, BlackElo)),
-                    OpponentELO = as.numeric(ifelse(Username != White, WhiteElo, BlackElo))) |>
-      dplyr::mutate(UserResult = ifelse(Result == "0-1", "Black", ifelse(Result == "1-0", "White", "Draw")),
-                    UserResult = ifelse(UserColour == UserResult, "Win", ifelse(UserResult == "Draw", "Draw", "Loss"))) |>
-      dplyr::mutate(DaysTaken = EndDate - Date) |>
-      dplyr::mutate(GameEnding = mapply(ending, Username, Termination, UserOpponent)) |>
-      dplyr::mutate(Opening = str_remove_all(ECOUrl, ".*?/"),
-                    Opening = str_remove(Opening, "^.*?-"))
-
-  }
-
   output <- get_game_urls(username) |>
-    purrr::map(get_games) |>
-    convert_to_df() |>
-    clean_pgn() |> dplyr::distinct(.keep_all = TRUE)
+    map(get_games) |>
+    convert_to_tibble() |>
+    clean_pgn() |> distinct(.keep_all = TRUE)
 
   # cat("Data extracted\n")
 
-
   return(output)
-
 }
-
-
-
 
 
 
@@ -173,3 +51,8 @@ get_game_data <- function(usernames) {
 
   return(df)
 }
+
+## I propose to either move the other function to internals and make this the
+## only front game_data function or just remove this entirely, I don't see the point
+## of keeping such a function in the r package, everyone with the package is going to
+## know to use map_df

@@ -53,7 +53,8 @@ extract_pgn <- function(x){
 
 #' Parse the list of game urls and extract a json blob
 #'
-#'  @keywords internal
+#' @param y list of game urls
+#' @keywords internal
 get_games <- function(y) {
   y <- jsonlite::fromJSON(y)
 }
@@ -67,23 +68,16 @@ extract_time_class <- function(x){
 
 #' Get the raw json data for a player's chess.com data as a tibble
 #'
+#' @param user the desired username,
+#' @param year_month the desired year and month in format yyyymm,
 #' @keywords internal
 get_each_player_chessdotcom <- function(username, year_month) {
 
-  # this function gets a list of all year/months the player(s) has played on chess.com
-  get_month_urls <- function(username){
-    # jsonlite::fromJSON(paste0("https://api.chess.com/pub/player/", username, "/games/archives"))$archives
-    resp <- httr::GET(url = paste0("https://api.chess.com/pub/player/", username, "/games/archives"))
-    check_status(resp)
-    resp <- resp |> httr::content()
-    resp <- resp$archives
-    return(resp)
-  }
   # apply function to get a character vector of game urls
   if(is.na(year_month)) {
-    month_urls <- get_month_urls(username)
+    month_urls <- get_game_urls(username)
   } else {
-    month_urls <- get_month_urls(username) |> unlist()
+    month_urls <- get_game_urls(username) |> unlist()
     year_mon <- str_sub(month_urls, start=-7) |> str_remove("/") |> as.numeric()
     month_urls <- data.frame(year_mon, month_urls)
     month_urls <- month_urls |> dplyr::filter(year_mon %in% year_month) |> dplyr::pull(month_urls)
@@ -149,11 +143,151 @@ count_moves <- function(x) {
 
 #' Check status function
 #'
-#' @param res Response from API
+#' @param url link to be checked
 #' @keywords internal
-check_status <- function(res) {
-  x = httr::status_code(res)
+check_status <- function(url) {
+  res <- httr::status_code(url)
 
-  if(x != 200) stop("The API returned an error", call. = FALSE)
+  if(res != 200) stop("The API returned an error", call. = FALSE)
+}
+
+#' Get a list of all year/months the player(s) has played on chess.com
+#'
+#' @param username the desired player's nickname
+#' @keywords internal
+get_game_urls <- function(username){
+
+player_api_url <- httr::GET(url = paste0("https://api.chess.com/pub/player/", username, "/games/archives"))
+
+## Stop if the url is not responsive
+check_status(player_api_url)
+
+player_api_content <- player_api_url |> httr::content()
+dates_list <- player_api_content$archives
+return(dates_list)
+}
+
+#' Parse the list of game urls and extract a json blob (for get_game_data)
+#'
+#' @param dates_list a list of game urls by date
+#' @keywords internal
+get_games <- function(y) {
+  y <- jsonlite::fromJSON(y)
+}
+
+#' Extract the game and moves data required for analysis (for get_game_data)
+#'
+#' @param x list of pgn games
+#' @keywords internal
+extract_pgn <- function(x){
+  tryCatch( {x <- x$games$pgn}, error = function(x) {x <- NA}) |> as.character() |> data.frame() |> mutate(across(where(is.factor), as.character))
+}
+
+#' Extract the rules of each game
+#'
+#' @keywords internal
+extract_rules <- function(x){
+  tryCatch( {x <- x$games$rules}, error = function(x) {x <- NA}) |> as.character() |> data.frame() |> mutate(across(where(is.factor), as.character))
+}
+
+#' Extract the time class of each game (ie blitz, bullet, daily, etc)
+#'
+#' @keywords internal
+extract_time_class <- function(x){
+  tryCatch( {x <- x$games$time_class}, error = function(x) {x <- NA}) |> as.character() |> data.frame() |> mutate(across(where(is.factor), as.character))
+}
+
+#' Extract the ending in the ending url
+#'
+#' @keywords internal
+ending <- function(user, string, opponent) {
+
+  return(string |>
+           str_remove_all(paste0(user, "|", opponent, "|won |\\-")) |>
+           str_squish())
+}
+
+#' Extract rules, time class and pgn of each of the games in a list and concentrate them in a tibble
+#'
+#' @param games_list the list of games to extract information from
+#' @keywords internal
+convert_to_tibble <- function(games_list) {
+
+  rules <- games_list |>
+    map_df(extract_rules)
+
+  time_class <- games_list |>
+    map_df(extract_time_class)
+
+  pgn <- games_list |>
+    map_df(extract_pgn)
+
+  t <- tibble(
+    rules = rules,
+    time_class = time_class,
+    pgn = pgn
+  )
+
+  return(t)
+}
+
+#' clean each pgn string and separate its columns
+#'
+#' @param t tibble coming from convert_to_tibble
+#' @keywords internal
+clean_pgn <- function(t) {
+  # notes:
+  # this function will exclude "abandoned" games that didn't have a move recorded.
+  # if it was abandoned and an opening was created, then it will be included in the results
+
+  cleaned_df <- df[grep("\\{", df$pgn),]
+
+  cleaned_df <- cleaned_df |> filter(rules == "chess",
+                                     time_class %in% c("blitz", "bullet",  "daily",  "rapid"),
+                                     str_detect(pgn, "Tournament", negate = TRUE),
+                                     str_detect(pgn, "club/matches", negate = TRUE)) |>
+    separate(pgn, into = c("Event", "Site", "Date", "Round", "White", "Black", "Result", "CurrentPosition", "Timezone", "ECO", "ECOUrl",
+                           "UTCDate", "UTCTime", "WhiteElo", "BlackElo", "TimeControl", "Termination", "StartTime", "EndDate", "EndTime",
+                           "Link", "Moves"), sep = "]\n")
+
+
+  # create a vector of the variables that contains the data we need withing double quotes
+  vars_to_extract <- c("Event", "Site", "Date", "Round", "White", "Black", "Result", "ECO", "ECOUrl", "CurrentPosition", "Timezone",
+                       "UTCDate", "UTCTime", "WhiteElo", "BlackElo", "TimeControl", "Termination", "StartTime", "EndDate", "EndTime",
+                       "Link")
+  # function to extract the data contained within the double quotes
+  extract_data <- function(x) {str_replace('[^\"]+\"([^\"]+).*', '\\1', x)}
+
+  # extract the data
+  cleaned_df <- cleaned_df |>
+    mutate(across(vars_to_extract), extract_data) |> mutate(across(where(is.factor)), as.character)
+
+  # create a variable to indicate which colour won the game
+  cleaned_df <- cleaned_df |>
+    mutate(winner = ifelse(Result == "0-1", "Black", ifelse(Result == "1-0", "White", "Draw")))
+
+  # create a username variable for analysis purposes
+  cleaned_df$Username <- username
+
+  # data cleaning and preprocessing
+  cleaned_df <- cleaned_df |>
+    # convert date variables to ymd using lubridate::ymd()
+    mutate(Date = ymd(Date),
+           EndDate = ymd(EndDate)) |>
+    # feature engineering of some new features for analysis
+    mutate(n_Moves = return_num_moves(Moves),
+           UserOpponent = ifelse(White == Username, Black, White),
+           UserColour = ifelse(Username == White, "White", "Black"),
+           OpponentColour = ifelse(Username == White, "Black", "White"),
+           UserELO = as.numeric(ifelse(Username == White, WhiteElo, BlackElo)),
+           OpponentELO = as.numeric(ifelse(Username != White, WhiteElo, BlackElo))) |>
+    mutate(UserResult = ifelse(Result == "0-1", "Black", ifelse(Result == "1-0", "White", "Draw")),
+           UserResult = ifelse(UserColour == UserResult, "Win", ifelse(UserResult == "Draw", "Draw", "Loss"))) |>
+    mutate(DaysTaken = EndDate - Date) |>
+    mutate(GameEnding = mapply(ending, Username, Termination, UserOpponent)) |>
+    mutate(Opening = str_remove_all(ECOUrl, ".*?/"),
+           Opening = str_remove(Opening, "^.*?-"))
+
+  return(cleaned_df)
 }
 

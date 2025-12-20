@@ -4,10 +4,10 @@
 \alias{check_status}
 \title{Check status function}
 \usage{
-check_status(res)
+check_status(url)
 }
 \arguments{
-\item{res}{Response from API}
+\item{url}{link to be checked}
 }
 \description{
 Check status function
