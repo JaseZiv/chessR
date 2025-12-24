@@ -12,9 +12,6 @@
 #'
 #' @return a dataframe of lichess data
 #'
-#' @importFrom magrittr %>%
-#' @importFrom rlang .data
-#'
 #' @export
 #'
 #' @examples
@@ -56,7 +53,7 @@ get_raw_lichess <- function(player_names, since = NULL, until = NULL) {
     # read in the file
     read_in_file <- readLines(tmp)
     # cleaning steps of the file
-    collapsed_strings <- paste(read_in_file, collapse = "\n") %>% strsplit(., "\n\n\n") %>% unlist()
+    collapsed_strings <- paste(read_in_file, collapse = "\n") |> strsplit("\n\n\n") |> unlist()
     games_list <- strsplit(collapsed_strings, "\n")
 
     return(games_list)
@@ -71,11 +68,10 @@ get_raw_lichess <- function(player_names, since = NULL, until = NULL) {
     first_test <- first_test[-which(first_test == "")]
     # create a vector with the column names. The moves column doesn't have a title in the code so create one called "Moves"
     # the moves are always the last element so need to pull that out manually
-    tab_names <- c(gsub( "\\s.*", "", first_test[grep("\\[", first_test)]) %>% gsub("\\[", "", .), "Moves")
+    tab_names <- c(str_remove_all(first_test[grep("\\[", first_test)], "\\s.*") |> str_remove("\\["), "Moves")
     # then extract the values for each key above. Manually grab the moves value also and append to vector
-    tab_values <- c(gsub(".*[\"]([^\"]+)[\"].*", "\\1", first_test[grep("\\[", first_test)]), first_test[length(first_test)])
-    #create the df of values
-    df <- rbind(tab_values) %>% data.frame(stringsAsFactors = F)
+    tab_values <- c(str_extract(first_test[grep("\\[", first_test)], '(?<=\\").*?(?=\\")'), first_test[length(first_test)])   #create the df of values
+    df <- rbind(tab_values) |> data.frame(stringsAsFactors = F)
     # then the header for table
     colnames(df) <- tab_names
     # remove the row names
@@ -85,13 +81,13 @@ get_raw_lichess <- function(player_names, since = NULL, until = NULL) {
     errorneous_columns <- which(grepl("[0-9]", colnames(df)))
     df[, errorneous_columns] <- NULL
     # remove the "+" sign and convert RatingDiff columns to numeric
-    column_names <- colnames(df) %>% paste0(collapse = ",")
+    column_names <- colnames(df) |> paste0(collapse = ",")
     if(grepl("WhiteRatingDiff", column_names)) {
-      df$WhiteRatingDiff <- gsub("\\+", "", df$WhiteRatingDiff)
+      df$WhiteRatingDiff <- df$WhiteRatingDiff |> str_remove("\\+")
     }
 
     if(grepl("WhiteRatingDiff", column_names)) {
-      df$BlackRatingDiff <- gsub("\\+", "", df$BlackRatingDiff)
+      df$BlackRatingDiff <- df$BlackRatingDiff |> str_remove("\\+")
     }
     return(df)
   }
@@ -102,13 +98,13 @@ get_raw_lichess <- function(player_names, since = NULL, until = NULL) {
   #when more than one player's data is to be extracted
   for(each_player in player_names) {
 
-    output <- get_file(each_player) %>%
+    output <- get_file(each_player) |>
       purrr::map_df(create_games_df)
     # apply the user's names
     output$Username <- each_player
     if (nrow(output)) {
       # filter out games where the variant is 'From Position'
-      output <- output %>% dplyr::filter(.data$Variant != "From Position")
+      output <- output |> dplyr::filter(Variant != "From Position")
       final_output <- dplyr::bind_rows(final_output, output)
     }
 

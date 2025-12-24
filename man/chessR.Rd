@@ -2,8 +2,8 @@
 % Please edit documentation in R/chessR.R
 \docType{package}
 \name{chessR}
-\alias{chessR}
 \alias{chessR-package}
+\alias{chessR}
 \title{chessR: A package for extracting and analysing chess game data}
 \description{
 This package is designed to aid in the extraction and analysis of game data from the popular chess.com

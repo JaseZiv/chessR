@@ -1,3 +1,5 @@
+# chessR 1.6.0
+
 # chessR 1.5.4
 
 Bugfix: prevent scientific notation in time queries for `get_raw_lichess()`

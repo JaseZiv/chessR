@@ -2,13 +2,14 @@
 % Please edit documentation in R/internals.R
 \name{check_status}
 \alias{check_status}
-\title{Check Status function}
+\title{Check status function}
 \usage{
-check_status(res)
+check_status(url)
 }
 \arguments{
-\item{res}{Response from API}
+\item{url}{link to be checked}
 }
 \description{
-Check Status function
+Check status function
 }
+\keyword{internal}

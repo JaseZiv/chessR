@@ -4,14 +4,10 @@
 \alias{get_game_ending}
 \title{Return the game ending}
 \usage{
-get_game_ending(termination_string, white, black)
+get_game_ending(raw_data = NULL)
 }
 \arguments{
 \item{termination_string}{A character vector in the chess.com extracted data frame called 'Termination'}
-
-\item{white}{A character vector in the chess.com extracted data frame called 'White' for the player on white}
-
-\item{black}{A character vector in the chess.com extracted data frame called 'Black' for the player on black}
 }
 \value{
 A character vector of the game ending for each game

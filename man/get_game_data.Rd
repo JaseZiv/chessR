@@ -25,4 +25,5 @@ a dataframe of game metadata
 chess_analysis_single <- get_game_data(usernames = "JaseZiv")
 chess_analysis_multiple <- get_game_data(usernames = c("JaseZiv", "Smudgy1"))
 }
+
 }

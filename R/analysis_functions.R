@@ -12,19 +12,18 @@
 #'
 #' @return A numeric vector of the number of moves in each game
 #'
-#' @importFrom magrittr %>%
-#'
 #' @export
 return_num_moves <- function(moves_string) {
-  moves_string <- moves_string
-  moves_fun <- function(x) {
-    if(is.na(x)) {
-      n_moves <- NA
-    } else {
-      n_moves <- suppressWarnings(gsub("\\{.*?\\}", "", x, perl=TRUE) %>% strsplit(., "\\s+") %>% unlist() %>%  as.numeric() %>% max(na.rm = T))
-    }
-  }
-  n_moves <- mapply(moves_fun, moves_string)
+
+  if (!is.character(moves_string)) stop("Input must be a character vector")
+  ## First of all, making sure the strings are character.
+
+  is_valid <- sapply(moves_string, is.pgn)
+  ## Making sure that all elements provided are pgn
+
+  if(any(!is_valid)) stop("text is not a PGN")
+
+  n_moves <- sapply(moves_string, count_moves)
   return(n_moves)
 }
 
@@ -35,8 +34,6 @@ return_num_moves <- function(moves_string) {
 #' This function returns a character vector of how the game ended from chess.dom.
 #'
 #' @param termination_string A character vector in the chess.com extracted data frame called 'Termination'
-#' @param white A character vector in the chess.com extracted data frame called 'White' for the player on white
-#' @param black A character vector in the chess.com extracted data frame called 'Black' for the player on black
 #'
 #' @examples
 #' \dontrun{
@@ -45,20 +42,23 @@ return_num_moves <- function(moves_string) {
 #'
 #' @return A character vector of the game ending for each game
 #'
-#' @importFrom magrittr %>%
-#'
 #' @export
-get_game_ending <- function(termination_string, white, black) {
-  string <- termination_string
-  usernames <- c(white, black)
-  usernames <- paste0("\\b(", paste(usernames, collapse="|"), ")\\b")
+get_game_ending <- function(raw_data = NULL) {
 
-  x <- gsub(usernames, "", string)
-  x <- gsub("won ", "", x)
-  x <- gsub(" \\- ", "", x)
-  x <- stringr::str_squish(x)
+  termination_string <- raw_data$Termination
 
-  return(x)
+  if (!is.character(termination_string)) stop("The termination string must be a character vector")
+  ## First of all, making sure all the arguments are character.
+
+  if (!any(str_detect(termination_string, "Normal|Time forfeit|resignation|checkmate|time|agreement"))) stop("Termination string does not have any official game endings")
+  ## Give error if there are no terminations
+
+  y <- str_extract_all(termination_string, "Normal|Time forfeit|resignation|checkmate|time|agreement") |> unlist()
+  ## I'm not entirely sure I want to unlist, on one hand I would like every
+  ## termination to be univocal, but on the other hand I risk lengthening the
+  ## vector in strings like "x and y draw by insufficient material vs time".
+
+  return(y)
 }
 
 
@@ -81,6 +81,15 @@ get_game_ending <- function(termination_string, white, black) {
 #'
 #' @export
 get_winner <- function(result_column, white, black){
-  a <- ifelse(result_column == "0-1", black, ifelse(result_column == "1-0", white, "Draw"))
-  return(a)
+
+  if (!is.character(result_column)) stop("The result column must be a character vector")
+  ## It's fine if White and Black attributes are whatever
+
+  if (!all(result_column %in% c("0-1", "1-0", "1/2-1/2"))) warning("Some results are invalid. NAs added by coercion")
+
+  return(case_when(
+    result_column == "0-1"     ~ black,
+    result_column == "1-0"     ~ white,
+    result_column == "1/2-1/2" ~ "Draw"
+  ))
 }

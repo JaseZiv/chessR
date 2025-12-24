@@ -22,7 +22,7 @@ Plot a game
 \examples{
 \dontrun{
 hikaru <- get_each_player_chessdotcom("hikaru", "202112")
-m <- extract_moves_as_game(hikaru[11, ])
+m <- pgn_to_game(hikaru[11, ])
 plot_moves(m)
 }
 }

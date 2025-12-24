@@ -5,22 +5,28 @@
 #'
 #' @return cleaned moves as a data.frame
 #' @export
-extract_moves <- function(moves_string) {
-  stopifnot("only a single moves_string can be provided" = length(moves_string) == 1L)
+pgn_to_dataframe <- function(moves_string) {
+
+  # check length and type of the input
+  if(length(moves_string) != 1L | !is.character(moves_string)) stop("only a character string of length 1 can be provided")
 
   # read PGN filefile
   if (file.exists(moves_string)) {
-    moves_string <- extract_moves_from_pgn(moves_string)
+    moves_string <- read_pgn(moves_string)
   }
 
-  # remove newlines
-  clean <- stringr::str_remove_all(moves_string, "\\\n")
-  # remove explored lines
-  clean <- stringr::str_remove_all(moves_string, "\\(.*?\\)")
-  # remove annotations
-  noclock <- stringr::str_remove_all(clean, "\\{.*?\\}")
-  remove_ending <- stringr::str_remove(noclock, "[0-9]-[0-9]")
-  parsed <- tidyr::separate_rows(data.frame(move = remove_ending), .data$move, sep = "[0-9]+\\.")
+  # check validity of pgn
+  if(!is.pgn(moves_string)) stop("the provided string must be a pgn OR a pgn file name")
+
+  # remove alternative lines
+  clean <- str_remove_all(moves_string, "\\(.*?\\)")
+
+  # remove annotations and ending
+  noclock <- str_remove_all(clean, "\\{.*?\\}")
+  remove_ending <- str_remove(noclock, "[0-9]-[0-9]")
+
+  # construct the dataframe
+  parsed <- separate_rows(data.frame(move = remove_ending), move, sep = "[0-9]+\\.")
   parsed <- parsed[-1, ]
   if (nrow(parsed) %% 2 == 1) {
     # end game early or white wins
@@ -30,7 +36,8 @@ extract_moves <- function(moves_string) {
                       black = parsed$move[c(FALSE, TRUE)])
   moves$white <- trimws(moves$white)
   moves$black <- trimws(stringr::str_remove(moves$black, stringr::fixed(".. ")))
-  moves
+
+  return(moves)
 }
 
 
@@ -41,16 +48,16 @@ extract_moves <- function(moves_string) {
 #'
 #' @return a [chess::game()] game object
 #' @export
-extract_moves_as_game <- function(game) {
+pgn_to_game <- function(game) {
   if (!requireNamespace("chess", quietly = TRUE)) {
     stop("This function requires the {chess} package to be installed.")
   }
   moves <- if (length(game) == 1 && file.exists(game)) {
-    gamedata <- extract_moves_from_pgn(game)
-    extract_moves(gamedata)
+    gamedata <- read_pgn(game)
+    pgn_to_dataframe(gamedata)
   } else {
     stopifnot("only a single game can be converted" = nrow(game) == 1L)
-    extract_moves(game$Moves)
+    pgn_to_dataframe(game$Moves)
   }
   c_moves <- c(as.matrix(t(moves)))
   c_moves <- c_moves[c_moves != ""]
@@ -65,12 +72,11 @@ extract_moves_as_game <- function(game) {
 #' @param sleep how long to wait between moves
 #'
 #' @return `NULL`, (invisibly) - called for the side-effect of plotting
-#' @export
 #'
 #' @examples
 #' \dontrun{
 #' hikaru <- get_each_player_chessdotcom("hikaru", "202112")
-#' m <- extract_moves_as_game(hikaru[11, ])
+#' m <- pgn_to_game(hikaru[11, ])
 #' plot_moves(m)
 #' }
 plot_moves <- function(game, interactive = TRUE, sleep = 1) {
@@ -92,8 +98,8 @@ plot_moves <- function(game, interactive = TRUE, sleep = 1) {
   return(invisible(NULL))
 }
 
-extract_moves_from_pgn <- function(filename) {
-  stopifnot(length(filename) == 1 && is.character(filename))
-  d <- readLines(filename, encoding = "UTF-8")
-  d[grep("^1\\.", d)]
-}
+## I advise against running plot_moves. I believe rsvg_format is broken for chess
+## package or fails nonetheless. The example isn't reproducible and there aren't
+## any tests to back it up either.
+
+

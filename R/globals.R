@@ -1,2 +1,0 @@
-
-utils::globalVariables(c("."))

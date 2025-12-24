@@ -4,7 +4,7 @@
 \alias{chessdotcom_leaderboard}
 \title{Get Top 50 on chess.com Leaderboards}
 \usage{
-chessdotcom_leaderboard(game_type = "daily")
+chessdotcom_leaderboard(game_type)
 }
 \arguments{
 \item{game_type}{A valid chess.com game type to return the leaderboard for}

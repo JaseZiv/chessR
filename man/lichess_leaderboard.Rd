@@ -4,12 +4,12 @@
 \alias{lichess_leaderboard}
 \title{Get top players on Lichess leaderboards}
 \usage{
-lichess_leaderboard(top_n_players, speed_variant)
+lichess_leaderboard(speed_variant)
 }
 \arguments{
-\item{top_n_players}{The number of players (up to 200) you want returned}
-
 \item{speed_variant}{A valid lichess speed variant to return the leaderboard for}
+
+\item{top_n_players}{The number of players (up to 200) you want returned}
 }
 \value{
 a dataframe of the lichess top players based on speed_variant and top_n_players selected
