@@ -80,7 +80,7 @@ get_each_player_chessdotcom <- function(username, year_month) {
       } else {
         pgn_list <- strsplit(exp_list, "\n") %>% unlist()
         tab_names <- c(gsub( "\\s.*", "", pgn_list[grep("\\[", pgn_list)][-c(length(pgn_list), (length(pgn_list)-1))]) %>% gsub("\\[", "", .), "Moves")
-        tab_values <- gsub(".*[\"]([^\"]+)[\"].*", "\\1", pgn_list[grep("\\[", pgn_list)])
+        tab_values <- gsub(".*[\"$]([^\"]+)[\"$].*", "\\1", pgn_list[grep("\\[", pgn_list)])
         if(length(tab_names) != length(tab_values)) {
           tab_values <- c(tab_values, NA)
         }
@@ -125,7 +125,7 @@ get_each_player_chessdotcom <- function(username, year_month) {
 #' @export
 #'
 #' @examples
-#' \dontrun{
+#' \donttest{
 #' get_raw_chessdotcom(usernames = "JaseZiv")
 #' get_raw_chessdotcom(usernames = "JaseZiv", year_month = c(202112:202201))
 #' get_raw_chessdotcom(usernames = c("JaseZiv", "Smudgy1"), year_month = 202201)
@@ -134,4 +134,3 @@ get_raw_chessdotcom <- function(usernames, year_month=NA_integer_) {
   df <- purrr::map2_df(usernames, year_month, get_each_player_chessdotcom)
   return(df)
 }
-

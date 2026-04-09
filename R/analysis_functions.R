@@ -6,7 +6,8 @@
 #' @param moves_string A character vector of chess Moves data in PGN notation usually called 'Moves' in extracted data
 #'
 #' @examples
-#' \dontrun{
+#' \donttest{
+#' df <- get_game_data("JaseZiv")
 #' return_num_moves(moves_string = df$Moves)
 #' }
 #'
@@ -39,7 +40,8 @@ return_num_moves <- function(moves_string) {
 #' @param black A character vector in the chess.com extracted data frame called 'Black' for the player on black
 #'
 #' @examples
-#' \dontrun{
+#' \donttest{
+#' df <- get_game_data("JaseZiv")
 #' get_game_ending(termination_string = df$Termination, df$White, df$Black)
 #' }
 #'
@@ -73,7 +75,8 @@ get_game_ending <- function(termination_string, white, black) {
 #' @param black A character vector in the extracted data frame called 'Black' for the player on black
 #'
 #' @examples
-#' \dontrun{
+#' \donttest{
+#' df <- get_game_data("JaseZiv")
 #' get_winner(df$Result, df$White, df$Black)
 #' }
 #'

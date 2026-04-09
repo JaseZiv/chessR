@@ -18,7 +18,7 @@
 #' @export
 #'
 #' @examples
-#' \dontrun{
+#' \donttest{
 #' georges_data <- get_raw_lichess(player_names = "Georges")
 #' the_knife_data <- get_raw_lichess("the_knife", since = "2023-08-13", until = "2023-08-14")
 #' }
@@ -28,7 +28,8 @@ get_raw_lichess <- function(player_names, since = NULL, until = NULL) {
 
     # cat("Extracting ", player_name, " games. Please wait\n")
 
-    old_scipen = getOption("scipen")
+    old_scipen <- getOption("scipen")
+    on.exit(options(scipen = old_scipen))
     options(scipen = 1000000)
 
     since_query <- ""
@@ -44,8 +45,6 @@ get_raw_lichess <- function(player_names, since = NULL, until = NULL) {
       until_integer <- ((as.integer(as.Date(until)) + 1) * 86400 * 1000) - 1
       until_query <- paste0("&until=", until_integer)
     }
-
-    options(scipen = old_scipen)
 
     # download the tmp file
     tmp <- tempfile()
@@ -73,7 +72,7 @@ get_raw_lichess <- function(player_names, since = NULL, until = NULL) {
     # the moves are always the last element so need to pull that out manually
     tab_names <- c(gsub( "\\s.*", "", first_test[grep("\\[", first_test)]) %>% gsub("\\[", "", .), "Moves")
     # then extract the values for each key above. Manually grab the moves value also and append to vector
-    tab_values <- c(gsub(".*[\"]([^\"]+)[\"].*", "\\1", first_test[grep("\\[", first_test)]), first_test[length(first_test)])
+    tab_values <- c(gsub(".*[\"$]([^\"]+)[\"$].*", "\\1", first_test[grep("\\[", first_test)]), first_test[length(first_test)])
     #create the df of values
     df <- rbind(tab_values) %>% data.frame(stringsAsFactors = F)
     # then the header for table

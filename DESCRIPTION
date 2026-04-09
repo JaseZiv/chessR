@@ -1,6 +1,6 @@
 Package: chessR
 Type: Package
-Title: Functions to Extract, Clean and Analyse Online Chess Game Data
+Title: Extract, Clean and Analyse Online Chess Game Data
 Version: 1.5.5
 Authors@R: c(person("Jason Zivkovic", email = "jase.ziv83@gmail.com",
                   role = c("aut", "cre")),
@@ -39,6 +39,7 @@ Suggests:
     ggplot2,
     testthat (>= 3.0.0),
     covr,
-    chess
+    chess,
+    stockfish
 VignetteBuilder: knitr
 Config/testthat/edition: 3

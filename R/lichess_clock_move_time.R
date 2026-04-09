@@ -14,7 +14,7 @@
 #' @export
 #'
 #' @examples
-#' \dontrun{
+#' \donttest{
 #' lordy_leroy_data <- get_raw_lichess(player_names = "LordyLeroy")
 #' lordy_leroy_data_with_times <- lichess_clock_move_time(games_list = lordy_leroy_data)
 #' }
@@ -39,10 +39,11 @@ lichess_clock_move_time <- function(games_list){
     dplyr::filter(grepl("clk", .data$Moves)) %>%
     add_increment()
 
-  # Print that can't extract move times if no rows with clock data
+  # Message that can't extract move times if no rows with clock data
   if(nrow(games_with_increment) == 0){
 
-    print("No games with clock times included within this lichess games data frame")
+    message("No games with clock times included within this lichess games data frame")
+    return(data.frame())
 
   } else {
 
@@ -87,6 +88,7 @@ lichess_clock_move_time <- function(games_list){
 
     df_out <- purrr::map_dfr(.x = games_with_increment$Site,
                              .f = add_times)
+    return(df_out)
 
   }
 

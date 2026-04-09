@@ -7,6 +7,10 @@
 #'
 #' @param username A string value of a player's name
 #'
+#' @return a dataframe of chess.com data plus additional analysis columns
+#'
+#' @export
+#'
 #' @importFrom magrittr %>%
 #' @importFrom rlang .data
 get_each_player <- function(username) {
@@ -176,7 +180,7 @@ get_each_player <- function(username) {
 #' @export
 #'
 #' @examples
-#' \dontrun{
+#' \donttest{
 #' chess_analysis_single <- get_game_data(usernames = "JaseZiv")
 #' chess_analysis_multiple <- get_game_data(usernames = c("JaseZiv", "Smudgy1"))
 #' }
