@@ -29,7 +29,7 @@ get_raw_lichess <- function(player_names, since = NULL, until = NULL) {
     # cat("Extracting ", player_name, " games. Please wait\n")
 
     old_scipen = getOption("scipen")
-    options(scipen = 1000000)
+    options(scipen = 9999)
 
     since_query <- ""
     if (!is.null(since)) {
